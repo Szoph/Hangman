@@ -1,22 +1,64 @@
+"use client";
+
+import { useState } from "react";
 import GenreCards from "./GenreCards";
+import { handleInputChange } from "@/utils/handleInputChange";
+
+interface SearchState {
+  [key: string]: string;
+}
 
 const SearchGenre = () => {
-    const tempGenre = [1,2,3,4,5,6,7,8,9,10];
+  const tempGenre = [
+    "Action",
+    "Adventure",
+    "Animation",
+    "Comedy",
+    "Crime",
+    "Documentary",
+    "Drama",
+    "Fantasy",
+    "Horror",
+    "Mystery",
+    "Romance",
+    "Science Fiction",
+    "Thriller",
+    "Western",
+    "Musical",
+    "War",
+  ];
 
-    return (
-        <div className="search-genre-container">
-            <form className="search-bar-container">
-                <label className="search-bar-text">Search Genres</label>
-                <input className="search-input" />
-            </form>
+  const [searchValue, setSearchValue] = useState<SearchState>({});
 
-            <div className="other-genre-container">
-                {tempGenre.map((genre, index) => (
-                    <GenreCards key={index} height="14em" width="18em" genre={genre} />
-                ))}
-            </div>
-        </div>
-    )
+  return (
+    <div className="search-genre-container">
+      <form className="search-bar-container">
+        <label className="search-bar-text">Search Genres</label>
+        <input
+          type="text"
+          name="search"
+          value={searchValue["search"] || ""}
+          onChange={(e) => handleInputChange(e, searchValue, setSearchValue)}
+          className="search-input"
+        />
+      </form>
+
+      <div className="other-genre-container">
+        {tempGenre
+          .filter((genre) =>
+            genre.toLowerCase().includes(searchValue["search"]?.toLowerCase())
+          )
+          .map((filteredGenre, index) => (
+            <GenreCards
+              key={index}
+              height="14em"
+              width="18em"
+              genre={filteredGenre}
+            />
+          ))}
+      </div>
+    </div>
+  );
 };
 
 export default SearchGenre;

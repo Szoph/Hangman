@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { handleInputChange } from "@/utils/handleInputChange";
 
 interface ProfileState {
   [key: string]: string;
@@ -11,16 +12,6 @@ const EditProfile = () => {
   const [changeType, setChangeType] = useState<string | null>(null);
   const [error, setError] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>("")
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const name: string = e.target.name;
-    const value: string = e.target.value;
-
-    setProfile((prevProfile) => ({
-      ...prevProfile,
-      [name]: value,
-    }));
-  };
 
   const checkBothInputs = (oldValue: string, newValue: string) => {
     return oldValue === undefined && newValue === undefined;
@@ -68,7 +59,7 @@ const EditProfile = () => {
                 name="old_username"
                 value={profile["old_username"] || ""}
                 placeholder="Enter old username"
-                onChange={handleInputChange}
+                onChange={(e) => handleInputChange(e, setProfile, setProfile)}
                 className="change-input"
               />
             </div>
@@ -77,7 +68,7 @@ const EditProfile = () => {
                 name="new_username"
                 value={profile["new_username"] || ""}
                 placeholder="Enter new username"
-                onChange={handleInputChange}
+                onChange={(e) => handleInputChange(e, setProfile, setProfile)}
                 className="change-input"
               />
             </div>
@@ -103,7 +94,7 @@ const EditProfile = () => {
                 name="old_password"
                 value={profile["old_password"] || ""}
                 placeholder="Enter old password"
-                onChange={handleInputChange}
+                onChange={(e) => handleInputChange(e, setProfile, setProfile)}
                 className="change-input"
               />
             </div>
@@ -113,7 +104,7 @@ const EditProfile = () => {
                 name="new_password"
                 value={profile["new_password"] || ""}
                 placeholder="Enter new password"
-                onChange={handleInputChange}
+                onChange={(e) => handleInputChange(e, setProfile, setProfile)}
                 className="change-input"
               />
             </div>
