@@ -50,15 +50,16 @@ const EditProfile = () => {
   useEffect(() => {
     setTimeout(() => {
       setError(false);
+      setChangeType(null)
     }, 2000)
-  }, [error]);
-  
+  }, [error, changeType]);
+
 
   return (
     <>
       <form onSubmit={handleForm} className="edit-form">
         {/* Change Username */}
-        <div className="section">
+        <div className="section" style={{opacity: changeType === "username" ? "0.4" : ""}}>
           <p className="change-text">Change username</p>
           {error && changeType == "username" && <p className="error-text">{errorMessage}</p>}
           <div className="changing-section">
@@ -84,6 +85,7 @@ const EditProfile = () => {
             <button
               onClick={() => setChangeType("username")}
               className="change-button"
+              disabled={changeType === "username"}
             >
               Change
             </button>
@@ -91,7 +93,7 @@ const EditProfile = () => {
         </div>
 
         {/* Change Password */}
-        <div className="section">
+        <div className="section" style={{opacity: changeType === "password" ? "0.4" : ""}}>
           <p className="change-text">Change Password</p>
           {error && changeType == "password" && <p className="error-text">{errorMessage}</p>}
           <div className="changing-section">
@@ -119,6 +121,7 @@ const EditProfile = () => {
             <button
               onClick={() => setChangeType("password")}
               className="change-button"
+              disabled={changeType === "password"}
             >
               Change
             </button>
