@@ -7,23 +7,29 @@ const AccountOptions = () => {
 
   const handleLogout = () => {
     console.log("Log out user");
-    router.push("/")
-  }
+    router.push("/");
+  };
 
   const handleDeleteAccount = () => {
     console.log("Log out user");
-    router.push("/")
-  }
+    router.push("/");
+  };
 
   return (
     <div className="account-section">
       {/* Logout Account */}
-      <div onClick={handleLogout} className="logout-button flex-center account-buttons">
+      <div
+        onClick={handleLogout}
+        className="logout-button flex-center account-buttons"
+      >
         <p>Logout</p>
       </div>
 
       {/* Delete Account */}
-      <div onClick={handleDeleteAccount} className="delete-button flex-center account-buttons">
+      <div
+        onClick={handleDeleteAccount}
+        className="delete-button flex-center account-buttons"
+      >
         <p>Delete Account</p>
       </div>
     </div>

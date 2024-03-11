@@ -167,3 +167,9 @@
     border-radius: 1em;
     background-color: red;
 }
+
+/* Error Handling */
+.error-text {
+    color: red;
+    font-weight: 500;
+}

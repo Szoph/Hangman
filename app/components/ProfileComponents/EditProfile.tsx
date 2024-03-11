@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface ProfileState {
   [key: string]: string;
@@ -9,6 +9,8 @@ interface ProfileState {
 const EditProfile = () => {
   const [profile, setProfile] = useState<ProfileState>({});
   const [changeType, setChangeType] = useState<string | null>(null);
+  const [error, setError] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string>("")
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const name: string = e.target.name;
@@ -20,15 +22,37 @@ const EditProfile = () => {
     }));
   };
 
+  const checkBothInputs = (oldValue: string, newValue: string) => {
+    return oldValue === undefined && newValue === undefined;
+  }
+
   const handleForm = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    if (changeType == "username") {
-        console.log("Change username");
-    } else {
-        console.log("Change Password");
+  
+    const oldValue: string = changeType === "username" ? "old_username" : "old_password";
+    const newValue: string = changeType === "username" ? "new_username" : "new_password";
+  
+    const emptyCheck: boolean = checkBothInputs(profile[oldValue], profile[newValue]);
+  
+    if (emptyCheck) {
+      setErrorMessage(`Please fill in both ${changeType == "username" ? "Old Username and New Username" : "Old Password and New Password"}`)
+      setError(true);
+      return;
     }
-  }
+  
+    if (changeType === "username") {
+      console.log("Change username");
+    } else {
+      console.log("Change Password");
+    }
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      setError(false);
+    }, 2000)
+  }, [error]);
+  
 
   return (
     <>
@@ -36,6 +60,7 @@ const EditProfile = () => {
         {/* Change Username */}
         <div className="section">
           <p className="change-text">Change username</p>
+          {error && changeType == "username" && <p className="error-text">{errorMessage}</p>}
           <div className="changing-section">
             <div className="change">
               <input
@@ -56,13 +81,19 @@ const EditProfile = () => {
               />
             </div>
 
-            <button onClick={() => setChangeType("username")} className="change-button">Change</button>
+            <button
+              onClick={() => setChangeType("username")}
+              className="change-button"
+            >
+              Change
+            </button>
           </div>
         </div>
 
         {/* Change Password */}
         <div className="section">
           <p className="change-text">Change Password</p>
+          {error && changeType == "password" && <p className="error-text">{errorMessage}</p>}
           <div className="changing-section">
             <div className="change">
               <input
@@ -85,7 +116,12 @@ const EditProfile = () => {
               />
             </div>
 
-            <button onClick={() => setChangeType("password")} className="change-button">Change</button>
+            <button
+              onClick={() => setChangeType("password")}
+              className="change-button"
+            >
+              Change
+            </button>
           </div>
         </div>
       </form>
