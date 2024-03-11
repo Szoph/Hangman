@@ -60,6 +60,7 @@
     width: 12em;
     padding: 2em;
     border-radius: 100%;
+    cursor: pointer;
 }
 
 .username {

@@ -1,11 +1,14 @@
 import "@/app/styles/hangman.css";
+import Link from "next/link";
 
 const HangmanAvatar = () => {
-    return (
-        <div className="home-hangman">
-            <div className="temp-avatar"></div>
-        </div>
-    )
+  return (
+    <div className="home-hangman">
+      <Link href="/">
+        <div className="temp-avatar"></div>
+      </Link>
+    </div>
+  );
 };
 
 export default HangmanAvatar;

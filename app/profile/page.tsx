@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import "@/app/styles/profile.css";
 import HangmanAvatar from "../components/HangmanAvatar";
 import EditProfile from "../components/ProfileComponents/EditProfile";
@@ -14,7 +14,9 @@ const ProfilePage = () => {
             <div className="profile-content">
                 {/* Return Button */}
                 <div className="return-container">
+                    <Link href="/genremenu">
                     <p className="return-button">Return to Genre</p>
+                    </Link>
                 </div>
 
                 {/* User Avatar */}
