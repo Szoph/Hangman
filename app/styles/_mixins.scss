@@ -17,3 +17,9 @@
     justify-content: center;
     align-items: center;
 }
+
+@mixin hoverScale {
+    cursor: pointer;
+    scale: 103%;
+    transition-duration: 300ms;
+}
