@@ -15,7 +15,7 @@
     width: 100%;
   }
 }
-.sign-in-form button {
+.sign-in-form button, .sign-in-form a {
   background: #FFBE8D;
   display: flex;
   justify-content: center;
@@ -29,7 +29,7 @@
   font-size: 15px;
   font-weight: bold;
 }
-.sign-in-form button:hover {
+.sign-in-form button:hover, .sign-in-form a:hover {
   background: white;
   color: black;
   cursor: pointer;
@@ -64,6 +64,7 @@
 .form-input p {
   font-size: 15px;
   text-align: center;
+  font-weight: 600;
 }
 
 .extraButtons {
@@ -74,7 +75,8 @@
 }
 .extraButtons .signUpBtn, .extraButtons .continueBtn {
   flex: 1;
-  width: 10rem;
+  width: 9rem;
+  text-decoration: none;
 }
 
 input {
