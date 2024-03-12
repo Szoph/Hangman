@@ -1,5 +1,5 @@
 import Link from "next/link";
-import "@/app/styles/profile.css";
+import "@/app/styles/ProfileStyles/profile.css";
 import HangmanAvatar from "../components/HangmanAvatar";
 import EditProfile from "../components/ProfileComponents/EditProfile";
 import AccountOptions from "../components/ProfileComponents/AccountOptions";
