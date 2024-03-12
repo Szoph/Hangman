@@ -16,7 +16,7 @@
     }
 
     //Large buttons for sign in
-    button {
+    button, a {
         background: $primaryBtn; 
         @include flexCenter;
         border-radius: $smallRounded;
@@ -63,6 +63,7 @@
     p {
         font-size: $fontSmall;
         text-align: center;
+        font-weight: 600;
     }
 
 }
@@ -76,7 +77,8 @@ align-items: center;
 flex-direction: row;
 .signUpBtn, .continueBtn {
 flex: 1;
-width: 10rem;
+width: 9rem;
+text-decoration: none; 
 
 }
 }

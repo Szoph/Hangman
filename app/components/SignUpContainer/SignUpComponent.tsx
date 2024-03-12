@@ -8,7 +8,7 @@ import { logIn } from "@/redux/auth/auth-slice";
 
 
 
-const SignInComponent: React.FC = () => {
+const SignUpComponent: React.FC = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch<AppDispatch>();
@@ -16,7 +16,7 @@ const SignInComponent: React.FC = () => {
   const userName = useAppSelector((state) => state.authReducer.value.username); 
   const isAuth = useAppSelector((state) => state.authReducer.value.isAuth);
 
-  const handleSignIn = () => {
+  const handleSignUp = () => {
     if (username === "" || password === "") {
       alert("Please fill in all fields");
       return;
@@ -28,20 +28,21 @@ const SignInComponent: React.FC = () => {
 
 
   return (
-    <div className="sign-in-form">
+    <div className="sign-up-form">
       <div className="title">
         <h2>Hangman Game</h2>
       </div>
       <div className="form-input">
-      <h2>Welcome Back!</h2>
+      <h2>Welcome!</h2>
       {isAuth && <h3>Username: {userName}</h3>}
       <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
       <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      <button onClick={handleSignIn}>Sign In</button>
-      <p>Don't have an account? </p>
+      <input type="passwordCheck" placeholder="Re-type Password" />
+      <button onClick={handleSignUp}>Sign Up</button>
+      <p>Already have an account? </p>
       <div className="extraButtons">
-        <a href="/signup" className="signUpBtn">Sign Up</a>
-      <a href="/genremenu" className="continueBtn">Continue As Guest</a>
+        <a href="/signin" className="signInBtn">Sign In</a>
+      <a href="/genremenu"className="continueBtn" >Continue As Guest</a>
       </div>
       
       </div>
@@ -49,4 +50,4 @@ const SignInComponent: React.FC = () => {
   )
 }
 
-export default SignInComponent
+export default SignUpComponent
