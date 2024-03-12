@@ -1,10 +1,16 @@
+"use client";
+
 import Link from "next/link";
 import "@/app/styles/ProfileStyles/profile.css";
 import HangmanAvatar from "../components/HangmanAvatar";
 import EditProfile from "../components/ProfileComponents/EditProfile";
 import AccountOptions from "../components/ProfileComponents/AccountOptions";
+import { useDispatch } from "react-redux";
+import { AppDispatch, useAppSelector } from "@/redux/user/store";
 
 const ProfilePage = () => {
+  const user = useAppSelector((state) => state.authReducer.value);
+
   return (
     <div className="profile-background">
       <HangmanAvatar />
@@ -24,7 +30,7 @@ const ProfilePage = () => {
             src="/default-avatar.png"
             className="flex-center user-avatar"
           />
-          <p className="username flex-center">Tony</p>
+          {user.isAuth && <p className="username flex-center">{user.username}</p>}
         </div>
 
         {/* User Edit Form */}

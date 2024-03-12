@@ -7,13 +7,14 @@ type Props = {
     width: string;
     url?: string;
     genre: any;
+    onClick: () => void;
 }
 
-const GenreCards = ({height, width, url, genre}: Props) => {
+const GenreCards = ({height, width, url, genre, onClick}: Props) => {
     // const router = useRouter();
 
     return (
-        <div className="genre-cards" style={{height, width}}>
+        <div className="genre-cards" style={{height, width}} onClick={onClick}>
             <p className="genre-text">{genre}</p>
         </div>
     )
