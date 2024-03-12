@@ -1,13 +1,14 @@
+@import '../variables';
+@import '../mixins';
+
+
 .flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flexCenter;
 }
 
 .profile-background {
     overscroll-behavior: none;
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
     background-color: white;
     color: black;
     display: flex;
@@ -21,38 +22,34 @@
     flex-direction: column;
     gap: 2em;
     padding: 2em;
+    position: relative;
 }
 
 /* Return To Genre */
-.return-container {
-    width: 100%;
-    height: 4rem;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
+
 
 .return-button {
     width: auto;
     height: auto;
-    border: 2px solid black;
+    border: 2px solid $primaryBtn;
     padding: 1em;
-    border-radius: 1em;
-}
-.return-button:hover {
-    background-color: black;
+    border-radius: $mediumRounded;
+    position: absolute;
+    top: 2em;
+    right: 2em;
+    text-decoration: none;
+    color: black;
+    &:hover {
+        background-color: $primaryBtn;
     color: white;
     transition-duration: 300ms;
-    cursor: pointer
+    cursor: pointer;
+    }
 }
 
+
 /* User Profile Picture */
-.user-avatar-container {
-    flex-direction: column;
-    row-gap: 4px;
-    height: 15em;
-    width: 100%;
-}
+
 
 .user-avatar {
     color: white;
@@ -77,10 +74,9 @@
 .edit-form {
     height: auto;
     width: 100%;
-    display: flex;
-    flex-direction: column;
+   @include flexColumns;
     gap: 2em;
-    align-items: center;
+    
 }
 
 .section {
@@ -90,10 +86,10 @@
 }
 
 .changing-section {
-    display: flex;
+    @include flexRows;
     margin-right: auto;
     margin-left: auto;
-    gap: 2em;
+    gap: 2px;
 }
 
 .change-text {
@@ -102,42 +98,48 @@
 }
 
 .change {
-    width: 16em;
-    height: 3em;
-    border-radius: 1em;
-    border: 2px solid black;
-    overflow: hidden;
-    padding: 2px
+    padding: 0.5rem;
+    border-radius: $smallRounded;
+    border: 2px solid $primaryBtn;
+    margin: 0.5rem;
+    font-weight: bold;
+    font-size: $fontSmall;
+    &:focus{ 
+        outline: none;
+        border: 2px solid $primaryBtn;
+    }
 }
 
 .change-input {
     height: 100%;
     width: 100%;
     color: black;
-    padding: 2px;
+    padding: 0.5rem;
     border-radius: 1em;
     border: none;
     outline: none;
     background-color: transparent;
-    font-size: large;
+    font-size: $fontSmall;
 }
 
 .change-button {
-    background: black;
+    background: $primaryBtn;
+    color: white;
     outline: none;
-    border: none;
+    border: 2px solid $primaryBtn;
     width: 6em;
     padding: 4px;
-    border-radius: 1em;
+    border-radius: $mediumRounded;
     font-size: medium;
+    &:hover {
+        background-color: white;
+        border: 2px solid $primaryBtn;
+        color: black;
+        cursor: pointer;
+        transition-duration: 200ms;
+    }
 }
-.change-button:hover {
-    background-color: white;
-    border: 2px solid black;
-    color: black;
-    cursor: pointer;
-    transition-duration: 200ms;
-}
+
 
 /* Account Section: Logout and Delete Account */
 .account-section {
@@ -155,21 +157,51 @@
 }
 
 .logout-button {
-    padding: 1em;
-    width: 12em;
-    border-radius: 1em;
-    background-color: brown;
+    padding: 2px;
+    width: 8em;
+    border-radius: $mediumRounded;
+    background-color: $primaryBtn;
 }
 
 .delete-button {
-    padding: 1em;
-    width: 12em;
-    border-radius: 1em;
-    background-color: red;
+    padding: 2px;
+    width: 8em;
+    border-radius: $mediumRounded;
+    background-color: $primaryBtn;
 }
 
 /* Error Handling */
 .error-text {
     color: red;
     font-weight: 500;
+}
+
+.user-avatar-container {
+    height: 6rem;
+    display: flex; 
+    flex-direction: row;
+   width: 50%;
+}
+
+.user-avatar {
+    height: 5rem;
+    width: 5rem;
+    background-color: white;
+    border-radius: 100%;
+}
+
+.home-hangman {
+    background-color: $background;
+    height: 100vh;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.temp-avatar {
+    height: 30em;
+    width: 30em;
+    background-color: white;
+    border-radius: 100%;
 }

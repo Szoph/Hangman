@@ -1,4 +1,4 @@
-import "@/app/styles/genremenu.css";
+import "@/app/styles/GenreMenuStyles/genremenu.css";
 import GenreCards from "../components/GenreMenuComponents/GenreCards";
 import SearchGenre from "../components/GenreMenuComponents/SearchGenre";
 import UserAvatar from "../components/UserAvatar";

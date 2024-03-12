@@ -1,4 +1,5 @@
-import "@/app/styles/useravatar.css";
+import React from "react";
+import "@/app/styles/useravatar.css"
 
 type Props = {
     className?: string;

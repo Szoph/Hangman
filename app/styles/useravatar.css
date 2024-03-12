@@ -1,16 +1,13 @@
 .user-avatar-container {
     height: 6rem;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding-top: 2rem;
-    padding-right: 4rem;
+   
+    margin-top: 2rem;
+    margin-left: 2rem;
 }
 
 .user-avatar {
-    height: 5rem;
-    width: 5rem;
+    height: 3rem;
+    width: 3rem;
     background-color: white;
     border-radius: 100%;
     cursor: pointer;
