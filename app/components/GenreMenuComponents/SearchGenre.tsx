@@ -30,6 +30,13 @@ const SearchGenre = () => {
 
   const [searchValue, setSearchValue] = useState<SearchState>({});
 
+  // Filter the genres based on the search input
+  const filteredGenres = searchValue["search"]
+    ? tempGenre.filter((genre) =>
+        genre.toLowerCase().includes(searchValue["search"]?.toLowerCase())
+      )
+    : tempGenre;
+
   return (
     <div className="search-genre-container">
       <form className="search-bar-container">
@@ -44,18 +51,20 @@ const SearchGenre = () => {
       </form>
 
       <div className="other-genre-container">
-        {tempGenre
-          .filter((genre) =>
-            genre.toLowerCase().includes(searchValue["search"]?.toLowerCase())
-          )
-          .map((filteredGenre, index) => (
+        {filteredGenres.length > 0 ? (
+          filteredGenres.map((filteredGenre, index) => (
             <GenreCards
               key={index}
               height="14em"
               width="18em"
               genre={filteredGenre}
             />
-          ))}
+          ))
+        ) : (
+          <div className="no-genre">
+            <p style={{ fontSize: "40px"}}>Genre doesn't exist!</p>
+          </div>
+        )}
       </div>
     </div>
   );

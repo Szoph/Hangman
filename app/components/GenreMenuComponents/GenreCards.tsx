@@ -7,7 +7,7 @@ type Props = {
     width: string;
     url?: string;
     genre: any;
-    onClick: () => void;
+    onClick?: () => void;
 }
 
 const GenreCards = ({height, width, url, genre, onClick}: Props) => {
