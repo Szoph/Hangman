@@ -44,18 +44,29 @@ const SearchGenre = () => {
       </form>
 
       <div className="other-genre-container">
-        {tempGenre
-          .filter((genre) =>
-            genre.toLowerCase().includes(searchValue["search"]?.toLowerCase())
-          )
-          .map((filteredGenre, index) => (
-            <GenreCards
-              key={index}
-              height="14em"
-              width="18em"
-              genre={filteredGenre}
-            />
-          ))}
+        {searchValue["search"]
+          ? tempGenre
+              .filter((genre) =>
+                genre
+                  .toLowerCase()
+                  .includes(searchValue["search"]?.toLowerCase())
+              )
+              .map((filteredGenre, index) => (
+                <GenreCards
+                  key={index}
+                  height="14em"
+                  width="18em"
+                  genre={filteredGenre}
+                />
+              ))
+          : tempGenre.map((genre, index) => (
+              <GenreCards
+                key={index}
+                height="14em"
+                width="18em"
+                genre={genre}
+              />
+            ))}
       </div>
     </div>
   );
