@@ -22,8 +22,10 @@ const EditProfile = () => {
     return oldValue === undefined && newValue === undefined;
   };
 
-  const handleForm = (e: React.ChangeEvent<HTMLFormElement>) => {
+  const handleForm = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, type: string) => {
     e.preventDefault();
+
+    setChangeType(type);
 
     const oldValue: string =
       changeType === "username" ? "old_username" : "old_password";
@@ -65,7 +67,7 @@ const EditProfile = () => {
 
   return (
     <>
-      <form onSubmit={handleForm} className="edit-form">
+      <form className="edit-form">
         {/* Change Username */}
         <div
           className="section"
@@ -96,7 +98,7 @@ const EditProfile = () => {
             </div>
 
             <button
-              onClick={() => setChangeType("username")}
+              onClick={(e) => handleForm(e, "username")}
               className="change-button"
               disabled={changeType === "username"}
             >
@@ -137,7 +139,7 @@ const EditProfile = () => {
             </div>
 
             <button
-              onClick={() => setChangeType("password")}
+              onClick={(e) => handleForm(e, "password")}
               className="change-button"
               disabled={changeType === "password"}
             >
