@@ -9,7 +9,11 @@ type Props = {
 const UserAvatar = ({className, onClick}: Props) => {
     return (
         <div className={`user-avatar-container ${className}`} onClick={onClick}>
-            <div className="user-avatar"></div>
+            <img
+            alt="avatar"
+            src="/default-avatar.png"
+            className="flex-center user-avatar"
+          />
         </div>
     );
 };
