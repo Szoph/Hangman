@@ -8,7 +8,6 @@ const GenreMenuPage = () => {
 
   return (
     <div className="genre-menu-container">
-      <UserAvatar />
 
       <div className="popular-container">
         <div className="popular-text-container">

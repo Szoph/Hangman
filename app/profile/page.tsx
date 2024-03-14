@@ -24,11 +24,11 @@ const ProfilePage = () => {
         </div>
 
         {/* User Avatar */}
-        <div className="user-avatar-container flex-center">
+        <div className="user-container flex-center">
           <img
             alt="avatar"
             src="/default-avatar.png"
-            className="flex-center user-avatar"
+            className="flex-center avatar"
           />
           {user.isAuth && <p className="username flex-center">{user.username}</p>}
         </div>

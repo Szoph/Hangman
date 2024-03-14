@@ -1,0 +1,94 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: 10vh;
+  width: 100%;
+  background-color: rgb(31, 41, 55);
+}
+.header .header-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.header .home-link {
+  position: absolute;
+  top: 0.75em;
+  left: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  color: white;
+  cursor: pointer;
+}
+.header .user-avatar-menu {
+  position: absolute;
+  top: 0.5em;
+  right: 2em;
+  cursor: pointer;
+}
+.header .menu-container {
+  position: absolute;
+  right: 0;
+  margin-top: 10vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  height: auto;
+  width: auto;
+  border: 2px solid #FFBE8D;
+  box-shadow: 0 0 10px gray;
+  border-radius: 6px;
+}
+.header .menu-item-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  padding: 1em 2em 1em 2em;
+}
+.header .menu-item-container .menu-item {
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+}
+.header .menu-item-container .menu-item:hover {
+  color: #FFBE8D;
+}
+.header .menu-item-container .line {
+  width: 100%;
+  height: 1px;
+  background-color: #FFBE8D;
+}
+
+.footer {
+  padding: 2em 1em 2em 1em;
+  background-color: rgb(31, 41, 55);
+  color: white;
+  text-align: center;
+}
+.footer .footer-link {
+  cursor: pointer;
+  color: white;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-container .footer-link {
+  cursor: pointer;
+}
+.footer-container .footer-link:hover {
+  cursor: pointer;
+  scale: 103%;
+  transition-duration: 300ms;
+}/*# sourceMappingURL=headerFooter.css.map */
