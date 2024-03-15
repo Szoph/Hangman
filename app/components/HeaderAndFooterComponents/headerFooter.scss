@@ -3,11 +3,10 @@
 
 // Header 
 .navbar {
-
-top: 0;
 z-index: 100;
 width: 100%;
 background-color: $background;
+padding:20px 20px 0px 20px;
 
 .navbar-container {
     position: relative;
@@ -67,6 +66,12 @@ background-color: $background;
 }
 
 
+.nav-items {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10%;
+
+}
 
 
 .user-avatar {

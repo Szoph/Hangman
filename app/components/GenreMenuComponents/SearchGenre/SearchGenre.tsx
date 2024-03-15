@@ -1,46 +1,69 @@
 "use client";
 
 
-import "./genremenu.scss"
+import "./searchgenre.scss"
 import { useState } from "react";
-import GenreCards from "./GenreCards";
+import GenreCards from "../GenreCards/GenreCards";
 import { handleInputChange } from "@/utils/handleInputChange";
+
+import {Action, Thriller, War, SciFi, Adventure, Horror, Mystery } from '../imports'
 
 interface SearchState {
   [key: string]: string;
 }
 
 const SearchGenre = () => {
-  const tempGenre = [
-    "Action",
-    "Adventure",
-    "Animation",
-    "Comedy",
-    "Crime",
-    "Documentary",
-    "Drama",
-    "Fantasy",
-    "Horror",
-    "Mystery",
-    "Romance",
-    "Science Fiction",
-    "Thriller",
-    "Western",
-    "Musical",
-    "War",
+  
+  const genreData = [
+    {
+      genre:"Action",
+      image:Action
+    },
+    {
+      genre:"Thriller",
+      image:Thriller
+    },
+
+    {
+      genre:"War",
+      image:War
+    },
+
+    {
+      genre:"Science Fiction",
+      image:SciFi
+    },
+
+    {
+      genre:"Adventure",
+      image:Adventure
+    },
+
+    
+    {
+      genre:"Horror",
+      image:Horror
+    },
+
+    
+    {
+      genre:"Mystery",
+      image:Mystery
+    },
+
   ];
 
   const [searchValue, setSearchValue] = useState<SearchState>({});
 
   // Filter the genres based on the search input
   const filteredGenres = searchValue["search"]
-    ? tempGenre.filter((genre) =>
-        genre.toLowerCase().includes(searchValue["search"]?.toLowerCase())
+    ? genreData.filter((item) =>
+        item.genre.toLowerCase().includes(searchValue["search"]?.toLowerCase())
       )
-    : tempGenre;
+    : genreData;
 
   return (
-    <div className="search-genre-container">
+    <section className="search-genre-container">
       <form className="search-bar-container">
         <label className="search-bar-text">Search Genres</label>
         <input
@@ -57,9 +80,8 @@ const SearchGenre = () => {
           filteredGenres.map((filteredGenre, index) => (
             <GenreCards
               key={index}
-              height="14em"
-              width="18em"
-              genre={filteredGenre}
+              genre={filteredGenre.genre}
+              image={filteredGenre.image}
             />
           ))
         ) : (
@@ -68,7 +90,7 @@ const SearchGenre = () => {
           </div>
         )}
       </div>
-    </div>
+    </section>
   );
 };
 

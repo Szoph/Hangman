@@ -11,13 +11,14 @@ const UnAuthNavBar: React.FC = () => {
 
   return (
     <nav className="navbar">
-        <div className="navbar-container">
+ 
+          <div className="nav-items">
             <Link href="/">Home</Link>
             <Link href="/signin">Sign In</Link>
             <Link href="/signin">Sign Up</Link>
-      
+          </div>
 
-        </div>
+
     </nav>
   )
 }

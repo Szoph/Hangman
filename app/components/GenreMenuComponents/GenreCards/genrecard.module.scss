@@ -1,0 +1,31 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+/* Genre Cards */
+.genreCards {
+    border-radius: 0.5rem;
+    position:relative;
+    border: 2px solid $primaryBtn;
+    background-color:black;
+    @include flexCenter;
+    &:hover {
+        cursor: pointer;
+        scale: 105%;
+        transition-duration: 300ms;
+    }
+}
+
+
+.genreText {
+    position:absolute;
+    font-size: $fontMedium;
+    text-align: center;
+    font-weight: 400;
+    margin: 0 auto;
+    height: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}

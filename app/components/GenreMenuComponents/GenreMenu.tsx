@@ -1,23 +1,18 @@
 import "./genremenu.scss";
-import GenreCards from "./GenreCards";
-import SearchGenre from "./SearchGenre";
+import GenreCards from "./GenreCards/GenreCards";
+import SearchGenre from "./SearchGenre/SearchGenre";
 import UserAvatar from "../ProfileComponents/UserAvatar";
+import PopularGenre from "./PopularGenres/PopularGenres";
 
 const GenreMenu = () => {
-  const tempPop = ["Horror", "Romance", "Comedy", "Action"];
+
 
   return (
     <div className="genre-menu-container">
 
       <div className="popular-container">
-        <div className="popular-text-container">
-          <h1 className="popular-text">Popular Genre</h1>
-        </div>
-
         <div className="popular-genre-container flex-row">
-          {tempPop.map((genre, index) => (
-            <GenreCards key={index} height="80%" width="20%" genre={genre} />
-          ))}
+          <PopularGenre/>
         </div>
       </div>
 
