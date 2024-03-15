@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import Image from "next/image";
 import {AppDispatch, useAppSelector} from "@/redux/user/store";
 import { logIn } from "@/redux/auth/auth-slice";
-
+import "./signup.scss"
 
 
 const SignUpComponent: React.FC = () => {
@@ -13,7 +13,7 @@ const SignUpComponent: React.FC = () => {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch<AppDispatch>();
 
-  const userName = useAppSelector((state) => state.authReducer.value.username); 
+  const userName = useAppSelector((state) => state.authReducer.value.username);
   const isAuth = useAppSelector((state) => state.authReducer.value.isAuth);
 
   const handleSignUp = () => {

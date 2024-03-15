@@ -1,19 +1,15 @@
-@import '../variables';
-@import '../mixins';
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
 
 // Sign in full page
-.sign-up-form {
+.sign-in-form {
     @include flexRows;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 100vh;
 
-    @media (max-width: 768px) {
-        flex-direction: column-reverse;
-        height: auto;
-        width: 100%;
-    }
 
     //Large buttons for sign in
     button, a {
@@ -43,7 +39,7 @@
     @include flexCenter;
     height: 100vh;
     width: 50%;
-    background-color: rgb(47, 47, 47);
+    background-color: $background;
     h2 {
         font-size: $fontLarge;
         color: white;
@@ -75,10 +71,10 @@ display: flex;
 justify-content: center;
 align-items: center;
 flex-direction: row;
-.signInBtn, .continueBtn {
+.signUpBtn, .continueBtn {
 flex: 1;
 width: 9rem;
-text-decoration: none;
+text-decoration: none; 
 
 }
 }
@@ -96,5 +92,14 @@ input {
     &:focus{ 
         outline: none;
         border: 2px solid $primaryBtn;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .sign-in-form {
+        flex-direction: column-reverse;
+        height: auto;
+        width: 100%;
     }
 }

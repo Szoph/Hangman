@@ -1,5 +1,7 @@
 "use client";
 
+
+import "./genremenu.scss"
 import { useState } from "react";
 import GenreCards from "./GenreCards";
 import { handleInputChange } from "@/utils/handleInputChange";

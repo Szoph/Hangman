@@ -1,9 +1,9 @@
-@import './variables';
-@import './mixins';
+@import '../../styles/variables';
+@import '../../styles/mixins';
 
 // Page container
 .genre-mode-container {
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;
 }
 
