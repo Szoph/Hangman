@@ -15,7 +15,7 @@
     box-sizing: border-box;
 
     align-items:center;
-    padding:20px 20px 0px 20px;
+    padding:20px 20px 20px 20px;
 
     .logo {
         display: flex;
@@ -29,8 +29,11 @@
         text-decoration:none;
         gap: 30px;
         align-items:center;
-      border:1px solid black
-}
+        border:1px solid black
+
+
+
+    }
 
 .logoContainer {
     width: fit-content;
@@ -52,6 +55,14 @@
     display: flex;
     box-sizing: border-box;
     background-color: white;
+
+    a {
+        text-decoration: none!important;
+        color: black;
+        font-size: clamp(1.2rem, 3vw, 1.4rem);
+        margin: 10px;
+
+    }
 
 }
 
@@ -114,6 +125,11 @@
     }
     .mobileLinks {
         display:none;
+        background-color: $background;
+
+        a {
+            color: white;
+        }
     }
 
     .navLinks {
