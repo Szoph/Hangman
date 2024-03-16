@@ -31,8 +31,6 @@ const PopularGenre = () => {
   ];
 
   return (
-    <div className="genre-menu-container">
-
       <div className="popular-container">
         <div className="popular-text-container">
           <h1 className="popular-text">Popular Genres</h1>
@@ -48,7 +46,6 @@ const PopularGenre = () => {
       </div>
 
 
-    </div>
   );
 };
 

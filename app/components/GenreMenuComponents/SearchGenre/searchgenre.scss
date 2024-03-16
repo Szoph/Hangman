@@ -12,13 +12,18 @@
 
 .search-bar-container {
     @include flexColumns;
-    gap: 2em;
+
     margin-bottom: 2em;
+    width: 100%;
+    margin: 1% auto;
+    max-width: 400px;
 }
 
 .search-bar-text {
-    font-size: large;
+    font-size: clamp(1.5rem, 2vw, 1.8rem);
     font-weight: 600;
+    margin-bottom: 1rem;
+    color: white;
 }
 
 .search-input {
@@ -26,8 +31,9 @@
     font-size: large;
     font-weight: 400;
     color: black;
-    height: 4rem;
-    width: 40rem;
+    height: 100%;
+    padding: 0.2rem;
+    width: 100%;
     border-radius: $smallRounded;
     border: none;
     background-color: white;
@@ -35,9 +41,8 @@
 }
 
 .other-genre-container {
-    overflow-y: scroll;
-    height: 40rem;
-    padding: 10px;
+
+    scroll-behavior: smooth;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -52,4 +57,10 @@
     width: 100%;
     display: flex;
     justify-content: center;
+}
+
+@media (max-width:768px) {
+    .other-genre-container {
+        flex-direction: row
+    }
 }

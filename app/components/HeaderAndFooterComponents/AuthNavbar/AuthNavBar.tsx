@@ -1,10 +1,10 @@
 "use client"; 
-import UserAvatar from '../ProfileComponents/UserAvatar';
+import UserAvatar from '../../ProfileComponents/UserAvatar';
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import "./headerFooter.scss";
+import "./authnavbar.module.scss";
 
-import {HomeIcon} from './imports'
+import {HomeIcon} from '../imports'
 
 const Header: React.FC = () => {
 

@@ -45,7 +45,6 @@ const SearchGenre = () => {
       image:Horror
     },
 
-    
     {
       genre:"Mystery",
       image:Mystery
@@ -53,7 +52,19 @@ const SearchGenre = () => {
 
   ];
 
+  const handleScroll = () => {
+    
+  }
+
+
   const [searchValue, setSearchValue] = useState<SearchState>({});
+
+  const handleInputChange =(e: string) => {
+    e.preventDefault()
+    const {value} = e.target;
+
+    setSearchValue({ ...searchValue, search: value})
+  }
 
   // Filter the genres based on the search input
   const filteredGenres = searchValue["search"]
@@ -70,7 +81,7 @@ const SearchGenre = () => {
           type="text"
           name="search"
           value={searchValue["search"] || ""}
-          onChange={(e) => handleInputChange(e, searchValue, setSearchValue)}
+          onChange={handleInputChange}
           className="search-input"
         />
       </form>

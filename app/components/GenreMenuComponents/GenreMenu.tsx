@@ -8,16 +8,16 @@ const GenreMenu = () => {
 
 
   return (
-    <div className="genre-menu-container">
+    <section className="genre-menu-container">
 
       <div className="popular-container">
-        <div className="popular-genre-container flex-row">
+        <div className="popular-genre-container">
           <PopularGenre/>
         </div>
       </div>
 
       <SearchGenre />
-    </div>
+    </section>
   );
 };
 

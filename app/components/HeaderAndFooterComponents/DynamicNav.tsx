@@ -4,8 +4,9 @@ import React from 'react';
 import {useRouter, usePathname} from 'next/navigation';
 
 import {AppDispatch, useAppSelector} from "@/redux/user/store";
-import UnAuthNavBar from './unAuthNavBar';
-import AuthNavBar from './AuthNavBar';
+import UnAuthNavBar from './UnAuthNavBar/unAuthNavBar';
+import AuthNavBar from './AuthNavbar/AuthNavBar';
+import './navbar.module.scss'
 
 const DynamicNav: React.FC = () => {
 

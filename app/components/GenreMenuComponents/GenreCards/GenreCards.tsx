@@ -22,14 +22,17 @@ const GenreCards = ({genre, image, onClick}: Props) => {
             <div  className={styles.genreCards} onClick={onClick}>
             <div className={styles.overLay}>
             <p className={styles.genreText}>{genre}</p>
+            <div className={styles.imageWrapper}>  
             <Image
              alt="image"
              src={image}
+             layout="responsive"
              height={500}
              width={undefined}
              className={styles.cardImage}
              objectFit="cover"
              />
+            </div>
 
             </div>
         </div>

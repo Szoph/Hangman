@@ -1,0 +1,130 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+
+
+.navbar {
+    position: fixed;
+    top:0;
+    z-index: 100;
+    width: 100%;
+    background-color: $background;
+    max-width: 1620px;
+    margin:0 auto;
+    justify-content: space-between;
+    box-sizing: border-box;
+
+    align-items:center;
+    padding:20px 20px 0px 20px;
+
+    .logo {
+        display: flex;
+        color: white;
+        cursor: pointer;
+    }
+    }
+    .navLinks {
+        display: none;
+        flex-direction:column;
+        text-decoration:none;
+        gap: 30px;
+        align-items:center;
+      border:1px solid black
+}
+
+.logoContainer {
+    width: fit-content;
+}
+
+.logo {
+    
+    height: auto;
+    display: flex;
+
+     svg {  
+        margin: 12px;
+        box-sizing: border-box;
+    }
+
+}
+
+.mobileLinks {
+    display: flex;
+    box-sizing: border-box;
+    background-color: white;
+
+}
+
+
+
+.burgerMenu {
+    position:absolute;
+    right:0;
+    top:0;
+    margin: 24px;
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .burger {
+        width: 100%;
+        &::before, &::after {
+            content:"";
+            
+            display: block;
+            width: 40%;
+            background-color: black;
+            height: 3px;
+            margin: auto;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        &::before {
+            top: 3px;
+        }
+
+        &::after {
+            top: -5px;
+        }
+    }
+
+    .burgerActive {
+        &::before {
+            top: 3px;
+            transform: rotate(45deg);
+        }
+        &::after {
+            top: 0px;
+            transform: rotate(-45deg);
+        }
+    }
+
+}
+
+
+@media (min-width: 768px) {
+
+    .navbar {
+        display: flex;
+    }
+    .mobileLinks {
+        display:none;
+    }
+
+    .navLinks {
+        display: flex;
+        flex-direction: row;
+        border: none;
+        justify-content: space-between;
+
+    }
+
+    .burgerMenu {
+        display: none;
+    }
+}
