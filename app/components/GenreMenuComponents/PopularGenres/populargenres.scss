@@ -4,13 +4,16 @@
 
 /* Popular Genre */
 .popular-container {
-
+    max-width: 1980px;
+    margin: 0 auto;
+    min-height: 50vh;
     width: 100%;
 }
 
 .popular-text-container {
     width: 100%;
     @include flexCenter;
+    margin: 1rem auto;
 
     h1 {
         color: white;

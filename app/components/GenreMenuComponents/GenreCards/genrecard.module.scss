@@ -6,12 +6,29 @@
     border-radius: 0.5rem;
     position:relative;
     border: 2px solid $primaryBtn;
+    z-index: 1;
 
     @include flexCenter;
     &:hover {
         cursor: pointer;
         scale: 105%;
         transition-duration: 300ms;
+    }
+
+    &::before {
+        content: "";
+        display: block;
+        color: red;
+        position: absolute;
+        top: -20px;
+        height: 20px;
+        width:3px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 60px;
+   
+        background-color: black;
+        z-index:-1;
     }
 }
 
@@ -37,4 +54,6 @@
     height: 25rem!important;
     margin: 0 auto;
     width: 18rem!important;
+
 }
+

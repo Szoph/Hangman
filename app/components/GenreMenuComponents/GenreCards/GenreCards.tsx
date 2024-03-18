@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import styles from "./genrecard.module.scss";
 import Image, {StaticImageData} from 'next/image'
+import {motion} from 'framer-motion';
 
 
 type Props = {
@@ -19,7 +20,11 @@ const GenreCards = ({genre, image, onClick}: Props) => {
 
     return (
         <>
-            <div  className={styles.genreCards} onClick={onClick}>
+           
+            <motion.div 
+            className={styles.genreCards} 
+            onClick={onClick}>
+            
             <div className={styles.overLay}>
             <p className={styles.genreText}>{genre}</p>
             <div className={styles.imageWrapper}>  
@@ -35,7 +40,7 @@ const GenreCards = ({genre, image, onClick}: Props) => {
             </div>
 
             </div>
-        </div>
+        </motion.div>
 
     </>
     )

@@ -4,6 +4,7 @@ import SearchGenre from "./SearchGenre/SearchGenre";
 import UserAvatar from "../ProfileComponents/UserAvatar";
 import PopularGenre from "./PopularGenres/PopularGenres";
 
+
 const GenreMenu = () => {
 
 

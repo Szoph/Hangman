@@ -14,7 +14,22 @@ import {HomeIcon} from '../imports'
 const UnAuthNavBar: React.FC = () => {
   const [isActive, setIsActive] = useState<boolean>(false)
 
+  useEffect(() => {
+    const handleMenuState = () => {
+      const screenSize = window.innerWidth
+      console.log(screenSize)
+      if (screenSize > 768) {
+        setIsActive(false)
+      }
+    }
+    window.addEventListener('resize', handleMenuState)
 
+    handleMenuState()
+
+    return () => window.removeEventListener('resize', handleMenuState)
+  }, [])
+
+  
 
 
 
