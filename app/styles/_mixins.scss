@@ -23,3 +23,18 @@
     scale: 103%;
     transition-duration: 300ms;
 }
+
+@mixin container_large_1080px {
+    max-width: 1080px;
+    margin: 0 auto; 
+    padding: 3% 3%
+
+}
+
+@media (min-width: 768px) {
+    @mixin container1080 {
+        max-width: 1080px;
+        margin: 0 auto; 
+        padding: 5% 5%
+    }
+}

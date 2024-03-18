@@ -1,29 +1,14 @@
-"use client";
+import GenreMode from "../components/GenreModeComponents/GenreMode";
 
-import ModeOptions from "../components/GenreModeComponents/ModeOptions";
-import "@/app/styles/genremode.css";
-import { useRouter } from "next/navigation";
 
-const GenreMode = () => {
-    const router = useRouter();
+const GenreModePage = () => {
+
 
     return (
-        <div className="genre-mode-container">
-
-            <div className="mode-top-container">
-
-                <div className="mode-header-container">
-                    <p className="return-genre" onClick={() => router.push("/genremenu")}>Return to Genre</p>
-                </div>
-
-                <h1 className="genre-name">Horror</h1>
-            </div>
-
-            <div className="mode-bottom-container">
-                <ModeOptions />
-            </div>
-        </div>
+        <>
+        <GenreMode/>
+        </>
     )
 };
 
-export default GenreMode;
+export default GenreModePage;
