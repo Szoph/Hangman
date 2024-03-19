@@ -1,0 +1,27 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+
+// Footer
+.footer {
+    padding: 2em 1em 2em 1em;
+    background-color: $background;
+    color: white;
+    text-align: center;
+    .footer-link {
+        cursor: pointer; 
+        color: white;
+    }
+}
+
+.footer-container {
+    @include flexRows;
+    justify-content: space-between;
+    .footer-link {
+        cursor: pointer;
+        &:hover {
+            @include hoverScale;
+        }
+    }
+}
+
