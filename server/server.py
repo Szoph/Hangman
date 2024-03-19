@@ -9,5 +9,6 @@ def return_home():
         'message': "Flask is running",
     })
 
+
 if __name__ == "__main__":
-    app.run(debug=True) # Development Mode
+    app.run(debug=True)  # Development Mode
