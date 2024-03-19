@@ -59,8 +59,7 @@ const SearchGenre = () => {
 
   const [searchValue, setSearchValue] = useState<SearchState>({});
 
-  const handleInputChange =(e: string) => {
-    e.preventDefault()
+  const handleInputChange =(e: React.ChangeEvent<HTMLInputElement>) => {
     const {value} = e.target;
 
     setSearchValue({ ...searchValue, search: value})
