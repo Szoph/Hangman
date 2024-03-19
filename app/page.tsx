@@ -1,7 +1,6 @@
 "use client";
 import "./styles/WelcomeStyles/welcome.scss";
 import Link from "next/link";
-import "@/app/styles/ProfileStyles/profile.css";
 
 
 export default function Home() {
