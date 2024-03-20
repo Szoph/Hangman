@@ -1,10 +1,12 @@
 from flask import Flask, jsonify
+from flask_cors import CORS
 from dotenv import load_dotenv
 import os
 from supabase import create_client, Client
 from routes import auth_routes, game_routes, user_routes
 
 app = Flask(__name__)
+CORS(app, resources={r"/*": {"origins": ["http://localhost:3000"]}})  # TODO: Add vercel URL here
 
 load_dotenv()
 
@@ -15,7 +17,7 @@ key: str = os.environ.get("SUPABASE_KEY")
 supabase: Client = create_client(url, key)
 
 
-@app.route(rule="/test_flask", methods=["GET"])
+@app.route(rule="/test_flask", methods=["GET", "OPTIONS"])
 def return_home():
     return jsonify({
         'message': "Flask is running",
@@ -26,7 +28,6 @@ def return_home():
 def test_supabase():
     try:
         data, _ = supabase.table('test').select("*").execute()
-        print(data)
         return jsonify(data[1])
     except Exception as e:
         return jsonify({
