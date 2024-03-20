@@ -25,8 +25,9 @@ def return_home():
 @app.route(rule="/test_supabase", methods=["GET"])
 def test_supabase():
     try:
-        response = supabase.table('test').select("*").execute()
-        return jsonify(response)
+        data, _ = supabase.table('test').select("*").execute()
+        print(data)
+        return jsonify(data[1])
     except Exception as e:
         return jsonify({
             'error': str(e)
