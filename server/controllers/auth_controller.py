@@ -50,6 +50,20 @@ class AuthController:
             return ApiResponse(success=False, error=(str(e)))
 
     @staticmethod
+    def validate_token(token):
+        if not token:
+            return ApiResponse(success=False, error="Token is missing")
+
+        try:
+            payload = jwt.decode(token, os.environ.get("SECRET_KEY"), algorithms=['HS256'])
+        except jwt.ExpiredSignatureError:
+            return ApiResponse(success=False, error="Token has expired")
+        except jwt.InvalidTokenError:
+            return ApiResponse(success=False, error="Invalid token")
+
+        return ApiResponse(success=True, data=payload)
+
+    @staticmethod
     def sign_in_user():
         try:
             username = request.json.get('username')
@@ -64,11 +78,10 @@ class AuthController:
             decrypt_password = bcrypt.checkpw(password.encode('utf-8'), encrypted_password.encode('utf-8'))
 
             if decrypt_password:
-
-                token_expiry = datetime.utcnow() + timedelta(hours=1)
+                token_expiry = datetime.now() + timedelta(hours=1)
                 payload = {'username': username, 'exp': token_expiry}
                 jwt_token = jwt.encode(payload, os.environ.get("SECRET_KEY"), algorithm='HS256')
-                return ApiResponse(success=True, data={'message': 'User signed in!', 'token': jwt_token, 'expiry': token_expiry})
+                return ApiResponse(success=True, data={'message': 'User signed in!', 'token': jwt_token})
             else:
                 return ApiResponse(success=False, error="Incorrect password")
         except Exception as e:

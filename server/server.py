@@ -1,11 +1,11 @@
 from flask import Flask, jsonify
 from flask_cors import CORS
-from dotenv import load_dotenv
-import os
+# from dotenv import load_dotenv
+# import os
 from routes import auth_routes, game_routes, user_routes
 from db_supabase import supabase_connection
 
-load_dotenv()
+# load_dotenv()
 
 app = Flask(__name__)
 # app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")

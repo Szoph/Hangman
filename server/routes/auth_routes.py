@@ -1,7 +1,6 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify
 from controllers import AuthController
 from utils import ApiResponse
-import bcrypt
 
 
 auth_blueprint: Blueprint = Blueprint('auth', __name__)
