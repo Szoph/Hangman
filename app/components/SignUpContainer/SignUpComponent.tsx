@@ -3,7 +3,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "@/redux/user/store";
-import { logIn } from "@/redux/auth/auth-slice";
+// import { logIn } from "@/redux/auth/auth-slice";
 import "./signup.scss";
 import { useRouter } from "next/navigation";
 import { handleInputChange } from "@/utils/handleInputChange";
@@ -20,10 +20,10 @@ const SignUpComponent: React.FC = () => {
     password: "",
     repassword: "",
   });
-  const [error, setError] = useState<boolean>(false);
+  // const [error, setError] = useState<boolean>(false); Future error messages
   const [userSignedUp, setUserSignedUp] = useState<boolean>(false)
   const [startSignupProcess, setStartSignupProcess] = useState<boolean>(false);
-  const dispatch = useDispatch<AppDispatch>();
+  // const dispatch = useDispatch<AppDispatch>();
 
   const userName = useAppSelector((state) => state.authReducer.value.username);
   const isAuth = useAppSelector((state) => state.authReducer.value.isAuth);
@@ -103,8 +103,7 @@ const SignUpComponent: React.FC = () => {
 
     setStartSignupProcess(false);
     setUserSignedUp(true);
-
-    // dispatch(logIn(username));
+    // dispatch(logIn(userInput.username));
   };
 
   useEffect(() => {

@@ -54,6 +54,16 @@
   font-size: 25px;
   text-align: center;
 }
+.form-input .signed-in-text {
+  margin-top: 2%;
+  margin-bottom: 2%;
+  color: green;
+}
+.form-input .signed-in-error-text {
+  margin-top: 2%;
+  margin-bottom: 2%;
+  color: red;
+}
 .form-input p {
   font-size: 15px;
   text-align: center;

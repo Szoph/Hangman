@@ -29,8 +29,27 @@ class AuthClient {
 
     }
 
-    signInUser(): void {
+    async signInUser(username: string, password: string): Promise<any> {
+        const params = {
+            username, 
+            password,
+        };
 
+        const signIn = await axios.post(`${SERVER_URL}/signin`, params)
+
+        if (!signIn.data.success) {
+            return {
+                success: false,
+                message: "Failed to log in"
+            };
+        }
+
+        return {
+            success: true,
+            message: signIn.data.message.message,
+            token: signIn.data.message.token,
+            expiry: signIn.data.message.expiry
+        }
     }
 
     async signUpUser(username: string, password: string): Promise<AuthResponse> {
