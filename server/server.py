@@ -1,11 +1,15 @@
 from flask import Flask, jsonify
 from flask_cors import CORS
+from dotenv import load_dotenv
+import os
 from routes import auth_routes, game_routes, user_routes
 from db_supabase import supabase_connection
 
+load_dotenv()
+
 app = Flask(__name__)
+# app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
 CORS(app, resources={r"/*": {"origins": ["http://localhost:3000"]}})  # TODO: Add vercel URL here
-# 1ab54a6a721446f3ba5dc7cce2466bc9
 
 
 @app.route(rule="/test_flask", methods=["GET", "OPTIONS"])
