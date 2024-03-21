@@ -1,0 +1,96 @@
+@import '../variables';
+@import '../mixins';
+
+.welcome-page {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+
+    @media (min-width: 768px) {
+        flex-direction: row;
+        width: 100%;
+    }
+
+    &__avatar {
+        @include flexCenter;
+        height: 100vh;
+        width: 100%;
+        background-color: $background;
+
+        @media (min-width: 768px) {
+            width: 50%;
+        }
+
+        h2 {
+            font-size: $fontLarge;
+            color: white;
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        gap: 2rem;
+        height: 100vh;
+
+        @media (min-width: 768px) {
+            width: 50%;
+        }
+    }
+
+    &__title {
+        font-size: $fontMedium;
+        text-align: center;
+    }
+
+    &__navigation {
+        @include flexColumns;
+        color: blue;
+        gap: 2rem;
+    }
+
+    &__link {
+        color: black;
+        font-weight: bold;
+        border-radius: $smallRounded;
+        border: 2px solid $primaryBtn;
+        font-size: $fontSmall;
+        width: 100%;
+        padding: 1rem 3rem;
+        text-align: center;
+        text-decoration: none;
+
+        background: white;
+
+        &:hover {
+            background: $primaryBtn;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        &:last-child {
+            margin-top: 3rem;
+            color: white;
+            font-weight: bold;
+            border-radius: $smallRounded;
+            border: 2px solid $primaryBtn;
+            font-size: $fontSmall;
+            width: 100%;
+            padding: 1rem 3rem;
+            text-align: center;
+            text-decoration: none;
+            background: $primaryBtn;
+
+            &:hover {
+                background: white;
+                color: black;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+        }
+    }
+}
