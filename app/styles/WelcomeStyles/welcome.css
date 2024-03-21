@@ -1,0 +1,91 @@
+.welcome-page {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .welcome-page {
+    flex-direction: row;
+    width: 100%;
+  }
+}
+.welcome-page__avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background-color: rgb(31, 41, 55);
+}
+@media (min-width: 768px) {
+  .welcome-page__avatar {
+    width: 50%;
+  }
+}
+.welcome-page__avatar h2 {
+  font-size: 35px;
+  color: white;
+}
+.welcome-page__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 2rem;
+  height: 100vh;
+}
+@media (min-width: 768px) {
+  .welcome-page__content {
+    width: 50%;
+  }
+}
+.welcome-page__title {
+  font-size: 25px;
+  text-align: center;
+}
+.welcome-page__navigation {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: blue;
+  gap: 2rem;
+}
+.welcome-page__link {
+  color: black;
+  font-weight: bold;
+  border-radius: 5px;
+  border: 2px solid #FFBE8D;
+  font-size: 15px;
+  width: 100%;
+  padding: 1rem 3rem;
+  text-align: center;
+  text-decoration: none;
+  background: white;
+}
+.welcome-page__link:hover {
+  background: #FFBE8D;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.welcome-page__link:last-child {
+  margin-top: 3rem;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  border: 2px solid #FFBE8D;
+  font-size: 15px;
+  width: 100%;
+  padding: 1rem 3rem;
+  text-align: center;
+  text-decoration: none;
+  background: #FFBE8D;
+}
+.welcome-page__link:last-child:hover {
+  background: white;
+  color: black;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}/*# sourceMappingURL=welcome.css.map */
