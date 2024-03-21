@@ -16,8 +16,8 @@ const SignInComponent: React.FC = () => {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch<AppDispatch>();
 
-  const userName = useAppSelector((state) => state.authReducer.value.username); 
-  const isAuth = useAppSelector((state) => state.authReducer.value.isAuth);
+  const userName = useAppSelector((state) => state.authentication.value.username); 
+  const isAuth = useAppSelector((state) => state.authentication.value.isAuth);
 
   const handleSignIn = () => {
     if (username === "" || password === "") {

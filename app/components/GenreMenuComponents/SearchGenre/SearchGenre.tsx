@@ -52,14 +52,13 @@ const SearchGenre = () => {
 
   ];
 
-  const handleScroll = () => {
-    
-  }
+
 
 
   const [searchValue, setSearchValue] = useState<SearchState>({});
 
   const handleInputChange =(e: React.ChangeEvent<HTMLInputElement>) => {
+
     const {value} = e.target;
 
     setSearchValue({ ...searchValue, search: value})

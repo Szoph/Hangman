@@ -5,7 +5,7 @@ import authReducer from '../auth/auth-slice'; // authReducer is a local variable
 
 export const store = configureStore({
     reducer: {
-        authReducer,
+        // authentication: authReducer,
     }
 });
 

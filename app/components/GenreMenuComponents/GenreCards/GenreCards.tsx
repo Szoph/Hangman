@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import styles from "./genrecard.module.scss";
 import Image, {StaticImageData} from 'next/image'
 import {motion} from 'framer-motion';
+import {WoodIcon} from '../imports'
 
 
 type Props = {
@@ -20,12 +21,30 @@ const GenreCards = ({genre, image, onClick}: Props) => {
 
     return (
         <>
-           
-            <motion.div 
+          
+            <motion.div
+            whileHover={{ 
+                scale: 1.1,
+            }}
             className={styles.genreCards} 
             onClick={onClick}>
-            
-            <div className={styles.overLay}>
+            <WoodIcon
+             className={styles.woodIcon}
+        
+             />
+
+            <motion.div
+
+            initial= {{scale: 1}}
+            whileHover={{
+                
+                scale: 1.5,
+                transition: {
+                    yoyo: 10,
+                }
+            }}
+            className={styles.overLay}>
+                
             <p className={styles.genreText}>{genre}</p>
             <div className={styles.imageWrapper}>  
             <Image
@@ -39,7 +58,7 @@ const GenreCards = ({genre, image, onClick}: Props) => {
              />
             </div>
 
-            </div>
+            </motion.div>
         </motion.div>
 
     </>
