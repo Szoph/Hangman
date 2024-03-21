@@ -47,9 +47,16 @@ const SignInComponent: React.FC = () => {
         return;
       }
 
-      console.log(signinProcess);
-      setUserSignedIn(true);
+      const checkAccessToken = await AuthClient.getUser(userInput.username);
 
+      if (!checkAccessToken.success) {
+        setError(false);
+        alert(checkAccessToken.message);
+        return;
+      }
+
+      dispatch(logIn(checkAccessToken.data.username));
+      setUserSignedIn(true);
     }
   };
   
@@ -59,8 +66,7 @@ const SignInComponent: React.FC = () => {
         setError(false);
       } else if (userSignedIn) {
         setUserSignedIn(false);
-        // dispatch(logIn(username));
-        // router.push("/genremenu");
+        router.push("/genremenu");
       }
   
     }, 1000)

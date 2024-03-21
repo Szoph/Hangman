@@ -50,3 +50,19 @@ def sign_in_user():
         'success': user_sign_in.success,
         'error': user_sign_in.error
     })
+
+
+@auth_blueprint.route(rule="/access_token/<username>", methods=['POST', 'GET'])
+def validate_token(username: str):
+    token_check = AuthController.validate_token(username)
+
+    if token_check.success:
+        return jsonify({
+            'success': True,
+            'payload': token_check.data
+        })
+
+    return jsonify({
+        'success': False,
+        'error': token_check.error
+    })

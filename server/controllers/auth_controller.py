@@ -50,18 +50,22 @@ class AuthController:
             return ApiResponse(success=False, error=(str(e)))
 
     @staticmethod
-    def validate_token(token):
+    def validate_token(username: str):
+        access_token = request.headers.get('Authorization')
+        token = access_token.split()[1]
         if not token:
             return ApiResponse(success=False, error="Token is missing")
 
         try:
             payload = jwt.decode(token, os.environ.get("SECRET_KEY"), algorithms=['HS256'])
+            if payload["username"] == username:
+                return ApiResponse(success=True, data=payload)
+            else:
+                return ApiResponse(success=False, error="Suspicious Activity")
         except jwt.ExpiredSignatureError:
             return ApiResponse(success=False, error="Token has expired")
         except jwt.InvalidTokenError:
             return ApiResponse(success=False, error="Invalid token")
-
-        return ApiResponse(success=True, data=payload)
 
     @staticmethod
     def sign_in_user():

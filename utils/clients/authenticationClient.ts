@@ -27,9 +27,38 @@ class AuthClient {
     };
   }
 
-  getUser(): void {}
+  async getUser(username: string): Promise<any> {
+    if (typeof window === "undefined") {
+        return;
+    };
+    
+    const accessToken: string | null = localStorage.getItem("access_token");
 
-  async signInUser(username: string, password: string): Promise<any> {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${accessToken}`
+        }
+    };
+
+    const checkToken = await axios.get(`${SERVER_URL}/access_token/${username}`, config);
+
+    if (!checkToken.data.success) {
+        return {
+            success: false,
+            message: "Problem authenticating token",
+            error: checkToken.data.error,
+        };
+    };
+
+    return {
+        success: true,
+        data: checkToken.data.payload,
+        message: "User authenticated",
+    }
+}
+
+
+  async signInUser(username: string, password: string): Promise<AuthResponse> {
     const params = {
       username,
       password,
