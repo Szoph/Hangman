@@ -47,6 +47,7 @@ const SignInComponent: React.FC = () => {
         return;
       }
 
+      console.log(signinProcess);
       setUserSignedIn(true);
 
     }
@@ -59,7 +60,7 @@ const SignInComponent: React.FC = () => {
       } else if (userSignedIn) {
         setUserSignedIn(false);
         // dispatch(logIn(username));
-        router.push("/genremenu");
+        // router.push("/genremenu");
       }
   
     }, 1000)
