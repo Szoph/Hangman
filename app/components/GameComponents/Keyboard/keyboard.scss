@@ -1,0 +1,40 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+
+
+//keyboard
+
+
+.keyboard {
+    border: 1px solid black;
+    width: 80%;
+    padding: 10px;
+    border-radius: $mediumRounded;
+    background-color: $purple;
+    margin: 20px 0;
+}
+.row {
+    @include flexRows;
+    .key {
+        border: 2px solid gray;
+        margin: 4px;
+        width: 48px;
+        height: 48px;
+        @include flexCenter;
+        border-radius: $smallRounded;
+        background-color: $primaryBtn;
+        font-size: 18px;
+        box-shadow: none;
+        font-weight: 500;
+        color: $background;
+        
+        &:hover {
+            cursor: pointer;
+            color: white;
+            box-shadow: 0 0 6px 3px rgba(0, 0, 0, 0.3);
+        }
+
+    } 
+    
+}

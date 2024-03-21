@@ -37,12 +37,17 @@ const PopularGenre = () => {
         </div>
 
         <div className="popular-genre-container flex-row">
+
+        <div className="popular-section__itemWrapper">
           {genreData.map((items, index) => (
             <GenreCards key={index}  
             image={items.image}
             genre={items.genre} />
           ))}
         </div>
+
+        </div>
+
       </div>
 
 
