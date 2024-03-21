@@ -1,8 +1,8 @@
 "use client"; 
 
-import {store} from './store';
+import {store} from "./store"; 
 import {Provider } from "react-redux";
 
-export function UserReduxProvider({children} : {children: React.ReactNode }) {
+export function HangmanReduxProvider({children} : {children: React.ReactNode}) {
     return <Provider store={store}> {children} </Provider>
 }

@@ -1,0 +1,20 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+
+.genre {
+    border: 1px solid black;
+    border-radius: $mediumRounded;
+    background-color: $purple;
+    width: auto;
+    height: auto;
+    @include flexCenter;
+    flex-wrap: wrap;
+    margin: 20px 0;
+    padding: 10px 40px;
+    .genreText {
+        font-size: $fontMedium;
+        font-weight: bold; 
+
+    }
+}
