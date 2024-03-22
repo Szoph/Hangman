@@ -2,18 +2,16 @@
 
 import { useState, useEffect } from "react";
 import { handleInputChange } from "@/utils/handleInputChange";
-// import { useDispatch } from "react-redux";
-// import { AppDispatch, useAppSelector } from "@/redux/user/store";
-// import { changePassword, changeUsername } from "@/redux/auth/auth-slice";
+import { useDispatch } from "react-redux";
+import { AppDispatch, useAppSelector } from "@/redux/user/store";
+import { changeUsername } from "@/redux/auth/auth-slice";
 import AuthClient from "@/utils/clients/authenticationClient";
-import { useAppSelector } from "@/redux/user/store";
-
 interface ProfileState {
   [key: string]: string;
 }
 
 const EditProfile = () => {
-  // const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useDispatch<AppDispatch>();
   const user = useAppSelector((state) => state.authReducer.value);
   const [profile, setProfile] = useState<ProfileState>({});
   const [changeType, setChangeType] = useState<string | null>(null);
@@ -71,12 +69,15 @@ const EditProfile = () => {
     const updateProcess = await AuthClient.updateUser(user.username, type, profile[oldValue], profile[newValue]);
     if (!updateProcess.success) {
       setErrorMessage(
-        updateProcess.messsage,
+        updateProcess.error,
       );
       setError(true);
       return;
     }
 
+    if (type == 'username') {
+      dispatch(changeUsername(profile[newValue]));
+    }
     setSuccessMessage(true);
     // Dispatch
   };
