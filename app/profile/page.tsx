@@ -1,6 +1,6 @@
 import ProfilePage from "../components/ProfileComponents/ProfilePage";
 
-const ProfilePage = () => {
+const ProfilePageContainer = () => {
     return (
         <>
         <ProfilePage /> 
@@ -8,4 +8,4 @@ const ProfilePage = () => {
     )
 };
 
-export default ProfilePage;
+export default ProfilePageContainer;
