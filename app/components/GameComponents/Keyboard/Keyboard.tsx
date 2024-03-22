@@ -1,24 +1,20 @@
 import React from 'react'
-import {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {AppDispatch, useAppSelector} from "@/redux/game/store";
-import { guessLetter, wrongLetter, trackAttempts, decrementAttempts } from '@/redux/game/hangman-slice';
+import { guessLetter, rightLetter, wrongLetter, trackAttempts, decrementAttempts, checkGuessedLetters } from '@/redux/game/hangman-slice';
 import './keyboard.scss'
 
 
 const Keyboard: React.FC = () => {
-  const [lettersGuessed, setLettersGuessed] = useState<string[]>([]);
-  const [wrongGuess, setwrongGuess] = useState<string[]>([]);
-  const [rightGuess, setRightGuess] = useState<string[]>([]);
-
-  console.log("These are the letters stored in wrongGuess:", wrongGuess)
-  
 
   const dispatch = useDispatch<AppDispatch>();
 
-const word = useAppSelector((state) => state.hangmanGame.value.word); 
-  // const guessedLetters = useAppSelector((state) => state.hangmanReducer.value.guessedLetters);
-  const handleLetterClick = (letter: string, event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const word = useAppSelector((state) => state.hangmanGame.value.word); 
+ const rightGuess = useAppSelector((state) => state.hangmanGame.value.rightGuess);
+  const wrongGuess = useAppSelector((state) => state.hangmanGame.value.wrongGuess);
+  
+
+const handleLetterClick = (letter: string) => {
     if (rightGuess.includes(letter)) {
       alert(`You have already correctly guessed the letter ${letter}. Please try again.`)
       return 
@@ -26,27 +22,16 @@ const word = useAppSelector((state) => state.hangmanGame.value.word);
       alert(`You have already wrongly guessed the letter ${letter}. Please try again.`)
       return 
     }
+    
     if (word.includes(letter)) {
-      setRightGuess([...rightGuess, letter]);
-      setLettersGuessed([...lettersGuessed, letter]);
+      dispatch(rightLetter(letter));
+      dispatch(checkGuessedLetters());
     } else {
       handleWrongGuess(letter)
     }
-    handleColourChange(letter, event)
     dispatch(guessLetter(letter));
 
   
-  }
-  const handleColourChange = (letter: string, event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    if(word.includes(letter)) {
-      event.currentTarget.classList.remove("key")
-      event.currentTarget.classList.add("right-guess")
-     } else if (!word.includes(letter)) {
-      event.currentTarget.classList.remove("key")
-      event.currentTarget.classList.add("wrong-guess")
-     } else {
-      console.log(letter);
-     }
   }
 
 
@@ -54,11 +39,8 @@ const word = useAppSelector((state) => state.hangmanGame.value.word);
 
 
   const handleWrongGuess = (letter: string) => {
-    console.log("These are the letters in handleWrongGuess: ", letter);
-    // need to check if letter is already there, if not push to array
-    setwrongGuess([...wrongGuess, letter]);
-    setLettersGuessed([...lettersGuessed, letter]);
     dispatch(wrongLetter(letter));
+    dispatch(guessLetter(letter));
     dispatch(trackAttempts());
     dispatch(decrementAttempts());
 
@@ -79,7 +61,7 @@ const word = useAppSelector((state) => state.hangmanGame.value.word);
         .map((row, rowIndex) => (
             <div className="row" key={rowIndex}>
                 {row.map((letter, index) => (
-                    <div className="key" key={index} onClick={(event) => handleLetterClick(letter, event)}>
+                    <div className={`${rightGuess.includes(letter) ? "right-guess" : wrongGuess.includes(letter) ? "wrong-guess" : "key"}`} key={index} onClick={(event) => handleLetterClick(letter)}>
                         {letter}
                     </div>
                 ))}

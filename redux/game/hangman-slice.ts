@@ -1,5 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
+import movieList from '../words';
+
+
+
 
 
 
@@ -10,6 +14,8 @@ type InitialState = {
 type HangmanState = {
     word: string;
     guessedLetters: string[]; 
+    mode:string;
+    genre:string;
     remainingAttempts: number;
     attemptsUsed: number;
     wrongGuess: string[];
@@ -20,8 +26,10 @@ type HangmanState = {
 
 const initialState = {
     value: {
-        word: "TOY STORY", 
+        word: "", 
         guessedLetters: [],
+        mode:"",
+        genre: "",
         remainingAttempts: 4,
         attemptsUsed: 0, 
         wrongGuess: [],
@@ -31,14 +39,36 @@ const initialState = {
     } as HangmanState,
 } as InitialState;
 
+
+
 export const hangman = createSlice({ 
+    
+
+
+
+
     name: "hangman",
     initialState,
     reducers: {
 
-        setWord: (state, action: PayloadAction<string>) => {
-                state.value.word = action.payload;
+        setWord: (state) => {
+            const genre = state.value.genre;
+            const movies = movieList.find(item => item.genre === genre)?.items || [];
+                console.log("The movies in the clicked genre", movies)
+                const randomMovie = movies[Math.floor(Math.random() * movies.length)];
+                state.value.word = randomMovie.toUpperCase();
+                
         }, 
+
+        setGenre: (state, action: PayloadAction<string>) => {
+            state.value.genre = action.payload;
+            const genre = state.value.genre;
+            const movies = movieList.find(item => item.genre === genre)?.items || [];
+                console.log("The movies in the clicked genre", movies)
+                const randomMovie = movies[Math.floor(Math.random() * movies.length)];
+                state.value.word = randomMovie.toUpperCase();
+
+        },
       guessLetter: (state, action: PayloadAction<string>) => {
        state.value.guessedLetters.push(action.payload);
       },
@@ -50,6 +80,10 @@ export const hangman = createSlice({
         rightLetter: (state, action: PayloadAction<string>) => {
             state.value.rightGuess.push(action.payload)
         },
+
+        // gameWon: (state, action: PayloadAction<string>) => {
+        //     if (word.length )
+        // },
       decrementAttempts: (state) => {
           state.value.remainingAttempts -= 1;
       }, 
@@ -62,9 +96,26 @@ export const hangman = createSlice({
           state.value = initialState.value;
       },
 
+      checkGuessedLetters: (state) => {
+        const normalisedWord = state.value.word.toUpperCase().split(" ").join("")
+        const wordSet = new Set(normalisedWord)
+        const guessedSet = new Set(state.value.rightGuess.map(letter => letter.toUpperCase()))
+
+        const intersection = new Set([...wordSet].filter(letter => guessedSet.has(letter)))
+
+        if(intersection.size === wordSet.size) {
+            state.value.won = true
+
+
+            console.log(state.value.won)
+            console.log("YOU WON")
+        }
+        
+      }
+
     }
 }); 
 
 
-export const { setWord, guessLetter, decrementAttempts, wrongLetter, trackAttempts, resetGame } = hangman.actions
+export const { setWord, guessLetter, decrementAttempts, wrongLetter, trackAttempts, resetGame, rightLetter, checkGuessedLetters, setGenre } = hangman.actions
 export default hangman.reducer;

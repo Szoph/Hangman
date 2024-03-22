@@ -1,9 +1,10 @@
 import React from 'react'
 import './genretitle.scss'
-
+import {useAppSelector} from "@/redux/game/store";
 
 const GenreTitle: React.FC = () => {
-  const genre = "Horror";
+ 
+  const genre = useAppSelector((state) => state.hangmanGame.value.genre)
   return (
     <div className="genre">
       <span className="genreText">{genre}</span>

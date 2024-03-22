@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "@/redux/user/store";
 
 const ProfilePage = () => {
-  const user = useAppSelector((state) => state.authReducer.value);
+  const user = useAppSelector((state) => state.authentication.value);
 
   return (
     <div className="profile-background">
