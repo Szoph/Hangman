@@ -66,7 +66,7 @@ const SignInComponent: React.FC = () => {
         setError(false);
       } else if (userSignedIn) {
         setUserSignedIn(false);
-        router.push("/genremenu");
+        router.push("/profile");
       }
   
     }, 1000)

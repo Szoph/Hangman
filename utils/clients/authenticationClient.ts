@@ -29,34 +29,36 @@ class AuthClient {
 
   async getUser(username: string): Promise<any> {
     if (typeof window === "undefined") {
-        return;
-    };
-    
+      return;
+    }
+
     const accessToken: string | null = localStorage.getItem("access_token");
 
     const config = {
-        headers: {
-            Authorization: `Bearer ${accessToken}`
-        }
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
     };
 
-    const checkToken = await axios.get(`${SERVER_URL}/access_token/${username}`, config);
+    const checkToken = await axios.get(
+      `${SERVER_URL}/access_token/${username}`,
+      config
+    );
 
     if (!checkToken.data.success) {
-        return {
-            success: false,
-            message: "Problem authenticating token",
-            error: checkToken.data.error,
-        };
-    };
+      return {
+        success: false,
+        message: "Problem authenticating token",
+        error: checkToken.data.error,
+      };
+    }
 
     return {
-        success: true,
-        data: checkToken.data.payload,
-        message: "User authenticated",
-    }
-}
-
+      success: true,
+      data: checkToken.data.payload,
+      message: "User authenticated",
+    };
+  }
 
   async signInUser(username: string, password: string): Promise<AuthResponse> {
     const params = {
@@ -65,6 +67,8 @@ class AuthClient {
     };
 
     const signIn = await axios.post(`${SERVER_URL}/signin`, params);
+
+    console.log(signIn);
 
     if (!signIn.data.success) {
       return {
@@ -79,11 +83,11 @@ class AuthClient {
         success: false,
         message: "Problem with JWT Token.",
       };
-    };
+    }
 
     if (typeof window !== "undefined") {
       localStorage.setItem("access_token", jwtToken.token);
-    };
+    }
 
     return {
       success: true,
@@ -113,7 +117,50 @@ class AuthClient {
 
   deleteUser(): void {}
 
-  updateUser(): void {}
+  async updateUser(
+    user: string,
+    type: string,
+    oldValue: string,
+    newValue: string
+  ): Promise<any> {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    const accessToken: string | null = localStorage.getItem("access_token");
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    };
+
+    const userUpdate = await axios.put(
+      `${SERVER_URL}/update_user`,
+      {
+        user,
+        type,
+        oldValue,
+        newValue,
+      },
+      config
+    );
+
+    const response = userUpdate.data;
+
+    if (!response.success) {
+      return {
+        success: false,
+        error: response.error,
+        message: response.message,
+      };
+    }
+
+    return {
+      success: true,
+      message: response.message,
+    };
+  }
 }
 
 export default new AuthClient();

@@ -1,6 +1,6 @@
 from flask import jsonify
-from db_supabase import supabase
-from utils import ApiResponse
+# from db_supabase import supabase
+# from utils import ApiResponse
 
 
 class UserController:

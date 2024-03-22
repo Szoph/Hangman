@@ -66,3 +66,20 @@ def validate_token(username: str):
         'success': False,
         'error': token_check.error
     })
+
+
+@auth_blueprint.route(rule="/update_user", methods=["PUT"])
+def update_user():
+    update_check = AuthController.update_user()
+
+    if update_check.success:
+        return jsonify({
+            'success': True,
+            'message': update_check.data
+        })
+
+    return jsonify({
+        "success": False,
+        'message': update_check.data,
+        'error': update_check.error
+    })

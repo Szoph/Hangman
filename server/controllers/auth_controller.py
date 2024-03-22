@@ -50,11 +50,14 @@ class AuthController:
             return ApiResponse(success=False, error=(str(e)))
 
     @staticmethod
-    def validate_token(username: str):
-        access_token = request.headers.get('Authorization')
-        token = access_token.split()[1]
-        if not token:
-            return ApiResponse(success=False, error="Token is missing")
+    def validate_token(username: str, auth_token: str = None):
+        if auth_token:
+            token = auth_token
+        else:
+            access_token = request.headers.get('Authorization')
+            if not access_token:
+                return ApiResponse(success=False, error="Token is missing")
+            token = access_token.split()[1]
 
         try:
             payload = jwt.decode(token, os.environ.get("SECRET_KEY"), algorithms=['HS256'])
@@ -90,3 +93,60 @@ class AuthController:
                 return ApiResponse(success=False, error="Incorrect password")
         except Exception as e:
             return ApiResponse(success=False, error=(str(e)))
+
+    @staticmethod
+    def update_username(user: str, new_username: str):
+        try:
+            user_check = AuthController.user_exists(user)
+
+            if not user_check.success:
+                return ApiResponse(success=False, error="User doesn't exist")
+
+            data, _ = supabase.table('users').update({"username": new_username}).eq('username', user).execute()
+
+            return ApiResponse(success=True, data="User has been updated!")
+        except Exception as e:
+            return ApiResponse(success=False, data="Failed to update username", error={str(e)})
+
+    @staticmethod
+    def update_password(user: str, old_password: str, new_password: str):
+        try:
+            data_password, _ = supabase.table("users").select("password").eq('username', user).single().execute()
+            encrypted_password = data_password[1]["password"]
+
+            decrypt_password = bcrypt.checkpw(old_password.encode('utf-8'), encrypted_password.encode('utf-8'))
+            if not decrypt_password:
+                return ApiResponse(success=False, error="Password doesn't match")
+
+            encrypt_password = bcrypt.hashpw(new_password.encode('utf-8'), bcrypt.gensalt())
+
+            data, _ = (supabase.table('users').update({'password': encrypt_password.decode('utf-8')})
+                       .eq('username', user).execute())
+
+            return ApiResponse(success=True, data="Password has been changed!")
+        except Exception as e:
+            return ApiResponse(success=False, data="Failed to update password", error={str(e)})
+
+    @staticmethod
+    def update_user():
+        user = request.json.get('user')
+        change_type = request.json.get('type')
+        old_value = request.json.get('oldValue')
+        new_value = request.json.get('newValue')
+
+        access_token = request.headers.get('Authorization')
+        if not access_token:
+            return ApiResponse(success=False, error="Token is missing")
+
+        token = access_token.split()[1]
+
+        token_validation: ApiResponse = AuthController.validate_token(username=user, auth_token=token)
+
+        if token_validation.success:
+            if change_type == "username":
+                return AuthController.update_username(user, new_username=new_value)
+            else:
+                return AuthController.update_password(user, old_password=old_value, new_password=new_value)
+
+        else:
+            return ApiResponse(success=False, error=token_validation.error)
