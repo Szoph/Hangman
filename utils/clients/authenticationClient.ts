@@ -115,14 +115,40 @@ class AuthClient {
     };
   }
 
-  deleteUser(): void {}
+  async deleteUser(user: string): Promise<any> {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    const accessToken: string | null = localStorage.getItem("access_token");
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    };
+
+    const userUpdate = await axios.delete(`${SERVER_URL}/delete_user/${user}`,config);
+    if (!userUpdate.data.success) {
+      return {
+        success: false,
+        error: userUpdate.data.error,
+        message: userUpdate.data.message
+      };
+    };
+
+    return {
+      success: true,
+      message: userUpdate.data.message
+    }
+  }
 
   async updateUser(
     user: string,
     type: string,
     oldValue: string,
     newValue: string
-  ): Promise<any> {
+  ): Promise<AuthResponse | any> {
     if (typeof window === "undefined") {
       return;
     }

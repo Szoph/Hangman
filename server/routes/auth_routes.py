@@ -83,3 +83,20 @@ def update_user():
         'message': update_check.data,
         'error': update_check.error
     })
+
+
+@auth_blueprint.route(rule='/delete_user/<username>', methods=["DELETE"])
+def delete_user(username: str):
+    delete_check = AuthController.delete_user(username)
+
+    if delete_check.success:
+        return jsonify({
+            'success': True,
+            'message': delete_check.data
+        })
+
+    return jsonify({
+        'success': False,
+        'message': delete_check.data,
+        'error': delete_check.error
+    })

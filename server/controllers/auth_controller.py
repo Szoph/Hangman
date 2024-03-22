@@ -150,3 +150,20 @@ class AuthController:
 
         else:
             return ApiResponse(success=False, error=token_validation.error)
+
+    @staticmethod
+    def delete_user(username: str):
+        access_token = request.headers.get('Authorization')
+        if not access_token:
+            return ApiResponse(success=False, error="Token is missing")
+
+        token = access_token.split()[1]
+
+        token_validation: ApiResponse = AuthController.validate_token(username=username, auth_token=token)
+
+        if token_validation.success:
+            data, _ = supabase.table('users').delete().eq('username', username).execute()
+
+            return ApiResponse(success=True, data="Account has been deleted!")
+        else:
+            return ApiResponse(success=False, data="Failed to delete account", error=token_validation.error)

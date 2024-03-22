@@ -2,22 +2,30 @@
 
 import { useRouter } from "next/navigation";
 import { useDispatch } from 'react-redux';
-// import { AppDispatch, useAppSelector } from "@/redux/user/store";
-// import { logOut, deleteAccount } from "@/redux/auth/auth-slice";
+import { AppDispatch, useAppSelector } from "@/redux/user/store";
+import AuthClient from "@/utils/clients/authenticationClient";
+import { logOut, deleteAccount } from "@/redux/auth/auth-slice";
 
 const AccountOptions = () => {
-  // const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useDispatch<AppDispatch>();
+  const user = useAppSelector((state) => state.authReducer.value.username)
   const router = useRouter();
 
   const handleLogout = () => {
     console.log("Log out user");
     // dispatch(logOut())
-    router.push("/");
+    // router.push("/");
   };
 
-  const handleDeleteAccount = () => {
-    console.log("Log out user");
-    // dispatch(deleteAccount())
+  const handleDeleteAccount = async () => {
+    console.log("Delete account")
+    const deleteProcess = await AuthClient.deleteUser(user);
+    if (!deleteProcess.success) {
+      alert(deleteProcess.message);
+      return;
+    }
+
+    dispatch(deleteAccount());
     router.push("/");
   };
 
