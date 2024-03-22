@@ -1,12 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import "@/app/styles/ProfileStyles/profile.css";
+// import "@/app/styles/ProfileStyles/profile.css";
 import HangmanAvatar from "../../components/HangmanAvatar";
 import EditProfile from "./EditProfile";
 import AccountOptions from "./AccountOptions";
 import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "@/redux/game/store";
+// import { useDispatch } from "react-redux";
 
 const ProfilePage = () => {
   const user = useAppSelector((state) => state.authentication.value);

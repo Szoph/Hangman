@@ -1,5 +1,5 @@
 .genre-mode-container {
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
 }
 
@@ -8,7 +8,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  height: 30vh;
   width: 100vw;
 }
 .mode-top-container .mode-header-container {
@@ -20,7 +20,8 @@
   align-items: center;
   align-items: flex-start;
   width: 100vw;
-
+  padding-left: 10rem;
+  padding-right: 10rem;
 }
 .mode-top-container .mode-header-container .return-genre {
   cursor: pointer;
@@ -80,8 +81,3 @@
   transition-duration: 300ms;
   background-color: #FFBE8D;
 }/*# sourceMappingURL=genremode.css.map */
-
-
-@media (min-width: 768px) {
-
-}

@@ -1,0 +1,13 @@
+.flex-row {
+  display: flex;
+}
+
+/* Genre Page Container */
+.genre-menu-container {
+  margin: 0 auto;
+  box-sizing: border-box;
+  flex-direction: column;
+  gap: 4px;
+  height: auto;
+  width: 100%;
+}/*# sourceMappingURL=genremenu.css.map */
