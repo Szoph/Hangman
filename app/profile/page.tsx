@@ -1,12 +1,9 @@
-
-import SignInComponent from "../components/SignInContainer/SignInComponent";
-
-
+import ProfilePage from "../components/ProfileComponents/ProfilePage";
 
 const SignIn = () => {
     return (
         <>
-        <SignInComponent /> 
+        <ProfilePage /> 
         </>
     )
 };
