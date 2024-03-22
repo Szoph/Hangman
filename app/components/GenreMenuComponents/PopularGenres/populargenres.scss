@@ -16,7 +16,7 @@
     margin: 1rem auto;
 
     h1 {
-        color: white;
+        color: black;
         font-size: clamp(1.5rem, 2vw, 1.8rem);
     }
 }
@@ -24,9 +24,20 @@
 .popular-genre-container {
     flex-wrap: wrap;
     @include flexCenter;
+    padding-top: 2rem;
+    gap: 9em 2.5em;
+}
+
+.popular-section {
 
 
-    gap: 2em;
+    &__itemWrapper {
+      
+        flex-wrap: wrap;
+        @include flexCenter;
+        margin-top: 6rem;
+        gap: 9em 2.5em;
+    }
 }
 
 

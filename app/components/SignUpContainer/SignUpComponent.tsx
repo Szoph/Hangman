@@ -25,8 +25,8 @@ const SignUpComponent: React.FC = () => {
   const [startSignupProcess, setStartSignupProcess] = useState<boolean>(false);
   // const dispatch = useDispatch<AppDispatch>();
 
-  const userName = useAppSelector((state) => state.authReducer.value.username);
-  const isAuth = useAppSelector((state) => state.authReducer.value.isAuth);
+  const userName = useAppSelector((state) => state.authentication.value.username);
+  const isAuth = useAppSelector((state) => state.authentication.value.isAuth);
 
   const emptyInputCheck = () => {
     for (const key in userInput) {
