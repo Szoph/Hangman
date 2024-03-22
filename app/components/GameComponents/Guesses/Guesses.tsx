@@ -1,16 +1,11 @@
 
-import { useState } from 'react';
-
 import {CrossIcon} from "../imports";
 import {useAppSelector} from "@/redux/game/store";
 import './guesses.scss'
 
 const Guesses: React.FC = () => {
-  const [incorrectGuesses, setIncorrectGuesses] = useState<number>(0);
-
-
-  const attempts = useAppSelector((state) => state.hangmanGame.value.attemptsUsed);
-  const maxAttempts = 4;
+ const attempts = useAppSelector((state) => state.hangmanGame.value.attemptsUsed);
+const maxAttempts = 4;
 
   
   return (

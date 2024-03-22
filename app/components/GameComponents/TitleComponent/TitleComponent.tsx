@@ -1,30 +1,29 @@
 "use client";
-import {useState} from 'react';
 import { useDispatch } from "react-redux";
-import {AppDispatch, useAppSelector} from "@/redux/game/store"; 
-import './titlecomponent.scss';
+import {AppDispatch, useAppSelector} from "@/redux/game/store";
+import {setWord} from "@/redux/game/hangman-slice";
+import './titlecomponent.scss'
+
 
 
 
 const TitleComponent: React.FC = () => {
-  const [title, setTitle] = useState<string>("");
-  const [lettersGuessed, setLettersGuessed] = useState<string[]>([]);
-  const dispatch = useDispatch<AppDispatch>();
 
-
-  const word = useAppSelector((state) => state.hangmanGame.value.word); 
-  const guessedLetters = useAppSelector((state) => state.hangmanGame.value.guessedLetters); 
-  const remainingAttempts = useAppSelector((state) => state.hangmanGame.value.remainingAttempts);
-//  const gameWord = "TOY STORY";
-//  const guessedLetters = new Set (['T', 'Y']);
+const word = useAppSelector((state) => state.hangmanGame.value.word); 
+const guessedLetters = useAppSelector((state) => state.hangmanGame.value.guessedLetters); 
+  
 
 
   
 
   return (
     <div className="title">
+
+
      {word.split(' ').map((word: string, index: number) => (
       <span key={index} className="word">
+
+     
 
         {word.split('').map((letter: string, index) => (
           <span key={index} className="letters">

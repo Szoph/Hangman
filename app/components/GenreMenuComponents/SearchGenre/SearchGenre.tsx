@@ -5,6 +5,9 @@ import "./searchgenre.scss"
 import { useState } from "react";
 import GenreCards from "../GenreCards/GenreCards";
 import { handleInputChange } from "@/utils/handleInputChange";
+import { useAppSelector, AppDispatch } from "@/redux/game/store";
+import { UseDispatch } from "react-redux";
+import {setGenre} from '@/redux/game/hangman-slice';
 
 import {Action, Thriller, War, SciFi, Adventure, Horror, Mystery } from '../imports'
 
@@ -52,6 +55,10 @@ const SearchGenre = () => {
 
   ];
 
+  // const handleGenreSelection = () => {
+    
+  //   dispatchEvent(setGenre({genre}))
+  // }
 
 
 
@@ -91,6 +98,7 @@ const SearchGenre = () => {
               key={index}
               genre={filteredGenre.genre}
               image={filteredGenre.image}
+              // selectGenre={handleGenreSelection}
             />
           ))
         ) : (
