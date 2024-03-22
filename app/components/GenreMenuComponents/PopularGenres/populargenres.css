@@ -1,0 +1,27 @@
+/* Popular Genre */
+.popular-container {
+  max-width: 1980px;
+  margin: 0 auto;
+  min-height: 50vh;
+  width: 100%;
+}
+
+.popular-text-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem auto;
+}
+.popular-text-container h1 {
+  color: white;
+  font-size: clamp(1.5rem, 2vw, 1.8rem);
+}
+
+.popular-genre-container {
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}/*# sourceMappingURL=populargenres.css.map */

@@ -5,5 +5,5 @@ from .user_controller import UserController
 __all__ = [
     'AuthController',
     'GameController',
-    'UserController'
+    'UserController',
 ]

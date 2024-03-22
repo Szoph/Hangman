@@ -2,35 +2,39 @@
 
 import { useState, useEffect } from "react";
 import { handleInputChange } from "@/utils/handleInputChange";
-// import { useDispatch } from "react-redux";
-// import { AppDispatch, useAppSelector } from "@/redux/user/store";
-// import { changePassword, changeUsername } from "@/redux/auth/auth-slice";
-
-
+import { useDispatch } from "react-redux";
+import { AppDispatch, useAppSelector } from "@/redux/game/store";
+import { changeUsername } from "@/redux/auth/auth-slice";
+import AuthClient from "@/utils/clients/authenticationClient";
 interface ProfileState {
   [key: string]: string;
 }
 
 const EditProfile = () => {
-  // const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useDispatch<AppDispatch>();
+  const user = useAppSelector((state) => state.authentication.value);
   const [profile, setProfile] = useState<ProfileState>({});
   const [changeType, setChangeType] = useState<string | null>(null);
   const [error, setError] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>("");
+  const [successMessage, setSuccessMessage] = useState<boolean>(false);
 
   const checkBothInputs = (oldValue: string, newValue: string) => {
     return oldValue === undefined && newValue === undefined;
   };
 
-  const handleForm = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, type: string) => {
+  const handleForm = async (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    type: string
+  ) => {
     e.preventDefault();
 
     setChangeType(type);
 
     const oldValue: string =
-      changeType === "username" ? "old_username" : "old_password";
+      type === "username" ? "old_username" : "old_password";
     const newValue: string =
-      changeType === "username" ? "new_username" : "new_password";
+      type === "username" ? "new_username" : "new_password";
 
     const emptyCheck: boolean = checkBothInputs(
       profile[oldValue],
@@ -49,21 +53,44 @@ const EditProfile = () => {
       return;
     }
 
-    if (changeType === "username") {
-      console.log("Change username");
-      // dispatch(changeUsername(profile["new_username"]));
-    } else {
-      console.log("Change Password");
-      // dispatch(changePassword(profile["new_password"]));
+    if (
+      type === "username" &&
+      profile[oldValue].toLowerCase() !== user.username.toLowerCase()
+    ) {
+      alert("Ensure you input your current username, for old username");
+      return;
     }
+
+    if (profile[oldValue].toLowerCase() === profile[newValue].toLowerCase()) {
+      alert(`${type} mustn't be the same`);
+      return;
+    }
+
+    const updateProcess = await AuthClient.updateUser(user.username, type, profile[oldValue], profile[newValue]);
+    if (!updateProcess.success) {
+      setErrorMessage(
+        updateProcess.error,
+      );
+      setError(true);
+      return;
+    }
+
+    if (type == 'username') {
+      dispatch(changeUsername(profile[newValue]));
+    }
+    setSuccessMessage(true);
+    // Dispatch
   };
+
+
 
   useEffect(() => {
     setTimeout(() => {
       setError(false);
       setChangeType(null);
+      setSuccessMessage(false)
     }, 2000);
-  }, [error, changeType]);
+  }, [error, changeType, successMessage]);
 
   return (
     <>
@@ -74,8 +101,13 @@ const EditProfile = () => {
           style={{ opacity: changeType === "username" ? "0.4" : "" }}
         >
           <p className="change-text">Change username</p>
+          {/* Error Message */}
           {error && changeType == "username" && (
             <p className="error-text">{errorMessage}</p>
+          )}
+          {/* Success Message */}
+          {successMessage && changeType == "username" && (
+            <p className="success-text">Username has been changed</p>
           )}
           <div className="changing-section">
             <div className="change">
@@ -83,7 +115,7 @@ const EditProfile = () => {
                 name="old_username"
                 value={profile["old_username"] || ""}
                 placeholder="Enter old username"
-                onChange={(e) => handleInputChange(e, setProfile, setProfile)}
+                onChange={(e) => handleInputChange(e, profile, setProfile)}
                 className="change-input"
               />
             </div>
@@ -92,7 +124,7 @@ const EditProfile = () => {
                 name="new_username"
                 value={profile["new_username"] || ""}
                 placeholder="Enter new username"
-                onChange={(e) => handleInputChange(e, setProfile, setProfile)}
+                onChange={(e) => handleInputChange(e, profile, setProfile)}
                 className="change-input"
               />
             </div>
@@ -113,13 +145,18 @@ const EditProfile = () => {
           style={{ opacity: changeType === "password" ? "0.4" : "" }}
         >
           <p className="change-text">Change Password</p>
+          {/* Error Message */}
           {error && changeType == "password" && (
             <p className="error-text">{errorMessage}</p>
+          )}
+          {/* Succcess Message */}
+          {successMessage && changeType == "password" && (
+            <p className="success-text">Password has been changed</p>
           )}
           <div className="changing-section">
             <div className="change">
               <input
-                type="password"
+                type="text"
                 name="old_password"
                 value={profile["old_password"] || ""}
                 placeholder="Enter old password"
@@ -129,7 +166,7 @@ const EditProfile = () => {
             </div>
             <div className="change">
               <input
-                type="password"
+                type="text"
                 name="new_password"
                 value={profile["new_password"] || ""}
                 placeholder="Enter new password"
