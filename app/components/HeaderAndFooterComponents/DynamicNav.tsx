@@ -18,7 +18,7 @@ const DynamicNav: React.FC = () => {
     const pathname = usePathname()
 
 
-    const noNavBarPaths = ['/signin', '/signup'] 
+    const noNavBarPaths = ['/', '/signin', '/signup'] 
     
     return (
         

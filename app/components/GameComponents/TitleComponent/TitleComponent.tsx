@@ -2,7 +2,7 @@
 import {useState} from 'react';
 import { useDispatch } from "react-redux";
 import {AppDispatch, useAppSelector} from "@/redux/game/store"; 
-import './titlecomponent.scss'
+import './titlecomponent.scss';
 
 
 
