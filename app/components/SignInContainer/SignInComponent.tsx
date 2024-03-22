@@ -6,7 +6,7 @@ import Image from "next/image";
 
 import  "./signin.scss"
 import { useDispatch } from 'react-redux';
-import {AppDispatch, useAppSelector} from "@/redux/user/store";
+import {AppDispatch, useAppSelector} from "@/redux/game/store";
 import { logIn } from "@/redux/auth/auth-slice";
 
 
