@@ -1,0 +1,41 @@
+.game-won__container {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  width: 100%;
+  justify-content: space-between;
+  padding: 8rem 2rem;
+}
+.game-won__text {
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+}
+.game-won__buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.game-won__button-quit {
+  padding: 0.5rem;
+  color: rgb(31, 41, 55);
+  background-color: white;
+  width: auto;
+  border-radius: 6px;
+  font-size: 25px;
+  font-weight: bold;
+}
+.game-won__button-next {
+  padding: 0.5rem;
+  color: white;
+  background-color: black;
+  width: auto;
+  border-radius: 6px;
+  font-size: 25px;
+}
+.game-won__button-next:hover {
+  cursor: pointer;
+  color: black;
+  background-color: white;
+}/*# sourceMappingURL=gamewon.css.map */
