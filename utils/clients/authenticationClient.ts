@@ -189,6 +189,13 @@ class AuthClient {
       message: response.message,
     };
   }
+
+  signOutUser(): void {
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("access_token");
+      localStorage.removeItem("persist:root");
+    }
+  }
 }
 
 export default new AuthClient();
