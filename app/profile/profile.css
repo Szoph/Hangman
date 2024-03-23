@@ -18,6 +18,8 @@
     width: 50%;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 2em;
     padding: 2em;
     position: relative;
@@ -125,6 +127,7 @@
     outline: none;
     border: 2px solid #FFBE8D;
     width: 6em;
+    height: 60%;
     padding: 4px;
     border-radius: 6px;
     font-size: medium;
@@ -145,8 +148,12 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+    gap: 0.5rem;
   }
   
+  .account-buttons {
+    height: 2.5rem;
+  }
   .account-buttons:hover {
     cursor: pointer;
     opacity: 80%;
@@ -161,7 +168,7 @@
   
   .delete-button {
     padding: 2px;
-    width: 8em;
+    width: auto;
     border-radius: 6px;
     background-color: #FFBE8D;
   }
@@ -172,14 +179,15 @@
     font-weight: 500;
   }
   
-  .user-avatar-container {
-    height: 6rem;
+  .user-container {
+    height: 8rem;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     width: 50%;
+    gap: 0.5rem;
   }
   
-  .user-avatar {
+  .avatar {
     height: 5rem;
     width: 5rem;
     background-color: white;
