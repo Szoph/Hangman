@@ -1,6 +1,6 @@
 import React from 'react'
 import {useDispatch} from 'react-redux';
-import {AppDispatch, useAppSelector} from "@/redux/game/store";
+import {AppDispatch, useAppSelector} from "@/redux/store";
 import { guessLetter, rightLetter, wrongLetter, trackAttempts, decrementAttempts, checkGuessedLetters } from '@/redux/game/hangman-slice';
 import './keyboard.scss'
 

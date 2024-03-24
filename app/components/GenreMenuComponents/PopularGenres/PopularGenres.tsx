@@ -6,6 +6,7 @@ import { Genre } from "@/redux/genres/genres-slice";
 
 
 const PopularGenre = ({genres}: {genres: Genre[]} ) => {
+  console.log(genres)
 //   const tempPop = ["Horror", "Romance", "Comedy", "Action"];
 
   // const genreData = [

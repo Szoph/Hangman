@@ -3,7 +3,7 @@
 import React from 'react';
 import {useRouter, usePathname} from 'next/navigation';
 
-import {AppDispatch, useAppSelector} from "@/redux/user/store";
+import {AppDispatch, useAppSelector} from "@/redux/store";
 import UnAuthNavBar from './UnAuthNavBar/unAuthNavBar';
 import AuthNavBar from './AuthNavbar/AuthNavBar';
 import './navbar.module.scss';

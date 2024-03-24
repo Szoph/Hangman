@@ -1,6 +1,6 @@
 import React from 'react'
 import './genretitle.scss'
-import {useAppSelector} from "@/redux/game/store";
+import {useAppSelector} from "@/redux/store";
 
 const GenreTitle: React.FC = () => {
  

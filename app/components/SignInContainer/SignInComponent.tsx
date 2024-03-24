@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import "./signin.scss";
 import { useDispatch } from "react-redux";
-import { AppDispatch, useAppSelector } from "@/redux/game/store";
+import { AppDispatch, useAppSelector } from "@/redux/store";
 import { handleInputChange } from "@/utils/handleInputChange";
 import AuthClient from "@/utils/clients/authenticationClient";
 import { logIn } from "@/redux/auth/auth-slice";

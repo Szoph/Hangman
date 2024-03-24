@@ -6,7 +6,7 @@ import GenreTitle from "./GenreTitle/GenreTitle";
 import Guesses from "./Guesses/Guesses";
 import GameLost from "./GameLost/GameLost";
 import GameWon from './GameWon/GameWon';
-import {useAppSelector, AppDispatch} from "@/redux/game/store"; 
+import {useAppSelector, AppDispatch} from "@/redux/store"; 
 import {useDispatch} from "react-redux";
 import {resetGame} from "@/redux/game/hangman-slice";
 import './hangmangame.scss'
