@@ -1,34 +1,36 @@
+"use client"
 import "./populargenres.scss";
 import GenreCards from "../GenreCards/GenreCards";
 import SearchGenre from "../SearchGenre/SearchGenre";
 import {Action, Thriller, Horror, Comedy } from '../imports'
+import { Genre } from "@/redux/genres/genres-slice";
 
 
-const PopularGenre = () => {
+const PopularGenre = ({genres}: {genres: Genre[]} ) => {
 //   const tempPop = ["Horror", "Romance", "Comedy", "Action"];
 
-  const genreData = [
+  // const genreData = [
 
-    {
-        genre:"Horror",
-        image:Horror
-      },
+  //   {
+  //       genre:"Horror",
+  //       image:Horror
+  //     },
 
-    {
-      genre:"Thriller",
-      image:Thriller
-    },
+  //   {
+  //     genre:"Thriller",
+  //     image:Thriller
+  //   },
 
-    {
-      genre:"Comedy",
-      image:Comedy
-    },
+  //   {
+  //     genre:"Comedy",
+  //     image:Comedy
+  //   },
 
-    {
-        genre:"Action",
-        image:Action
-      },
-  ];
+  //   {
+  //       genre:"Action",
+  //       image:Action
+  //     },
+  // ];
 
   return (
       <div className="popular-container">
@@ -37,11 +39,11 @@ const PopularGenre = () => {
         </div>
 
         <div className="popular-genre-container flex-row">
-          {genreData.map((items, index) => (
-            <GenreCards key={index}  
-            image={items.image}
-            genre={items.genre} />
-          ))}
+          {genres.slice(0,3).map((genre, index) => {
+            return <GenreCards key={index}  
+            image={genre.image}
+            genre={genre.name} />
+          })}
         </div>
       </div>
 

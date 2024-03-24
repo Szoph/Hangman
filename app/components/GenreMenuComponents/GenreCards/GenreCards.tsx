@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import styles from "./genrecard.module.scss";
 import Image, {StaticImageData} from 'next/image'
 import {motion} from 'framer-motion';
-
+import Link from "next/link";
 
 type Props = {
     key?: number;
@@ -19,7 +19,7 @@ const GenreCards = ({genre, image, onClick}: Props) => {
 
 
     return (
-        <>
+        <Link href={`/genremode/${genre}`}>
            
             <motion.div 
             className={styles.genreCards} 
@@ -30,7 +30,7 @@ const GenreCards = ({genre, image, onClick}: Props) => {
             <div className={styles.imageWrapper}>  
             <Image
              alt="image"
-             src={image}
+            src={image}
              layout="responsive"
              height={500}
              width={undefined}
@@ -42,7 +42,7 @@ const GenreCards = ({genre, image, onClick}: Props) => {
             </div>
         </motion.div>
 
-    </>
+    </Link>
     )
 };
 

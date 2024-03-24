@@ -4,11 +4,12 @@
 /* Genre Cards */
 .genreCards {
     border-radius: 0.5rem;
-    position:relative;
+    position: relative;
     border: 2px solid $primaryBtn;
     z-index: 1;
 
     @include flexCenter;
+
     &:hover {
         cursor: pointer;
         scale: 105%;
@@ -22,28 +23,29 @@
         position: absolute;
         top: -20px;
         height: 20px;
-        width:3px;
+        width: 3px;
         left: 50%;
         transform: translateX(-50%);
         font-size: 60px;
-   
+
         background-color: black;
-        z-index:-1;
+        z-index: -1;
     }
 }
 
 
 .genreText {
-    position:absolute;
+    text-transform: capitalize;
+    position: absolute;
     font-size: $fontMedium;
     text-align: center;
     font-weight: 400;
     margin: 0 auto;
     height: 100%;
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
-    width:100%;
+    width: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
 }
@@ -51,9 +53,8 @@
 
 .imageWrapper img {
     width: 100%;
-    height: 25rem!important;
+    height: 25rem !important;
     margin: 0 auto;
-    width: 18rem!important;
+    width: 18rem !important;
 
 }
-

@@ -28,6 +28,7 @@
             width: 16rem;
             font-size: 20px;
         }
+
         .return-genre:hover {
             @include hoverScale
         }
@@ -40,7 +41,8 @@
     }
 
     .genre-name {
-        font-size: 4rem;;
+        font-size: 4rem;
+        text-transform: capitalize;
     }
 }
 
@@ -76,6 +78,7 @@
         font-weight: 500;
     }
 }
+
 .mode-card:hover {
     @include hoverScale;
     background-color: $primaryBtn;

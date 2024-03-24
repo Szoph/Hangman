@@ -1,11 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
 import {TypedUseSelectorHook, useSelector } from 'react-redux';
 import authReducer from '../auth/auth-slice'; // authReducer is a local variable name given to the auth.reducer exported from the auth-slice. It can be any name
-
+import genreSlice from '../genres/genres-slice';
+import movieSlice from '../movies/movies-slice';
 
 export const store = configureStore({
     reducer: {
         authReducer,
+        genreSlice,
+        movieSlice
     }
 });
 

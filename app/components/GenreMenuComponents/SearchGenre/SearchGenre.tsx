@@ -5,6 +5,8 @@ import "./searchgenre.scss"
 import { useState } from "react";
 import GenreCards from "../GenreCards/GenreCards";
 import { handleInputChange } from "@/utils/handleInputChange";
+import { Genre } from "@/redux/genres/genres-slice";
+import { Movie } from "@/redux/movies/movies-slice";
 
 import {Action, Thriller, War, SciFi, Adventure, Horror, Mystery } from '../imports'
 
@@ -12,50 +14,20 @@ interface SearchState {
   [key: string]: string;
 }
 
-const SearchGenre = () => {
-  
-  const genreData = [
-    {
-      genre:"Action",
-      image:Action
-    },
-    {
-      genre:"Thriller",
-      image:Thriller
-    },
+const SearchGenre = ({genres}: {genres: Genre[]}, {movies}:{movies: Movie[]}) => {
 
-    {
-      genre:"War",
-      image:War
-    },
+  const [selectedGenre, setSelectedGenre] = useState("");
 
-    {
-      genre:"Science Fiction",
-      image:SciFi
-    },
-
-    {
-      genre:"Adventure",
-      image:Adventure
-    },
-
+  const handleOnClickGenre = () => {
     
-    {
-      genre:"Horror",
-      image:Horror
-    },
-
-    {
-      genre:"Mystery",
-      image:Mystery
-    },
-
-  ];
-
+  }
   const handleScroll = () => {
     
   }
 
+  const randomMovie = (movie: string) => {
+
+  }
 
   const [searchValue, setSearchValue] = useState<SearchState>({});
 
@@ -67,10 +39,10 @@ const SearchGenre = () => {
 
   // Filter the genres based on the search input
   const filteredGenres = searchValue["search"]
-    ? genreData.filter((item) =>
-        item.genre.toLowerCase().includes(searchValue["search"]?.toLowerCase())
+    ? genres.filter((genre) =>
+        genre.name.toLowerCase().includes(searchValue["search"]?.toLowerCase())
       )
-    : genreData;
+    : genres;
 
   return (
     <section className="search-genre-container">
@@ -88,9 +60,10 @@ const SearchGenre = () => {
       <div className="other-genre-container">
         {filteredGenres.length > 0 ? (
           filteredGenres.map((filteredGenre, index) => (
+            
             <GenreCards
               key={index}
-              genre={filteredGenre.genre}
+              genre={filteredGenre.name}
               image={filteredGenre.image}
             />
           ))
