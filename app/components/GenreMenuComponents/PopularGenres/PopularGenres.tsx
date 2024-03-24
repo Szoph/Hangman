@@ -2,7 +2,6 @@
 import "./populargenres.scss";
 import GenreCards from "../GenreCards/GenreCards";
 import SearchGenre from "../SearchGenre/SearchGenre";
-import {Action, Thriller, Horror, Comedy } from '../imports'
 import { Genre } from "@/redux/genres/genres-slice";
 
 
@@ -45,6 +44,7 @@ const PopularGenre = ({genres}: {genres: Genre[]} ) => {
             genre={genre.name} />
           })}
         </div>
+
       </div>
 
 

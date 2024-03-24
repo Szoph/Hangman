@@ -1,31 +1,59 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import styles from "./genrecard.module.scss";
 import Image, {StaticImageData} from 'next/image'
 import {motion} from 'framer-motion';
 import Link from "next/link";
+import {WoodIcon} from '../imports'
+import { useAppSelector, AppDispatch } from "@/redux/game/store";
+import { useDispatch } from "react-redux";
+import {setGenre} from '@/redux/game/hangman-slice';
+import { useRouter } from "next/navigation";
+
 
 type Props = {
     key?: number;
     genre: string;
-    onClick?: () => void;
+    selectGenre?: () => void;
     image: StaticImageData | string;
 }
 
 
 
-const GenreCards = ({genre, image, onClick}: Props) => {
+const GenreCards = ({genre, image, selectGenre}: Props) => {
 
+    const router = useRouter()
 
+const dispatch = useDispatch<AppDispatch>();
+    const handleGenreSelection = (genre: string) => {
+        dispatch(setGenre(genre));
+        router.push("/game")
+        
+      }
+    
     return (
         <Link href={`/genremode/${genre}`}>
            
             <motion.div 
             className={styles.genreCards} 
-            onClick={onClick}>
-            
-            <div className={styles.overLay}>
+            onClick={() => handleGenreSelection(genre)}>
+            <WoodIcon
+             className={styles.woodIcon}
+        
+             />
+
+            <motion.div
+
+            initial= {{scale: 1}}
+            whileHover={{
+                
+                scale: 1.5,
+                transition: {
+                    yoyo: 10,
+                }
+            }}
+            className={styles.overLay}>
+                
             <p className={styles.genreText}>{genre}</p>
             <div className={styles.imageWrapper}>  
             <Image
@@ -36,10 +64,11 @@ const GenreCards = ({genre, image, onClick}: Props) => {
              width={undefined}
              className={styles.cardImage}
              objectFit="cover"
+             
              />
             </div>
 
-            </div>
+            </motion.div>
         </motion.div>
 
     </Link>

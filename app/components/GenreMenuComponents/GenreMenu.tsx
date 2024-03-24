@@ -59,7 +59,6 @@ const GenreMenu = () => {
 },[])
   return (
     <section className="genre-menu-container">
-
       <div className="popular-container">
         <div className="popular-genre-container">
           <PopularGenre genres={genres}/>

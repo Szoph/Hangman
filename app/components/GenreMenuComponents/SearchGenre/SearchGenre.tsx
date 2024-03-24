@@ -8,8 +8,6 @@ import { handleInputChange } from "@/utils/handleInputChange";
 import { Genre } from "@/redux/genres/genres-slice";
 import { Movie } from "@/redux/movies/movies-slice";
 
-import {Action, Thriller, War, SciFi, Adventure, Horror, Mystery } from '../imports'
-
 interface SearchState {
   [key: string]: string;
 }
@@ -23,7 +21,9 @@ const SearchGenre = ({genres}: {genres: Genre[]}, {movies}:{movies: Movie[]}) =>
   }
   const handleScroll = () => {
     
-  }
+  //   dispatchEvent(setGenre({genre}))
+   }
+
 
   const randomMovie = (movie: string) => {
 
@@ -32,6 +32,7 @@ const SearchGenre = ({genres}: {genres: Genre[]}, {movies}:{movies: Movie[]}) =>
   const [searchValue, setSearchValue] = useState<SearchState>({});
 
   const handleInputChange =(e: React.ChangeEvent<HTMLInputElement>) => {
+
     const {value} = e.target;
 
     setSearchValue({ ...searchValue, search: value})
@@ -65,6 +66,7 @@ const SearchGenre = ({genres}: {genres: Genre[]}, {movies}:{movies: Movie[]}) =>
               key={index}
               genre={filteredGenre.name}
               image={filteredGenre.image}
+              // selectGenre={handleGenreSelection}
             />
           ))
         ) : (

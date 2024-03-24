@@ -2,8 +2,8 @@ export const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, state:
     const key: string = e.target.name;
     const value: string = e.target.value;
 
-    setState((previousState: object) => ({
-        ...previousState,
+    setState((state: object) => ({
+        ...state,
         [key]: value,
     }))
 }

@@ -56,12 +56,21 @@
         font-size: $fontMedium; 
         text-align: center; 
     }
+    .signed-in-text {
+        margin-top: 2%;
+        margin-bottom: 2%;
+        color: green;
+    }
+    .signed-in-error-text {
+        margin-top: 2%;
+        margin-bottom: 2%;
+        color: red;
+    }
     p {
         font-size: $fontSmall;
         text-align: center;
         font-weight: 600;
     }
-
 }
 
 

@@ -8,7 +8,8 @@ export const store = configureStore({
     reducer: {
         authReducer,
         genreSlice,
-        movieSlice
+        movieSlice,
+        authentication: authReducer,
     }
 });
 
