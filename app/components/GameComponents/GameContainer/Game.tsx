@@ -1,6 +1,6 @@
 import './game.scss'
 import { useState, useEffect } from "react";
-import { AppDispatch, useAppSelector } from "@/redux/game/store";
+import { AppDispatch, useAppSelector } from "@/redux/store";
 import { useDispatch } from "react-redux";
 import Image from "next/image";
 import {game1, game2, game3, game4, game5, game6, game7, game8, game9, gameWon} from "./imports";
