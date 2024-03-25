@@ -1,0 +1,17 @@
+.genre {
+  border: 1px solid black;
+  border-radius: 6px;
+  background-color: #DBD8F0;
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 20px 0;
+  padding: 10px 40px;
+}
+.genre .genreText {
+  font-size: 25px;
+  font-weight: bold;
+}/*# sourceMappingURL=genretitle.css.map */

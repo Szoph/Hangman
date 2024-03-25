@@ -1,7 +1,7 @@
 /* Search Genre */
 .search-genre-container {
   max-width: 1980px;
-  margin: 0 auto;
+  margin: 32px auto;
   min-height: 100vh;
   width: 100%;
   display: flex;
@@ -26,7 +26,7 @@
   font-size: clamp(1.5rem, 2vw, 1.8rem);
   font-weight: 600;
   margin-bottom: 1rem;
-  color: white;
+  color: black;
 }
 
 .search-input {
@@ -37,7 +37,7 @@
   padding: 0.2rem;
   width: 100%;
   border-radius: 5px;
-  border: none;
+  border-color: black;
   background-color: white;
   outline: none;
 }
@@ -47,10 +47,11 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  gap: 2em 2em;
+  gap: 9em 2.5em;
   justify-content: center;
   align-items: center;
   margin-bottom: 4rem;
+  margin-top: 10rem;
 }
 
 .no-genre {
@@ -60,7 +61,7 @@
   justify-content: center;
 }
 .no-genre p {
-  color: white;
+  color: black;
 }
 
 @media (max-width: 768px) {

@@ -14,7 +14,7 @@
   margin: 1rem auto;
 }
 .popular-text-container h1 {
-  color: white;
+  color: black;
   font-size: clamp(1.5rem, 2vw, 1.8rem);
 }
 
@@ -23,5 +23,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2em;
+  padding-top: 2rem;
+  gap: 9em 2.5em;
+}
+
+.popular-section__itemWrapper {
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 6rem;
+  gap: 9em 2.5em;
 }/*# sourceMappingURL=populargenres.css.map */
