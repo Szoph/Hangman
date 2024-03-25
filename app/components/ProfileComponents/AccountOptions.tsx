@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { useDispatch } from "react-redux";
-import { AppDispatch, useAppSelector } from "@/redux/user/store";
+import { useDispatch } from 'react-redux';
+import { AppDispatch, useAppSelector } from "@/redux/store";
 import AuthClient from "@/utils/clients/authenticationClient";
 import { logOut, deleteAccount } from "@/redux/auth/auth-slice";
 

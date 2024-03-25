@@ -1,6 +1,6 @@
 "use client";
 import { useDispatch } from "react-redux";
-import {AppDispatch, useAppSelector} from "@/redux/game/store";
+import {AppDispatch, useAppSelector} from "@/redux/store";
 import {setWord} from "@/redux/game/hangman-slice";
 import './titlecomponent.scss'
 

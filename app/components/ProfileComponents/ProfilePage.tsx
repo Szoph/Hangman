@@ -6,7 +6,7 @@ import HangmanAvatar from "../../components/HangmanAvatar";
 import EditProfile from "./EditProfile";
 import AccountOptions from "./AccountOptions";
 import { useDispatch } from "react-redux";
-import { AppDispatch, useAppSelector } from "@/redux/game/store";
+import { AppDispatch, useAppSelector } from "@/redux/store";
 // import { useDispatch } from "react-redux";
 
 const ProfilePage = () => {
