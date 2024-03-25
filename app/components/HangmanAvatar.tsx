@@ -1,4 +1,3 @@
-import "@/app/styles/GameStyles/hangman.css";
 import Link from "next/link";
 
 const HangmanAvatar = () => {
