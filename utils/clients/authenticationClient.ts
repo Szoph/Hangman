@@ -68,8 +68,6 @@ class AuthClient {
 
     const signIn = await axios.post(`${SERVER_URL}/signin`, params);
 
-    console.log(signIn);
-
     if (!signIn.data.success) {
       return {
         success: false,
@@ -182,10 +180,21 @@ class AuthClient {
       };
     }
 
+    if (response.message["new_token"]) {
+      localStorage.setItem("access_token", response.message["new_token"]);
+    }
+
     return {
       success: true,
       message: response.message,
     };
+  }
+
+  signOutUser(): void {
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("access_token");
+      localStorage.removeItem("persist:root");
+    }
   }
 }
 

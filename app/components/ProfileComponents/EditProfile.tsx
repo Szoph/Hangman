@@ -57,12 +57,14 @@ const EditProfile = () => {
       type === "username" &&
       profile[oldValue].toLowerCase() !== user.username.toLowerCase()
     ) {
-      alert("Ensure you input your current username, for old username");
+      setErrorMessage("Ensure you input your current username, for old username");
+      setError(true);
       return;
     }
 
     if (profile[oldValue].toLowerCase() === profile[newValue].toLowerCase()) {
-      alert(`${type} mustn't be the same`);
+      setErrorMessage(`${type} mustn't be the same`);
+      setError(true);
       return;
     }
 

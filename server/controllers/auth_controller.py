@@ -104,7 +104,12 @@ class AuthController:
 
             data, _ = supabase.table('users').update({"username": new_username}).eq('username', user).execute()
 
-            return ApiResponse(success=True, data="User has been updated!")
+            # Recreate Access Token
+            token_expiry = datetime.now() + timedelta(hours=1)
+            payload = {'username': new_username, 'exp': token_expiry}
+            jwt_token = jwt.encode(payload, os.environ.get("SECRET_KEY"), algorithm='HS256')
+
+            return ApiResponse(success=True, data={'confirmation': "User has been updated!", 'new_token': jwt_token})
         except Exception as e:
             return ApiResponse(success=False, data="Failed to update username", error={str(e)})
 
