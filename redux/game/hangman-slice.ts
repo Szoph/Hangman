@@ -100,5 +100,5 @@ export const hangman = createSlice({
 }); 
 
 
-export const { setWord, guessLetter, decrementAttempts, wrongLetter, trackAttempts, resetGame, rightLetter, checkGuessedLetters, setGenre } = hangman.actions
+export const { setWord, guessLetter, decrementAttempts, wrongLetter, trackAttempts, resetGame, rightLetter, checkGuessedLetters } = hangman.actions
 export default hangman.reducer;
