@@ -7,7 +7,7 @@ import PopularGenre from "./PopularGenres/PopularGenres";
 import { useAppSelector } from "@/redux/store";
 
 const GenreMenu = () => {
-  const genres = useAppSelector((state) =>  { console.log(state); return state.genreSlice});
+  const genres = useAppSelector((state) =>  { return state.genreSlice});
   return (
     <section className="genre-menu-container">
       <div className="popular-container">

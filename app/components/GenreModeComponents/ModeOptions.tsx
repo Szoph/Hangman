@@ -13,7 +13,6 @@ const ModeOptions = () => {
 
   const dispatch = useDispatch<AppDispatch>();
   const movies = useAppSelector((state) =>  { return state.movieSlice});
-  console.log(movies, "togesamoe")
 
   const easyMode = () => {};
 

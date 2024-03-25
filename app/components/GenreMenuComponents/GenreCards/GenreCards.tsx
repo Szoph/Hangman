@@ -6,7 +6,6 @@ import {motion} from 'framer-motion';
 import Link from "next/link";
 import {WoodIcon} from '../imports'
 
-
 type Props = {
     key?: number;
     genre: string;
@@ -14,28 +13,19 @@ type Props = {
     image: StaticImageData | string;
 }
 
-
-
 const GenreCards = ({genre, image, selectGenre}: Props) => {
 
-
-    
     return (
         <Link href={`/genremode/${genre}`}>
-           
             <motion.div 
             className={styles.genreCards} 
       >
             <WoodIcon
-             className={styles.woodIcon}
-        
-             />
+             className={styles.woodIcon}/>
 
             <motion.div
-
             initial= {{scale: 1}}
             whileHover={{
-                
                 scale: 1.5,
                 transition: {
                     yoyo: 10,
@@ -52,11 +42,8 @@ const GenreCards = ({genre, image, selectGenre}: Props) => {
              height={500}
              width={undefined}
              className={styles.cardImage}
-             objectFit="cover"
-             
-             />
+             objectFit="cover"/>
             </div>
-
             </motion.div>
         </motion.div>
 

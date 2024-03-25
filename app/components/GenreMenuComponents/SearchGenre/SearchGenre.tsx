@@ -1,10 +1,8 @@
 "use client";
 
-
 import "./searchgenre.scss"
 import { useState } from "react";
 import GenreCards from "../GenreCards/GenreCards";
-import { handleInputChange } from "@/utils/handleInputChange";
 import { Genre } from "@/redux/genres/genres-slice";
 import { Movie } from "@/redux/movies/movies-slice";
 
@@ -12,22 +10,7 @@ interface SearchState {
   [key: string]: string;
 }
 
-const SearchGenre = ({genres}: {genres: Genre[]}, {movies}:{movies: Movie[]}) => {
-
-  const [selectedGenre, setSelectedGenre] = useState("");
-
-  const handleOnClickGenre = () => {
-    
-  }
-  const handleScroll = () => {
-    
-  //   dispatchEvent(setGenre({genre}))
-   }
-
-
-  const randomMovie = (movie: string) => {
-
-  }
+const SearchGenre = ({genres}: {genres: Genre[]}) => {
 
   const [searchValue, setSearchValue] = useState<SearchState>({});
 
@@ -66,7 +49,6 @@ const SearchGenre = ({genres}: {genres: Genre[]}, {movies}:{movies: Movie[]}) =>
               key={index}
               genre={filteredGenre.name}
               image={filteredGenre.image}
-              // selectGenre={handleGenreSelection}
             />
           ))
         ) : (

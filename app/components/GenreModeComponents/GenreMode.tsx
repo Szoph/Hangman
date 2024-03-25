@@ -40,7 +40,7 @@ type MoviesResponse = {
     const GenreMode = ({genre}: {genre: string}) => {
 
     const router = useRouter();
-    const genres = useAppSelector((state) =>  { console.log(state); return state.genreSlice});
+    const genres = useAppSelector((state) =>  { return state.genreSlice});
     const dispatch = useDispatch<AppDispatch>();
   
     const movies = useAppSelector((state) => state.movieSlice);
