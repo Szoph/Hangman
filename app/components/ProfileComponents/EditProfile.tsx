@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { handleInputChange } from "@/utils/handleInputChange";
 import { useDispatch } from "react-redux";
-import { AppDispatch, useAppSelector } from "@/redux/game/store";
+import { AppDispatch, useAppSelector } from "@/redux/store";
 import { changeUsername } from "@/redux/auth/auth-slice";
 import AuthClient from "@/utils/clients/authenticationClient";
 interface ProfileState {

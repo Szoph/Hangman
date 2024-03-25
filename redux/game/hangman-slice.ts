@@ -1,11 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {useState, useEffect} from 'react';
-import movieList from '../words';
-
-
-
-
-
+import { Movie } from "../movies/movies-slice"
 
 type InitialState = {
     value: HangmanState;
@@ -42,33 +37,21 @@ const initialState = {
 
 
 export const hangman = createSlice({ 
-    
-
-
-
 
     name: "hangman",
     initialState,
     reducers: {
 
-        setWord: (state) => {
-            const genre = state.value.genre;
-            const movies = movieList.find(item => item.genre === genre)?.items || [];
+        setWord: (state, action: PayloadAction<Movie[]>) => {
+            const movieList = action.payload
+            const movies = movieList || [];
+            console.log(movies, "hello")
                 console.log("The movies in the clicked genre", movies)
                 const randomMovie = movies[Math.floor(Math.random() * movies.length)];
-                state.value.word = randomMovie.toUpperCase();
+                state.value.word = randomMovie.title.toUpperCase();
                 
         }, 
 
-        setGenre: (state, action: PayloadAction<string>) => {
-            state.value.genre = action.payload;
-            const genre = state.value.genre;
-            const movies = movieList.find(item => item.genre === genre)?.items || [];
-                console.log("The movies in the clicked genre", movies)
-                const randomMovie = movies[Math.floor(Math.random() * movies.length)];
-                state.value.word = randomMovie.toUpperCase();
-
-        },
       guessLetter: (state, action: PayloadAction<string>) => {
        state.value.guessedLetters.push(action.payload);
       },
@@ -117,5 +100,5 @@ export const hangman = createSlice({
 }); 
 
 
-export const { setWord, guessLetter, decrementAttempts, wrongLetter, trackAttempts, resetGame, rightLetter, checkGuessedLetters, setGenre } = hangman.actions
+export const { setWord, guessLetter, decrementAttempts, wrongLetter, trackAttempts, resetGame, rightLetter, checkGuessedLetters } = hangman.actions
 export default hangman.reducer;

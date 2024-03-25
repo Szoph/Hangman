@@ -3,12 +3,8 @@
 import styles from "./genrecard.module.scss";
 import Image, {StaticImageData} from 'next/image'
 import {motion} from 'framer-motion';
+import Link from "next/link";
 import {WoodIcon} from '../imports'
-import { useAppSelector, AppDispatch } from "@/redux/game/store";
-import { useDispatch } from "react-redux";
-import {setGenre} from '@/redux/game/hangman-slice';
-import { useRouter } from "next/navigation";
-
 
 type Props = {
     key?: number;
@@ -17,38 +13,19 @@ type Props = {
     image: StaticImageData | string;
 }
 
-
-
 const GenreCards = ({genre, image, selectGenre}: Props) => {
 
-    const router = useRouter()
-
-const dispatch = useDispatch<AppDispatch>();
-    const handleGenreSelection = (genre: string) => {
-        dispatch(setGenre(genre));
-        router.push("/game")
-        
-      }
-    
     return (
-        <>
-          
-            <motion.div
-            whileHover={{ 
-                scale: 1.1,
-            }}
+        <Link href={`/genremode/${genre}`}>
+            <motion.div 
             className={styles.genreCards} 
-            onClick={() => handleGenreSelection(genre)}>
+      >
             <WoodIcon
-             className={styles.woodIcon}
-        
-             />
+             className={styles.woodIcon}/>
 
             <motion.div
-
             initial= {{scale: 1}}
             whileHover={{
-                
                 scale: 1.5,
                 transition: {
                     yoyo: 10,
@@ -60,20 +37,17 @@ const dispatch = useDispatch<AppDispatch>();
             <div className={styles.imageWrapper}>  
             <Image
              alt="image"
-             src={image}
+            src={image}
              layout="responsive"
              height={500}
              width={undefined}
              className={styles.cardImage}
-             objectFit="cover"
-             
-             />
+             objectFit="cover"/>
             </div>
-
             </motion.div>
         </motion.div>
 
-    </>
+    </Link>
     )
 };
 

@@ -2,7 +2,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { AppDispatch, useAppSelector } from "@/redux/user/store";
+import { AppDispatch, useAppSelector } from "@/redux/store";
 // import { logIn } from "@/redux/auth/auth-slice";
 import "./signup.scss";
 import { useRouter } from "next/navigation";

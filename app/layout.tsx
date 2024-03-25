@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Gluten } from "next/font/google";
-import {UserReduxProvider} from "../redux/user/provider";
+import {UserReduxProvider} from "../redux/provider";
 import './globals.scss'
-
-import {HangmanReduxProvider} from '../redux/game/provider';
 
 import DynamicNav from "./components/HeaderAndFooterComponents/DynamicNav";
 // import Footer from "./components/HeaderAndFooterComponents/Footer";
@@ -23,10 +21,8 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
     <html lang="en">
       <body className={gluten.className}>
         <UserReduxProvider>
-        <HangmanReduxProvider>
           <DynamicNav/>
           {children}
-         </HangmanReduxProvider>
         </UserReduxProvider>
         </body>
     </html>

@@ -1,5 +1,5 @@
 
-import { AppDispatch, useAppSelector } from '@/redux/game/store';
+import { AppDispatch, useAppSelector } from '@/redux/store';
 import { useDispatch } from 'react-redux'; 
 import './gamewon.scss'
 import {useRouter } from "next/navigation";

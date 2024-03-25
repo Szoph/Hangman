@@ -1,6 +1,6 @@
 
 import {CrossIcon} from "../imports";
-import {useAppSelector} from "@/redux/game/store";
+import {useAppSelector} from "@/redux/store";
 import './guesses.scss'
 
 const Guesses: React.FC = () => {
