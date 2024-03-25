@@ -18,7 +18,6 @@ const won = useAppSelector((state) => state.hangmanGame.value.won);
 
 
 useEffect(() => {
-    console.log(attemptsUsed)
     if (attemptsUsed === 1){
         setGameImage(game2);
     } else if (attemptsUsed === 2) {

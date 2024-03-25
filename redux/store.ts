@@ -6,6 +6,7 @@ import authReducer from "./auth/auth-slice"; // authReducer is a local variable 
 import genreSlice from "./genres/genres-slice";
 import movieSlice from "./movies/movies-slice";
 import hangmanReducer from "./game/hangman-slice";
+import hangmanBackendReducer from "./game/hangman-backend-slice";
 import { combineReducers } from "@reduxjs/toolkit";
 
 const persistConfig = {
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   movieSlice,
   authentication: authReducer,
   hangmanGame: hangmanReducer,
+  hangmanBackend: hangmanBackendReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
