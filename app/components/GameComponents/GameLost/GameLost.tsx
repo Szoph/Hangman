@@ -25,12 +25,12 @@ const GameLost: React.FC<GameOverProps>= ({gameRestart}) => {
 
 
       <div>
-          <p className="game-lost__text">YOU LOST!</p>
+          <p className="game-lost__text"> YOU LOSE!</p>
           
         </div>
         
         <div className='game-lost__buttons'>
-          <button onClick={gameReset} className='game-lost__button-restart'>Play Again?</button>
+          <button onClick={gameReset} className='game-lost__button-restart'>PLAY AGAIN?</button>
           <button onClick={quitGame} className='game-lost__button-quit'>QUIT</button>
         </div>
 

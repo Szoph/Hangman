@@ -1,6 +1,7 @@
 "use client";
 import "./styles/WelcomeStyles/welcome.scss";
 import Link from "next/link";
+import Image from "next/image";
 
 
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
     <main className="welcome-page">
       <div className="welcome-page__avatar">
         <h2>Hangman Game</h2>
+<Image className="welcome-page__monster" src="/gameImages/monster5.png" alt="Game Monster" width={300} height={300} />
       </div>
       <div className="welcome-page__content">
         <h2 className="welcome-page__title">Welcome!</h2>

@@ -35,7 +35,7 @@ const quitGame = () => {
         </div>
         
         <div className='game-won__buttons'>
-          <button onClick={nextGame} className='game-won__button-next'>Next</button>
+          <button onClick={nextGame} className='game-won__button-next'>PLAY AGAIN</button>
           <button onClick={quitGame} className='game-won__button-quit'>QUIT</button>
         </div>
 

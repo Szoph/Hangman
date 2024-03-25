@@ -3,20 +3,22 @@
 
 .game-area {
     width: 100%;
-    height: 100vh;
+    height: 84vh;
     @include flexRows;
     position: relative;
+    background-image: url('/gameImages/Background2.png');
+    background-size:contain;
+    background-repeat: repeat;
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 .game-left {
     width: 40%;
-    background-color: pink;
     height: 100%;
 }
 
 .game-right {
     width: 60%;
-    background-color: white;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -36,7 +38,7 @@
         width: auto;
         margin: 0 auto;
         height: 100%;       
-        background-color: $background;
+        background-color: rgb(60, 197, 251);
     }
     &__game-lost-modal {
         position: absolute;
@@ -49,6 +51,6 @@
         width: auto;
         margin: 0 auto;
         height: 100%;       
-        background-color: $background;
+        background-color: rgb(96, 120, 96);
     }
 }
