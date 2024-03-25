@@ -1,0 +1,16 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.hangman-view {
+   
+    &__container {
+        display: flex;
+        height: 100%;
+    }
+    &__game-image {
+        height: 100%;
+        overflow: hidden;
+        padding-bottom: 0.5rem;
+    }
+
+  }

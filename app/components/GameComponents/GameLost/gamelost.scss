@@ -12,41 +12,46 @@
     }
 
     &__text {
-        font-size: 3rem;
+        font-size: 7rem;
         font-weight: bold;
-        color: white;
+        color: red;
         text-align:center;
     }   
 
     &__buttons {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         width: 100%;
     }
 
     &__button-quit {
-   padding: 0.5rem; 
-   color: $background;
-   background-color: white;
-   width: auto; 
-   border-radius: $mediumRounded;
-   font-size: 25px;
-   font-weight: bold;
-
+        padding: 0.5rem;
+        color: black;
+        width: 40%;
+        border-radius: $mediumRounded;
+        background-color: rgb(96, 120, 96);
+        font-size: $fontMedium;
+        font-weight: bold;
+        &:hover {
+            cursor: pointer;
+            color: black;
+            background-color: rgb(133, 162, 133);
+        }
 
     }
 
     &__button-restart {
         padding: 0.5rem;
-        color: white;
-        background-color: black;
-        width: auto;
+        color: black;
+        width: 40%;
         border-radius: $mediumRounded;
+        background-color: rgb(96, 120, 96);
         font-size: $fontMedium;
+        font-weight: bold;
         &:hover {
             cursor: pointer;
             color: black;
-            background-color: white;
+            background-color: rgb(133, 162, 133);
         }
     }
 

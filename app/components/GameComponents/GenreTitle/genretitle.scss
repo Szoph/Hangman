@@ -3,9 +3,10 @@
 
 
 .genre {
-    border: 1px solid black;
+    border: 2px solid white;
     border-radius: $mediumRounded;
-    background-color: $purple;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(225, 225, 225, 0.5);
     width: auto;
     height: auto;
     @include flexCenter;

@@ -12,41 +12,51 @@
     }
 
     &__text {
-        font-size: 3rem;
+        font-size: 7rem;
         font-weight: bold;
         color: white;
         text-align:center;
+
     }   
 
     &__buttons {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         width: 100%;
     }
 
     &__button-quit {
-   padding: 0.5rem; 
-   color: $background;
-   background-color: white;
-   width: auto; 
-   border-radius: $mediumRounded;
-   font-size: 25px;
-   font-weight: bold;
+        padding: 0.5rem;
+        color: black;
+        width: 40%;
+        border-radius: $mediumRounded;
+        background-color: white;
+        font-size: $fontMedium;
+        font-weight: bold;
+        border: 2px solid white;
 
-
+    box-shadow: 0 0 10px rgba(225, 225, 225, 0.5);
+        &:hover {
+            cursor: pointer;
+            color: black;
+            background-color: rgb(216, 211, 211);
+        }
     }
 
     &__button-next {
         padding: 0.5rem;
-        color: white;
-        background-color: black;
-        width: auto;
+        color: black;
+        width: 40%;
         border-radius: $mediumRounded;
+        background-color: white;
         font-size: $fontMedium;
+        font-weight: bold;
+        border: 2px solid white;
+        box-shadow: 0 0 10px rgba(225, 225, 225, 0.5);
         &:hover {
             cursor: pointer;
             color: black;
-            background-color: white;
+            background-color: rgb(216, 211, 211);
         }
     }
 

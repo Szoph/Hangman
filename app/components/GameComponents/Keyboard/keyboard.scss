@@ -7,25 +7,23 @@
 
 
 .keyboard {
-    border: 1px solid black;
     width: 80%;
     padding: 10px;
     border-radius: $mediumRounded;
-    background-color: $purple;
     margin: 20px 0;
 }
 .row {
     @include flexRows;
     .key {
-        border: 2px solid gray;
+        border: 2px solid white;
         margin: 4px;
         width: 48px;
         height: 48px;
         @include flexCenter;
         border-radius: $smallRounded;
-        background-color: $primaryBtn;
+        background-color: rgb(117, 192, 117);
         font-size: 18px;
-        box-shadow: none;
+        box-shadow: 0 0 10px rgba(225, 225, 225, 0.5);
         font-weight: 500;
         color: $background;
         

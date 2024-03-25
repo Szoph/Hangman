@@ -2,14 +2,15 @@
 @import '../../../styles/mixins';
 
 .title {
-    border: 1px solid black;
+    border: 1px solid white;
     border-radius: $mediumRounded;
-    background-color: $purple;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(225, 225, 225, 0.5);
     width: 80%;
     height: 20%;
     @include flexCenter;
     flex-wrap: wrap;
-    margin: 20px 0;
+    margin-top: 20px;
 
     .word {
         width: auto;
@@ -23,13 +24,12 @@
         font-size: $fontMedium;
         font-weight: bold;
         margin: 10px; 
-        background-color: $primaryBtn;
+        background-color: rgb(117, 192, 117);
         width: 30px;
         height: auto;
         padding: 5px;
         border-radius: $smallRounded;
         @include flexCenter;
-        box-shadow: 0 0 6px 3px rgba(0, 0, 0, 0.3);
     }
     .space {
         margin: 25px;
