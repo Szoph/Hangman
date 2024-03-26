@@ -19,7 +19,7 @@ const UserAvatar = ({onClick}: Props) => {
             objectFit="cover"
             alt="avatar"
             src="/default-avatar.png"
-            className="user-avatar h-32 w-32"
+            className="user-avatar"
           />
         </div>
     );

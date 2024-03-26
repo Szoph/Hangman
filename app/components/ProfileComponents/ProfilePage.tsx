@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-// import "@/app/styles/ProfileStyles/profile.css";
+import "./profile.scss";
 import HangmanAvatar from "../../components/HangmanAvatar";
 import EditProfile from "./EditProfile";
 import AccountOptions from "./AccountOptions";
@@ -13,25 +13,23 @@ const ProfilePage = () => {
   const user = useAppSelector((state) => state.authentication.value);
 
   return (
-    <div className="profile-background">
-      <HangmanAvatar />
-
-      <div className="profile-content">
+    <div className="profile-page">
+      <div className="profile-page__content">
         {/* Return Button */}
-        <div className="return-container">
-          <Link href="/genremenu">
-            <p className="return-button">Return to Genre</p>
+        <div className="profile-page__return-container">
+          <Link href="/genremenu" className="profile-page__return-link">
+            <p className="profile-page__return-button">Return to Genre</p>
           </Link>
         </div>
 
         {/* User Avatar */}
-        <div className="user-container flex-center">
+        <div className="profile-page__user-container">
           <img
             alt="avatar"
             src="/default-avatar.png"
-            className="flex-center avatar"
+            className="profile-page__user-avatar"
           />
-          {user.isAuth && <p className="username flex-center">{user.username}</p>}
+          {user.isAuth && <p className="profile-page__username">{user.username}</p>}
         </div>
 
         {/* User Edit Form */}

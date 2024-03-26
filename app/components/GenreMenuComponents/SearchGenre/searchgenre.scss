@@ -36,12 +36,13 @@
     font-weight: 400;
     color: black;
     height: 100%;
-    padding: 0.2rem;
+    padding: 0.5rem;
     width: 100%;
     border-radius: $smallRounded;
-    border-color: black;
+    border: 4px solid rgb(117, 192, 117);
     background-color: white;
-    outline: none;
+   outline: none; 
+   
 }
 
 .other-genre-container {

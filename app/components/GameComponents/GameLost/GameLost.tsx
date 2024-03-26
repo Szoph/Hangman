@@ -1,5 +1,6 @@
 import './gamelost.scss'
 import {useRouter} from "next/navigation"
+import { useAppSelector } from "@/redux/store";
 
 
 type GameOverProps = {
@@ -7,6 +8,8 @@ type GameOverProps = {
 }
 const GameLost: React.FC<GameOverProps>= ({gameRestart}) => {
  const router = useRouter();
+
+ const word = useAppSelector((state) => state.hangmanGame.value.word)
   
   const quitGame = () => {
     gameRestart();
@@ -26,7 +29,8 @@ const GameLost: React.FC<GameOverProps>= ({gameRestart}) => {
 
       <div>
           <p className="game-lost__text"> YOU LOSE!</p>
-          
+          <p className="game-lost__movie-text">The movie was:</p>
+          <p className="game-lost__movie">{word}</p>
         </div>
         
         <div className='game-lost__buttons'>

@@ -52,6 +52,10 @@ export const hangman = createSlice({
                 
         }, 
 
+        setGenre: (state, action: PayloadAction<string>) => {
+            state.value.genre = action.payload
+        },
+
       guessLetter: (state, action: PayloadAction<string>) => {
        state.value.guessedLetters.push(action.payload);
       },
@@ -100,5 +104,5 @@ export const hangman = createSlice({
 }); 
 
 
-export const { setWord, guessLetter, decrementAttempts, wrongLetter, trackAttempts, resetGame, rightLetter, checkGuessedLetters } = hangman.actions
+export const { setWord, guessLetter, decrementAttempts, wrongLetter, trackAttempts, resetGame, rightLetter, checkGuessedLetters, setGenre } = hangman.actions
 export default hangman.reducer;

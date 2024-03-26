@@ -2,18 +2,16 @@
 @import '../../../styles/mixins';
 
 
-.navbar {
+.navbar-auth {
     z-index: 100;
-
-    background-color: $background;
     max-width: 1980px;
     margin:0 auto;
-    box-sizing: border-box;
+    background-color: red;
     // padding: 40px 0px 40px 0px;
     
     
     
-    .navbar-container {
+    &__container {
         position: relative;
         height: 100%;
         width: 100%;
@@ -23,7 +21,7 @@
     
     }
     
-    .home-link {
+    &__home-link {
     
         display: flex;
     
@@ -32,11 +30,13 @@
         cursor: pointer;
     }
     
-    .user-avatar-menu {
+    &__user-avatar-menu {
         cursor: pointer;
+        border-radius: 100%;
+        background-color: blue;
     }
     
-    .menu-container {
+    &__menu-container {
         position: absolute;
         right: 0;
         margin-top: 10vh;
@@ -49,11 +49,13 @@
         border-radius: $mediumRounded;
     }
     
-    .menu-item-container {
+    &__menu-item-container {
         @include flexColumns;
         gap: 1em;
         padding: 1em 2em 1em 2em;
-        .menu-item {
+      
+        }
+        &__menu-item {
             cursor: pointer;
             width: 100%;
             text-align: center;
@@ -61,8 +63,7 @@
             &:hover {
                 color: $primaryBtn;
             }
-        }
-        .line {
+        &__line {
             width: 100%;
             height: 1px;
             background-color: $primaryBtn;
@@ -87,6 +88,7 @@
 .user-avatar {
     border-radius: 100%;
     cursor: pointer;
+    background-color: blue;
 }
 
 
