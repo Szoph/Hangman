@@ -1,0 +1,73 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.game-lost {
+    &__container {
+        display: flex; 
+        flex-direction: column;
+        padding: 2rem;
+        width: 100%;
+        justify-content: space-between;
+      padding: 8rem 2rem;
+    }
+
+    &__text {
+        font-size: 7rem;
+        font-weight: bold;
+        color: red;
+        text-align:center;
+    }   
+
+    &__buttons {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+    }
+
+    &__button-quit {
+        padding: 0.5rem;
+        color: black;
+        width: 40%;
+        border-radius: $mediumRounded;
+        background-color: rgb(96, 120, 96);
+        font-size: $fontMedium;
+        font-weight: bold;
+        &:hover {
+            cursor: pointer;
+            color: black;
+            background-color: rgb(133, 162, 133);
+        }
+
+    }
+
+    &__button-restart {
+        padding: 0.5rem;
+        color: black;
+        width: 40%;
+        border-radius: $mediumRounded;
+        background-color: rgb(96, 120, 96);
+        font-size: $fontMedium;
+        font-weight: bold;
+        &:hover {
+            cursor: pointer;
+            color: black;
+            background-color: rgb(133, 162, 133);
+        }
+        
+    }
+
+    &__movie-text {
+        font-size: $fontMedium;
+        text-align: center;
+        margin: 1rem;
+
+    }
+    &__movie {
+        font-size: $fontLarge;
+        text-align: center; 
+        margin: 1rem;
+        color: red;
+        font-weight: bold;
+    }
+
+}

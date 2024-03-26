@@ -1,0 +1,37 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.title {
+    border: 1px solid white;
+    border-radius: $mediumRounded;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(225, 225, 225, 0.5);
+    width: 80%;
+    height: 20%;
+    @include flexCenter;
+    flex-wrap: wrap;
+    margin-top: 20px;
+
+    .word {
+        width: auto;
+        height: auto;
+        @include flexRows;
+        margin: 0 20px;
+        flex-wrap: wrap;
+    }
+   
+    .letters {
+        font-size: $fontMedium;
+        font-weight: bold;
+        margin: 10px; 
+        background-color: rgb(117, 192, 117);
+        width: 30px;
+        height: auto;
+        padding: 5px;
+        border-radius: $smallRounded;
+        @include flexCenter;
+    }
+    .space {
+        margin: 25px;
+    }
+}

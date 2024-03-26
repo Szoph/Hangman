@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Gluten } from "next/font/google";
-import {ReduxProvider } from "../redux/user/provider";
+import {UserReduxProvider} from "../redux/provider";
 import './globals.scss'
 
 import DynamicNav from "./components/HeaderAndFooterComponents/DynamicNav";
@@ -20,10 +20,10 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
   return (
     <html lang="en">
       <body className={gluten.className}>
-        <ReduxProvider>
+        <UserReduxProvider>
           <DynamicNav/>
           {children}
-        </ReduxProvider>
+        </UserReduxProvider>
         </body>
     </html>
   );

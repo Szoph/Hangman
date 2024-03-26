@@ -8,25 +8,34 @@
     align-items: center;
     width: 100%;
     height: 100vh;
+    background-image: url('/gameImages/Background2.png');
+    background-size: cover;
+    background-attachment: fixed;
 
     @media (max-width: 768px) {
+        .sign-up-form {
         flex-direction: column-reverse;
         height: auto;
         width: 100%;
+        background-image: url('/gameImages/Background.png');
+        background-size: cover;
+        background-attachment: fixed;
+        }
     }
 
     //Large buttons for sign in
-    button, a {
-        background: $primaryBtn; 
+    &__btn {
+        background: rgb(117, 192, 117); 
         @include flexCenter;
-        border-radius: $smallRounded;
+        border-radius: $largeRounded;
         padding: 0.5rem;
-        border: 1.5px solid $primaryBtn;
+        border: 1.5px solid rgb(117, 192, 117);
         color: white;
-        width: 22rem;
+        width: 15rem;
         margin: 0.5rem;
-        font-size: $fontSmall;
+        font-size: 20px;
         font-weight: bold;
+        box-shadow: 0 0 10px rgba(225, 225, 225, 0.5);
         
         &:hover {
             background: white;
@@ -36,65 +45,97 @@
         }
     }
 
-}
-
-// Hero/title section sign in
-.title {
-    @include flexCenter;
+    // Hero/title section sign in
+&__title {
+    @include flexColumns;
+    gap: 2rem;
     height: 100vh;
     width: 50%;
-    background-color: rgb(47, 47, 47);
-    h2 {
-        font-size: $fontLarge;
-        color: white;
     }
-}
+    &__title-text {
+        font-size: $fontLarge;
+        color: rgb(117, 192, 117);
+        background-color: white;
+        box-shadow: rgba(225, 225, 225, 0.5);
+        border-radius: $largeRounded;
+        padding: 1rem;
+    }
 
 // Sign in Form section
-.form-input {
-   @include flexColumns;
-    height: 100vh; 
-    width: 50%;
-
-    h2 {
-        font-size: $fontMedium; 
-        text-align: center; 
-    }
-    p {
-        font-size: $fontSmall;
-        text-align: center;
-        font-weight: 600;
-    }
-
+&__form-input {
+    @include flexColumns;
+    gap: 2rem;
+     height: 100vh; 
+     width: 50%;
+ }
+ &__welcome {
+    font-size: $fontLarge; 
+    text-align: center; 
+    background-color: white; 
+    color: rgb(117, 192, 117);
+    padding: 1rem;
+    border-radius: $largeRounded;
+}
+&__signed-up-text {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    color: green;
+}
+&__acc {
+    font-size: $fontMedium;
+    text-align: center;
+    font-weight: 600;
 }
 
-
-// Smaller buttons
-.extraButtons {
-display: flex;
-justify-content: center;
-align-items: center;
-flex-direction: row;
-.signInBtn, .continueBtn {
-flex: 1;
-width: 9rem;
-text-decoration: none;
-
-}
-}
-
-
-//Input field styling
-input {
-    padding: 0.5rem;
-    border-radius: $smallRounded;
-    border: 0.5px solid $primaryBtn;
-    width: 21rem;
-    margin: 0.5rem;
-    font-weight: bold;
+&__user {
     font-size: $fontSmall;
+    text-align: center;
+    font-weight: 600;
+}
+
+ // Smaller buttons
+&__extra-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+&__sign-in-btn, &__continue-btn {
+   margin: 0.5rem;
+   font-size: 20px; 
+   color: rgb(117, 192, 117);
+   font-weight: bold;
+    text-decoration: none;
+    &:hover {
+        color: rgb(52, 87, 52);
+    }
+    }
+
+    //Input field styling
+&__input-username, &__input-password  {
+    padding: 1rem;
+    border-radius: $largeRounded;
+    border: 4px solid rgb(117, 192, 117);
+    width: 21rem;
+    font-weight: bold;
+    font-size: 20px;
     &:focus{ 
         outline: none;
-        border: 2px solid $primaryBtn;
+        border: 2px solid rgb(117, 192, 117);
     }
+
 }
+
+  .disabled-sign-up {
+    background-color: grey;
+  }
+}
+
+
+
+
+
+
+
+
+

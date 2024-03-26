@@ -15,8 +15,11 @@
     gap: 4px;
     height: auto;
     width: 100%;
- 
-
+    background-image: url('/gameImages/Background2.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.3);
+    background-attachment: fixed;
 }
 
 

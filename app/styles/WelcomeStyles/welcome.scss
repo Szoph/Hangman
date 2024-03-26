@@ -5,6 +5,9 @@
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
+    background-image: url('/gameImages/Background2.png');
+    background-size: cover;
+    background-repeat: no-repeat;
 
     @media (min-width: 768px) {
         flex-direction: row;
@@ -12,19 +15,27 @@
     }
 
     &__avatar {
-        @include flexCenter;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: column;
         height: 100vh;
         width: 100%;
-        background-color: $background;
-
+        position: relative;
         @media (min-width: 768px) {
             width: 50%;
         }
 
         h2 {
-            font-size: $fontLarge;
-            color: white;
+            font-size: 3rem;
+            color: rgba(117, 192, 117);
+            background-color: white;
+            border-radius: $largeRounded; 
+            border: 2px solid white;
+            box-shadow: 0 0 10px rgba(225, 225, 225, 0.5);
+            padding: 1rem 3rem;
         }
+
     }
 
     &__content {
@@ -42,7 +53,7 @@
     }
 
     &__title {
-        font-size: $fontMedium;
+        font-size: 4rem;
         text-align: center;
     }
 
@@ -53,41 +64,42 @@
     }
 
     &__link {
-        color: black;
+        color: white;
         font-weight: bold;
         border-radius: $smallRounded;
-        border: 2px solid $primaryBtn;
-        font-size: $fontSmall;
+        border: 2px solid rgba(117, 192, 117);
+        box-shadow: 0 0 6px 3px rgba(0, 0, 0, 0.3);
+        font-size: $fontMedium;
         width: 100%;
         padding: 1rem 3rem;
         text-align: center;
         text-decoration: none;
-
-        background: white;
+        background-color: rgb(117, 192, 117);
 
         &:hover {
-            background: $primaryBtn;
-            color: white;
+            background: white;
+            color: black;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
         &:last-child {
             margin-top: 3rem;
-            color: white;
+            color: black;
             font-weight: bold;
             border-radius: $smallRounded;
-            border: 2px solid $primaryBtn;
-            font-size: $fontSmall;
+            border: 2px solid rgb(117, 192, 117);
+            box-shadow: 0 0 6px 3px rgba(0, 0, 0, 0.3);
+            font-size: $fontMedium;
             width: 100%;
             padding: 1rem 3rem;
             text-align: center;
             text-decoration: none;
-            background: $primaryBtn;
+            background: white;
 
             &:hover {
-                background: white;
-                color: black;
+                background: rgb(117, 192, 117);
+                color: white;
                 cursor: pointer;
                 transition: all 0.3s ease;
             }
