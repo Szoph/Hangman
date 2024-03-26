@@ -36,7 +36,7 @@ const HangmanGame = () => {
             <Keyboard/>
             <Guesses />
         </div>
-        {won === true ? <div className="game-page__game-won-modal"><GameWon gameReset={gameReset}/></div> : null}
+        {won === true ? <div className="game-page__game-won-modal"><GameWon gameRestart={gameReset}/></div> : null}
         {remainingAttempts === 0 ? <div className="game-page__game-lost-modal"> <GameLost gameRestart={gameReset}/> </div>: null}
 
        </div>

@@ -18,7 +18,6 @@ type GameOverProps = {
 const GameLost: React.FC<GameOverProps> = ({ gameRestart }) => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const userAuth = useAppSelector((state) => state.authentication.value.isAuth);
   const username = useAppSelector(
     (state) => state.authentication.value.username
   );
@@ -40,7 +39,6 @@ const GameLost: React.FC<GameOverProps> = ({ gameRestart }) => {
 
   const uploadData = async () => {
     const gameUploaded = await GameClient.uploadGameData(gameState);
-    console.log(gameUploaded);
 
     dispatch(setGameStored(true));
 
@@ -53,11 +51,11 @@ const GameLost: React.FC<GameOverProps> = ({ gameRestart }) => {
     }
 
     if (gameFinished) {
-      dispatch(setUserSuccess(false));
-      dispatch(setUsername(username));
-
       uploadData();
     } else {
+      dispatch(setUserSuccess(false));
+      dispatch(setUsername(username));
+      
       setGameFinished(true);
     }
   }, [gameFinished]);
