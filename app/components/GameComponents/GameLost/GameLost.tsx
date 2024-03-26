@@ -1,8 +1,10 @@
-import "./gamelost.scss";
-import { useRouter } from "next/navigation";
+import './gamelost.scss'
+import {useRouter} from "next/navigation"
+import { useAppSelector } from "@/redux/store";
 
 const GameLost: React.FC = () => {
   const router = useRouter();
+  const word = useAppSelector((state) => state.hangmanGame.value.word)
 
   const quitGame = () => {
     router.push("/");
@@ -17,8 +19,10 @@ const GameLost: React.FC = () => {
       <div className="game-lost__container">
         <div>
           <p className="game-lost__text"> YOU LOSE!</p>
+          <p className="game-lost__movie-text">The movie was:</p>
+          <p className="game-lost__movie">{word}</p>
         </div>
-
+       
         <div className="game-lost__buttons">
           <button onClick={gameReset} className="game-lost__button-restart">
             PLAY AGAIN?

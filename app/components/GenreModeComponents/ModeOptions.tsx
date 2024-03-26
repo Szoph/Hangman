@@ -37,7 +37,7 @@ const ModeOptions = () => {
   };
 
   return (
-    <div className="mode-options">
+    <div className="genre-mode__mode-options">
       {mode.map((modeOption: string, index: number) => (
         <ModeCard
           key={index}

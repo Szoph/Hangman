@@ -5,8 +5,8 @@ type Props = {
 
 const ModeCard = ({onClick, mode}: Props) => {
     return (
-        <div className="mode-card" onClick={onClick}>
-            <p className="mode-text">{mode}</p>
+        <div className="genre-mode__mode-card" onClick={onClick}>
+            <p className="genre-mode__mode-text">{mode}</p>
         </div>
     )
 };

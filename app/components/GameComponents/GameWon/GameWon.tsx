@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 
 const GameWon: React.FC = () => {
   const router = useRouter();
+  const movie = useAppSelector((state) => state.hangmanGame.value.word);
 
   const nextGame = () => {
     router.push("/genremenu");
@@ -19,7 +20,9 @@ const GameWon: React.FC = () => {
       <div className="game-won__container">
         <div>
           <p className="game-won__text">YOU WIN!</p>
+          <p className="game-won__movie">{movie}</p>
         </div>
+       
 
         <div className="game-won__buttons">
           <button onClick={nextGame} className="game-won__button-next">

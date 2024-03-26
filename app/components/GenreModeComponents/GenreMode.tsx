@@ -55,18 +55,18 @@ type MoviesResponse = {
   },[])
 
     return (
-        <div className="genre-mode-container">
+        <div className="genre-mode">
 
-            <div className="mode-top-container">
+            <div className="genre-mode__top">
 
-                <div className="mode-header-container">
-                    <p className="return-genre" onClick={() => router.push("/genremenu")}>Return to Genre</p>
+                <div className="genre-mode__header-container">
+                    <p className="genre-mode__return-genre" onClick={() => router.push("/genremenu")}>Return to Genre</p>
                 </div>
 
-                <h1 className="genre-name">{genre}</h1>
+                <h1 className="genre-mode__genre-name">{genre}</h1>
             </div>
 
-            <div className="mode-bottom-container">
+            <div className="genre-mode__bottom-container">
                 {movies.length !== 0 ? (<ModeOptions />):(<></>)}
                 
             </div>
