@@ -1,25 +1,10 @@
 class GameClient {
-    // Get title for the the movie
-    getTitle(): any {
-        // Access movies titles
-        // Get random movie
-        // Return movie title
+    async uploadGameData(gameState: any): Promise<void> {
+        // setTimeout(() => {
+            console.log(gameState);
+        // }, 3000)
     }
-
-    selectGenre(): any {
-        // User chooses genre
-        // Filter movies with genre
-        // Return movies in that genre
-    }
-
-    updateFinalResult(): void {
-        // 
-    }
-
-    updateUserPoints(): void {
-
-    }
-
+ 
     worldRanking(): void {
         
     }

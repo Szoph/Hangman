@@ -67,6 +67,7 @@ class AuthClient {
     };
 
     const signIn = await axios.post(`${SERVER_URL}/signin`, params);
+    console.log(signIn);
 
     if (!signIn.data.success) {
       return {
