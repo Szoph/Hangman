@@ -18,6 +18,7 @@ type GameOverProps = {
 const GameLost: React.FC<GameOverProps> = ({ gameRestart }) => {
   const router = useRouter();
   const dispatch = useDispatch();
+  const userAuth = useAppSelector((state) => state.authentication.value.isAuth);
   const username = useAppSelector(
     (state) => state.authentication.value.username
   );
@@ -42,13 +43,14 @@ const GameLost: React.FC<GameOverProps> = ({ gameRestart }) => {
     console.log(gameUploaded);
 
     dispatch(setGameStored(true));
+
     setGameFinished(false);
   };
 
   useEffect(() => {
     if (gameStored) {
       return;
-    };
+    }
 
     if (gameFinished) {
       dispatch(setUserSuccess(false));

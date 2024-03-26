@@ -17,32 +17,33 @@ class GameController:
             game_state = request.json.get('game_state')
             access_token = request.headers.get("Authorization")
             token = access_token.split()[1]
+
+            if token != 'null':
+                user_exists = AuthController.user_exists(game_state['username'])
+                if not user_exists.success:
+                    return ApiResponse(success=False, error="User wasn't found in database")
                 
-            
-            user_exists = AuthController.user_exists(game_state['username'])
-            if not user_exists.success:
-                return ApiResponse(success=False, error="User wasn't found in database")
-            
-            user_uuid_response = AuthController.get_user_uuid(game_state['username'])
-            if not user_uuid_response.success:
-                return ApiResponse(success=False, error="Unable to get UUID")
-            
-            user_uuid = user_uuid_response.data
+                user_uuid_response = AuthController.get_user_uuid(game_state['username'])
+                if not user_uuid_response.success:
+                    return ApiResponse(success=False, error="Unable to get UUID")
+                
+                user_uuid = user_uuid_response.data
+            else:
+                token = None
 
             default_state = {
-                'user_id': "Unknown Player",
+                'username': "Unknown Player",
                 'genre_name': game_state['genre_name'],
                 'game_mode': game_state['game_mode'],
                 'win': game_state['win'],
-            };
+            }
 
             if token:
                 default_state['user_id'] = user_uuid
-
+                default_state['username'] = game_state["username"]
 
             data, _ = supabase.table('games').insert(default_state).execute()
-
                 
             return ApiResponse(success=True, data="Game has been uploaded!")
         except Exception as e:
-            return ApiResponse(success=False, data="Failed to upload", error=(str(e)))
+            return ApiResponse(success=False, data="Failed to upload", error=str(e))
