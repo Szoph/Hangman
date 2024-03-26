@@ -73,17 +73,18 @@ const SignInComponent: React.FC = () => {
   }, [error, userSignedIn])
 
   return (
-    <div className="sign-in-form">
-      <div className="title">
-        <h2>Hangman Game</h2>
+    <div className="sign-in-page">
+      <div className="sign-in-page__title-area">
+        <h2 className="sign-in-page__text">Hangman Game</h2>
       </div>
 
-      <form onSubmit={handleSignIn} className="form-input">
-        <h2>Welcome Back!</h2>
-        {userSignedIn && <p className="signed-in-text">Signed In</p>}
-        {error && <p className="signed-in-error-text">Failed to sign in</p>}
-        {isAuth && <h3>Username: {userName}</h3>}
+      <form onSubmit={handleSignIn} className="sign-in-page__form-input">
+        <h2 className="sign-in-page__welcome">Welcome Back!</h2>
+        {userSignedIn && <p className="sign-in-page__signed-in-text">Signed In</p>}
+        {error && <p className="sign-in-page__signed-in-error-text">Failed to sign in</p>}
+        {isAuth && <h3 className="sign-in-page__username">Username: {userName}</h3>}
         <input
+        className="sign-in-page__username-input"
           type="text"
           placeholder="Username"
           value={userInput?.username || ""}
@@ -92,6 +93,7 @@ const SignInComponent: React.FC = () => {
         />
 
         <input
+        className="sign-in-page__password-input"
           type="text"
           placeholder="Password"
           value={userInput?.password}
@@ -99,14 +101,14 @@ const SignInComponent: React.FC = () => {
           onChange={(e) => handleInputChange(e, userInput, setUserInput)}
         />
 
-        <button>Sign In</button>
+        <button className="sign-in-page__button">Sign In</button>
 
-        <p>Don't have an account? </p>
-        <div className="extraButtons">
-          <a href="/signup" className="signUpBtn">
+        <p className="sign-in-page__acc-text">Don't have an account? </p>
+        <div className="sign-in-page__extra-buttons">
+          <a href="/signup" className="sign-in-page__sign-up-btn">
             Sign Up
           </a>
-          <a href="/genremenu" className="continueBtn">
+          <a href="/genremenu" className="sign-in-page__continue-btn">
             Continue As Guest
           </a>
         </div>

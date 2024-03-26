@@ -116,15 +116,17 @@ const SignUpComponent: React.FC = () => {
 
   return (
     <div className="sign-up-form">
-      <div className="title">
-        <h2>Hangman Game</h2>
+      <div className="sign-up-form__title">
+      <h2 className="sign-up-form__welcome">Welcome to</h2>
+        <h2 className="sign-up-form__title-text">Hangman Game</h2>
       </div>
 
-      <form onSubmit={handleSignUp} className="form-input">
-        <h2>Welcome!</h2>
-        {userSignedUp && <p className="signed-up-text">Account Created!</p>}
-        {isAuth && <h3>Username: {userName}</h3>}
+      <form onSubmit={handleSignUp} className="sign-up-form__form-input">
+        
+        {userSignedUp && <p className="sign-up-form__signed-up-text">Account Created!</p>}
+        {isAuth && <h3 className="sign-up-form__user">Username: {userName}</h3>}
         <input
+        className="sign-up-form__input-username"
           type="text"
           placeholder="Username"
           value={userInput?.username || ""}
@@ -132,6 +134,7 @@ const SignUpComponent: React.FC = () => {
           onChange={(e) => handleInputChange(e, userInput, setUserInput)}
         />
         <input
+        className="sign-up-form__input-password"
           type="text"
           placeholder="Password"
           name="password"
@@ -139,21 +142,22 @@ const SignUpComponent: React.FC = () => {
           onChange={(e) => handleInputChange(e, userInput, setUserInput)}
         />
         <input
+        className="sign-up-form__input-password"
           type="text"
           placeholder="Re-type Password"
           name="repassword"
           value={userInput?.repassword || ""}
           onChange={(e) => handleInputChange(e, userInput, setUserInput)}
         />
-        <button disabled={startSignupProcess} className={`${startSignupProcess && "disabled-sign-up"}`}>Sign Up</button>
+        <button disabled={startSignupProcess} className={`sign-up-form__btn ${startSignupProcess && "disabled-sign-up"} `}>Sign Up</button>
 
         <>
-          <p>Already have an account? </p>
-          <div className="extraButtons">
-            <a href="/signin" className="signInBtn">
+          <p className="sign-up-form__acc">Already have an account? </p>
+          <div className="sign-up-form__extra-buttons">
+            <a href="/signin" className="sign-up-form__sign-in-btn">
               Sign In
             </a>
-            <a href="/genremenu" className="continueBtn">
+            <a href="/genremenu" className="sign-up-form__continue-btn">
               Continue As Guest
             </a>
           </div>

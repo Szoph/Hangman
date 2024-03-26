@@ -15,26 +15,57 @@ const dispatch = useDispatch<AppDispatch>();
 const attemptsUsed = useAppSelector((state) => state.hangmanGame.value.attemptsUsed);
 const won = useAppSelector((state) => state.hangmanGame.value.won);
 
+const [isPlaying, setIsPlaying] = useState(false)
+
+const audioCrack = new Audio ("/sounds/Crack.wav");
+const audioLick = new Audio ("/sounds/Lick.mp3");
+const audioGulp = new Audio ("/sounds/Gulp.wav");
+const audioCorrect = new Audio ("/sounds/Correct.wav");
+
+// useEffect(() => {
+//     if (attemptsUsed === 1 || attemptsUsed === 2 || attemptsUsed === 3) {
+//         audioCrack.play()
+        
+//     } else if (attemptsUsed === 4) {
+//       audioCrack.play()
+//       audioCrack.onended = () => {
+//         audioGulp.play();
+//         audioGulp.onended = () => {
+//             audioLick.play()
+//           }
+//       };
+      
+     
+//     }
+// }, [attemptsUsed])
+
 
 
 useEffect(() => {
     console.log(attemptsUsed)
     if (attemptsUsed === 1){
         setGameImage(game2);
+        audioCrack.play();
     } else if (attemptsUsed === 2) {
         setGameImage(game3);
+        audioCrack.play();
     } else if (attemptsUsed === 3) {
         setGameImage(game4);
+        audioCrack.play();
     } else if (attemptsUsed === 4) {
         setTimeout(() => setGameImage(game5), 0);
+        audioCrack.play();
         setTimeout(() => setGameImage(game6), 500);
+        setTimeout(() => audioGulp.play(), 500);
         setTimeout(() => setGameImage(game7), 1000);
+        setTimeout(() => audioLick.play(), 1500);
         setTimeout(() => setGameImage(game8), 1500);
         setTimeout(() => setGameImage(game9), 2000);
     }
 
     if (won === true) {
         setGameImage(gameWon);
+        audioCorrect.play();
     }
 }, [attemptsUsed, won])
 

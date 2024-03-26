@@ -96,29 +96,29 @@ const EditProfile = () => {
 
   return (
     <>
-      <form className="edit-form">
+      <form className="profile-page__edit-form">
         {/* Change Username */}
         <div
-          className="section"
+          className="profile-page__section"
           style={{ opacity: changeType === "username" ? "0.4" : "" }}
         >
-          <p className="change-text">Change username</p>
+          <p className="profile-page__change-text">Change username</p>
           {/* Error Message */}
           {error && changeType == "username" && (
-            <p className="error-text">{errorMessage}</p>
+            <p className="profile-page__error-text">{errorMessage}</p>
           )}
           {/* Success Message */}
           {successMessage && changeType == "username" && (
-            <p className="success-text">Username has been changed</p>
+            <p className="profile-page__success-text">Username has been changed</p>
           )}
-          <div className="changing-section">
-            <div className="change">
+          <div className="profile-page__changing-section">
+            <div className="profile-page__change">
               <input
                 name="old_username"
                 value={profile["old_username"] || ""}
-                placeholder="Enter old username"
+                placeholder="Enter username"
                 onChange={(e) => handleInputChange(e, profile, setProfile)}
-                className="change-input"
+                className="profile-page__change-input"
               />
             </div>
             <div className="change">
@@ -127,13 +127,13 @@ const EditProfile = () => {
                 value={profile["new_username"] || ""}
                 placeholder="Enter new username"
                 onChange={(e) => handleInputChange(e, profile, setProfile)}
-                className="change-input"
+                className="profile-page__change-input"
               />
             </div>
 
             <button
               onClick={(e) => handleForm(e, "username")}
-              className="change-button"
+              className="profile-page__change-button"
               disabled={changeType === "username"}
             >
               Change
@@ -143,27 +143,27 @@ const EditProfile = () => {
 
         {/* Change Password */}
         <div
-          className="section"
+          className="profile-page__section"
           style={{ opacity: changeType === "password" ? "0.4" : "" }}
         >
-          <p className="change-text">Change Password</p>
+          <p className="profile-page__change-text">Change Password</p>
           {/* Error Message */}
           {error && changeType == "password" && (
-            <p className="error-text">{errorMessage}</p>
+            <p className="profile-page__error-text">{errorMessage}</p>
           )}
           {/* Succcess Message */}
           {successMessage && changeType == "password" && (
-            <p className="success-text">Password has been changed</p>
+            <p className="profile-page__success-text">Password has been changed</p>
           )}
-          <div className="changing-section">
-            <div className="change">
+          <div className="profile-page__changing-section">
+            <div className="profile-page__change">
               <input
                 type="text"
                 name="old_password"
                 value={profile["old_password"] || ""}
-                placeholder="Enter old password"
+                placeholder="Enter password"
                 onChange={(e) => handleInputChange(e, setProfile, setProfile)}
-                className="change-input"
+                className="profile-page__change-input"
               />
             </div>
             <div className="change">
@@ -173,13 +173,13 @@ const EditProfile = () => {
                 value={profile["new_password"] || ""}
                 placeholder="Enter new password"
                 onChange={(e) => handleInputChange(e, setProfile, setProfile)}
-                className="change-input"
+                className="profile-page__change-input"
               />
             </div>
 
             <button
               onClick={(e) => handleForm(e, "password")}
-              className="change-button"
+              className="profile-page__change-button"
               disabled={changeType === "password"}
             >
               Change
