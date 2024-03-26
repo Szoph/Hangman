@@ -9,7 +9,7 @@ type GameWonProps = {
   gameReset: () => void;
 }
 const GameWon: React.FC<GameWonProps>= ({gameReset}) => {
-
+const movie = useAppSelector((state) => state.hangmanGame.value.word);
 const router = useRouter();
 
 const nextGame = () => {
@@ -31,7 +31,7 @@ const quitGame = () => {
 
       <div>
           <p className="game-won__text">YOU WIN!</p>
-          
+          <p className="game-won__movie">{movie}</p>
         </div>
         
         <div className='game-won__buttons'>

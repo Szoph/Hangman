@@ -1,7 +1,6 @@
 import './game.scss'
 import { useState, useEffect } from "react";
-import { AppDispatch, useAppSelector } from "@/redux/store";
-import { useDispatch } from "react-redux";
+import { useAppSelector } from "@/redux/store";
 import Image from "next/image";
 import {game1, game2, game3, game4, game5, game6, game7, game8, game9, gameWon} from "./imports";
 
@@ -11,33 +10,15 @@ import {game1, game2, game3, game4, game5, game6, game7, game8, game9, gameWon} 
 
 const Game: React.FC = () => {
     const [gameImage, setGameImage] = useState(game1)
-const dispatch = useDispatch<AppDispatch>();
 const attemptsUsed = useAppSelector((state) => state.hangmanGame.value.attemptsUsed);
 const won = useAppSelector((state) => state.hangmanGame.value.won);
 
-const [isPlaying, setIsPlaying] = useState(false)
 
 const audioCrack = new Audio ("/sounds/Crack.wav");
 const audioLick = new Audio ("/sounds/Lick.mp3");
 const audioGulp = new Audio ("/sounds/Gulp.wav");
 const audioCorrect = new Audio ("/sounds/Correct.wav");
 
-// useEffect(() => {
-//     if (attemptsUsed === 1 || attemptsUsed === 2 || attemptsUsed === 3) {
-//         audioCrack.play()
-        
-//     } else if (attemptsUsed === 4) {
-//       audioCrack.play()
-//       audioCrack.onended = () => {
-//         audioGulp.play();
-//         audioGulp.onended = () => {
-//             audioLick.play()
-//           }
-//       };
-      
-     
-//     }
-// }, [attemptsUsed])
 
 
 

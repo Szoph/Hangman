@@ -60,6 +60,13 @@
         }
     }
 
+    &__movie {
+        font-size: $fontLarge;
+        text-align: center;
+        margin: 1rem;
+        color: white;
+        font-weight: bold;
+    }
 
 
 }
