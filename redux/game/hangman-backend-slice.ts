@@ -39,6 +39,7 @@ export const hangmanBackend = createSlice({
             state.genre_name = "";
             state.game_mode = 0;
             state.win = false;
+            state.stored = false;
         },
     }
 });

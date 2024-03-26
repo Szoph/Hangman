@@ -33,19 +33,19 @@ const GameLost: React.FC<GameOverProps> = ({ gameRestart }) => {
 
   const gameReset = async () => {
     dispatch(resetHangmanGame());
-    // gameRestart();
-    // router.push("/genremenu");
+    gameRestart();
+    router.push("/genremenu");
   };
 
   const uploadData = async () => {
     const gameUploaded = await GameClient.uploadGameData(gameState);
+    console.log(gameUploaded);
 
     dispatch(setGameStored(true));
     setGameFinished(false);
   };
 
   useEffect(() => {
-    console.log(gameStored);
     if (gameStored) {
       return;
     };
