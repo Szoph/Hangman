@@ -7,9 +7,7 @@
 
 /* Genre Page Container */
 .genre-menu-container {
-
     margin: 0 auto;
-
     box-sizing: border-box;
     flex-direction: column;
     gap: 4px;
@@ -20,8 +18,17 @@
     background-repeat: no-repeat;
     background-color: rgba(0, 0, 0, 0.3);
     background-attachment: fixed;
+    padding-top: 3rem;
 }
 
-
-
-
+.genre-menu-title {
+    font-size: $fontLarge;
+    font-size: 3rem;
+    color: rgba(117, 192, 117);
+    background-color: white;
+    border-radius: $largeRounded;
+    border: 2px solid white;
+    box-shadow: 0 0 10px rgba(225, 225, 225, 0.5);
+    padding: 1rem 3rem;
+    text-align: center;
+}

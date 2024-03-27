@@ -1,5 +1,5 @@
 "use client";
-import { Action, Adventure, Horror, Mystery, SciFi, Thriller, War } from "@/app/components/GenreMenuComponents/imports";
+import { Action, Adventure, Horror, Mystery, SciFi, Thriller, War} from "@/app/components/GenreMenuComponents/imports";
 import {createSlice, PayloadAction} from "@reduxjs/toolkit"
 import { StaticImageData } from "next/image";
 

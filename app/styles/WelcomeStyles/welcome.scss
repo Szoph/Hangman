@@ -22,6 +22,7 @@
         height: 100vh;
         width: 100%;
         position: relative;
+
         @media (min-width: 768px) {
             width: 50%;
         }
@@ -30,7 +31,7 @@
             font-size: 3rem;
             color: rgba(117, 192, 117);
             background-color: white;
-            border-radius: $largeRounded; 
+            border-radius: $largeRounded;
             border: 2px solid white;
             box-shadow: 0 0 10px rgba(225, 225, 225, 0.5);
             padding: 1rem 3rem;
@@ -61,6 +62,7 @@
         @include flexColumns;
         color: blue;
         gap: 2rem;
+
     }
 
     &__link {
