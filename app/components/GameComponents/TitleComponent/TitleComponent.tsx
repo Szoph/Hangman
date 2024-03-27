@@ -17,7 +17,6 @@ const guessedLetters = useAppSelector((state) => state.hangmanGame.value.guessed
 
   return (
     <div className="title">
-      {word}
 
      {word.split(' ').map((word: string, index: number) => (
       <span key={index} className="word">

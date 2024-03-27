@@ -37,10 +37,17 @@ const GameWon: React.FC<GameWonProps> = ({ gameRestart }) => {
     router.push("/genremenu");
   };
 
+  const getLeaderboard = async () => {
+    // Returns the user_points database in order
+    const worldLeaderboard = await GameClient.worldRanking();
+
+  }
+
   const uploadData = async () => {
-    // const gameUploaded = await GameClient.uploadGameData(gameState);
-    // const pointsUploaded = await GameClient.uploadPoints(gameState);
-    const test = await GameClient.worldRanking();
+    // Saves game in games table
+    const gameUploaded = await GameClient.uploadGameData(gameState);
+    // Updates the points
+    const pointsUploaded = await GameClient.uploadPoints(gameState);
 
     dispatch(setGameStored(true));
 
@@ -74,7 +81,7 @@ const GameWon: React.FC<GameWonProps> = ({ gameRestart }) => {
           <button onClick={gameReset} className="game-won__button-next">
             PLAY AGAIN
           </button>
-          <button className="game-won__button-leaderboard">
+          <button onClick={getLeaderboard} className="game-won__button-leaderboard">
             LEADERBOARD
           </button>
           <button onClick={quitGame} className="game-won__button-quit">
