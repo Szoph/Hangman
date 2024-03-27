@@ -1,6 +1,7 @@
 import { AppDispatch, useAppSelector } from '@/redux/store';
 import { useDispatch } from 'react-redux'; 
 import './gamewon.scss'
+import '../../Leaderboard/leaderboard.scss'
 import {useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import {
@@ -88,19 +89,20 @@ setLeaderboardData(leaderboardData);
         </div>
 
         {showModal ? (
-          <>
-         <h3>World Leaderboard</h3>
+          <div className="leaderboard">
+            <div className="leaderboard__close" onClick={() => setShowModal(false)}>x</div>
+         <h3 className="leaderboard__title">World Leaderboard</h3>
           {leaderboardData.map((data, index) => (
             <Leaderboard key={index} showModal={showModal} 
            username={data.username} points={data.points}
             />
           ))}
-          </>
+          </div>
         ) : null}
 
         <div className='game-won__buttons'>
           <button onClick={gameReset} className='game-won__button-next'>PLAY AGAIN</button>
-          <button onClick={getLeaderboard} className="game-won__button-leaderboard">
+          <button onClick={getLeaderboard} className="game-won__button-next">
             LEADERBOARD
           </button>
 
