@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from  "@/redux/store";
 import { useAppSelector } from "@/redux/store";
 import { addMovies } from "@/redux/movies/movies-slice";
+import {setGenre} from "@/redux/game/hangman-slice";
 
 type MoviesResponse = {
     movies: [
@@ -47,6 +48,7 @@ type MoviesResponse = {
     useEffect(() => {
       const getData = async() => {
         const data = await getMovies(genre);
+        dispatch(setGenre(genre));
         if(data?.movies) {
           dispatch(addMovies(data.movies))
         }

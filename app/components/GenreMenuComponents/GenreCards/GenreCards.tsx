@@ -5,9 +5,6 @@ import Image, {StaticImageData} from 'next/image'
 import {motion} from 'framer-motion';
 import Link from "next/link";
 import {WoodIcon} from '../imports'
-import {setGenre} from "@/redux/game/hangman-slice";
-import {useDispatch} from "react-redux";
-import {AppDispatch} from "@/redux/store";
 
 type Props = {
     key?: number;
@@ -17,15 +14,12 @@ type Props = {
 }
 
 const GenreCards = ({genre, image, selectGenre}: Props) => {
-    const dispatch = useDispatch<AppDispatch>();
+    
 
-    const handleGenre = (genre: string) => {
-        dispatch(setGenre(genre))
-    }
+
 
     return (
         <Link href={`/genremode/${genre}`}
-        onClick={() => handleGenre(genre)}
         >
             <motion.div 
             className={styles.genreCards} 

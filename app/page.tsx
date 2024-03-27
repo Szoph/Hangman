@@ -2,9 +2,12 @@
 import "./styles/WelcomeStyles/welcome.scss";
 import Link from "next/link";
 import Image from "next/image";
+import {useAppSelector} from "@/redux/store";
 
 
 export default function Home() {
+
+  const isAuth = useAppSelector((state) => state.authentication.value.isAuth)
   return (
     <main className="welcome-page">
       <div className="welcome-page__avatar">
@@ -14,7 +17,11 @@ export default function Home() {
       <div className="welcome-page__content">
         <h2 className="welcome-page__title">Welcome!</h2>
         <div className="welcome-page__navigation">
-          <Link href="/signin" className="welcome-page__link">
+          {isAuth ? 
+          <Link href="/genremenu" className="welcome-page__link">
+            Play
+          </Link> : 
+           <><Link href="/signin" className="welcome-page__link">
             Sign in
           </Link>
           <Link href="/signup" className="welcome-page__link">
@@ -22,7 +29,8 @@ export default function Home() {
           </Link>
           <Link href="/genremenu" className="welcome-page__link">
             Play as a guest
-          </Link>
+          </Link></>}
+         
         </div>
       </div>
     </main>
