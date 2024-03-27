@@ -1,5 +1,5 @@
 "use client";
-import { Action, Adventure, Horror, Mystery, SciFi, Thriller, War } from "@/app/components/GenreMenuComponents/imports";
+import { Action, Adventure, Horror, Mystery, SciFi, Thriller, War, Fantasy, Comedy, Western, Animation, Sports } from "@/app/components/GenreMenuComponents/imports";
 import {createSlice, PayloadAction} from "@reduxjs/toolkit"
 import { StaticImageData } from "next/image";
 
@@ -21,63 +21,39 @@ export type Genre = {
     },
     {
         name:"animation",
-        image:Adventure
+        image:Animation
     },
-    {
-        name: "biography",
-        image:Adventure  
-    },
+
     {
         name: "comedy",
-        image:Adventure
+        image:Comedy
     },
-    {
-        name: "documentry",
-        image:Adventure  
-    },
-    {
-        name: "family",
-        image:Adventure
-    },
+
+
     {
         name: "fantasy",
-        image:Adventure
+        image:Fantasy
     },
-    {
-        name: "film-noir",
-        image:Adventure
-    },
-    {
-        name: "history",
-        image:Adventure
-    },
+
+
     {
         name:"horror",
         image:Horror
     },
-    {
-        name: "music",
-        image:Adventure
-    },
-    {
-        name: "musical",
-        image:Adventure
-    },
+
+
     {
         name:"mystery",
         image:Mystery
     },
-    {
-        name:"romance",
-        image:Adventure
-    },
+
     {
         name:"sci-fi",
         image:SciFi
     },
     {
         name:"sport",
-        image:Adventure
+        image:Sports
     },
     {
         name:"thriller",
@@ -89,7 +65,7 @@ export type Genre = {
     },
     {
         name:"western",
-        image:Adventure
+        image:Western
     },
   ];
 
