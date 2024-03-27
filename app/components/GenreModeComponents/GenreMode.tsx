@@ -13,18 +13,19 @@ import GameClient from "@/utils/clients/gameClient";
 
 const GenreMode = ({ genre }: { genre: string }) => {
   const router = useRouter();
-    const genres = useAppSelector((state) =>  { return state.genreSlice});
-    const dispatch = useDispatch<AppDispatch>();
-  
-    const movies = useAppSelector((state) => state.movieSlice);
-    useEffect(() => {
-      const getData = async() => {
-        const data = await GameClient.getMoviesByGenre(genre);
-        console.log(data)
-        console.log("The should be the data from the backend", data)
-        if(data?.movies) {
-          dispatch(addMovies(data.movies))
-        }
+  const genres = useAppSelector((state) => {
+    return state.genreSlice;
+  });
+  const dispatch = useDispatch<AppDispatch>();
+
+  const movies = useAppSelector((state) => state.movieSlice);
+  useEffect(() => {
+    const getData = async () => {
+      const data = await GameClient.getMoviesByGenre(genre);
+      console.log(data);
+      console.log("The should be the data from the backend", data);
+      if (data?.movies) {
+        dispatch(addMovies(data.movies));
       }
     };
     getData();
