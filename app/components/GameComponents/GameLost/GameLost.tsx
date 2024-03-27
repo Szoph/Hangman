@@ -24,6 +24,7 @@ const GameLost: React.FC<GameOverProps> = ({ gameRestart }) => {
   const gameState = useAppSelector((state) => state.hangmanBackend);
   const gameStored = gameState.stored;
   const [gameFinished, setGameFinished] = useState<boolean>(false);
+  const word = useAppSelector((state) => state.hangmanGame.value.word)
 
   const quitGame = () => {
     dispatch(resetHangmanGame());
@@ -35,6 +36,7 @@ const GameLost: React.FC<GameOverProps> = ({ gameRestart }) => {
     dispatch(resetHangmanGame());
     gameRestart();
     router.push("/genremenu");
+  };
   };
 
   const uploadData = async () => {
@@ -65,8 +67,10 @@ const GameLost: React.FC<GameOverProps> = ({ gameRestart }) => {
       <div className="game-lost__container">
         <div>
           <p className="game-lost__text"> YOU LOSE!</p>
+          <p className="game-lost__movie-text">The movie was:</p>
+          <p className="game-lost__movie">{word}</p>
         </div>
-
+       
         <div className="game-lost__buttons">
           <button onClick={gameReset} className="game-lost__button-restart">
             PLAY AGAIN?
@@ -81,3 +85,5 @@ const GameLost: React.FC<GameOverProps> = ({ gameRestart }) => {
 };
 
 export default GameLost;
+
+export default GameLost

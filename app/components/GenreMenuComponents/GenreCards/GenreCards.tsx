@@ -8,6 +8,8 @@ import {WoodIcon} from '../imports';
 import { AppDispatch } from "@/redux/store";
 import { useDispatch } from "react-redux";
 import { setGenreName } from "@/redux/game/hangman-backend-slice";
+import {setGenre, resetGame} from "@/redux/game/hangman-slice";
+
 
 type Props = {
     key?: number;
@@ -23,18 +25,22 @@ const GenreCards = ({genre, image, selectGenre}: Props) => {
         dispatch(setGenreName(genre));
     }
 
+//   const handleGenre = (genre: string) => {
+//         dispatch(setGenre(genre))
+//         // dispatch(resetGame())
+//     }
+
     return (
         <Link href={`/genremode/${genre}`} onClick={handleReduxGenreName}>
             <motion.div 
-            className={styles.genreCards} 
-      >
+            className={styles.genreCards}>
             <WoodIcon
              className={styles.woodIcon}/>
 
             <motion.div
             initial= {{scale: 1}}
             whileHover={{
-                scale: 1.5,
+                scale: 1.2,
                 transition: {
                     yoyo: 10,
                 }

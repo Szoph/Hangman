@@ -53,8 +53,21 @@
             color: black;
             background-color: rgb(133, 162, 133);
         }
+        
     }
 
+    &__movie-text {
+        font-size: $fontMedium;
+        text-align: center;
+        margin: 1rem;
 
+    }
+    &__movie {
+        font-size: $fontLarge;
+        text-align: center; 
+        margin: 1rem;
+        color: red;
+        font-weight: bold;
+    }
 
 }

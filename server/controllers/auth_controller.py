@@ -21,7 +21,9 @@ class AuthController:
     @staticmethod
     def user_exists(username: str):
         try:
+            
             data, _ = supabase.table("users").select("username").eq('username', username).single().execute()
+            print("This should be the data", data)
 
             return ApiResponse(success=True, data=data)
         except Exception as e:
@@ -75,23 +77,34 @@ class AuthController:
         try:
             username = request.json.get('username')
             password = request.json.get('password')
+            print(username)
+            print(password)
 
             if not username or not password:
                 return ApiResponse(success=False, error="Invalid username or password")
 
             data_password, _ = supabase.table("users").select("password").eq('username', username).single().execute()
+            print(data_password)
+
+
             encrypted_password = data_password[1]["password"]
+            print("This should be the decrypted password", encrypted_password)
+
 
             decrypt_password = bcrypt.checkpw(password.encode('utf-8'), encrypted_password.encode('utf-8'))
+            print("This should be the decrypted password", decrypt_password)
+
 
             if decrypt_password:
                 token_expiry = datetime.now() + timedelta(hours=1)
                 payload = {'username': username, 'exp': token_expiry}
                 jwt_token = jwt.encode(payload, os.environ.get("SECRET_KEY"), algorithm='HS256')
+                print(jwt_token)
                 return ApiResponse(success=True, data={'message': 'User signed in!', 'token': jwt_token})
             else:
                 return ApiResponse(success=False, error="Incorrect password")
         except Exception as e:
+            print("This is the response error: ", e)
             return ApiResponse(success=False, error=(str(e)))
         
     @staticmethod

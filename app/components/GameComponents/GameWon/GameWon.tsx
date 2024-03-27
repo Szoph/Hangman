@@ -1,7 +1,7 @@
-import { AppDispatch, useAppSelector } from "@/redux/store";
-import { useDispatch } from "react-redux";
-import "./gamewon.scss";
-import { useRouter } from "next/navigation";
+import { AppDispatch, useAppSelector } from '@/redux/store';
+import { useDispatch } from 'react-redux'; 
+import './gamewon.scss'
+import {useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import {
   setUserSuccess,
@@ -14,17 +14,17 @@ import { cachedDataVersionTag } from "v8";
 
 type GameWonProps = {
   gameRestart: () => void;
-};
-const GameWon: React.FC<GameWonProps> = ({ gameRestart }) => {
-  const router = useRouter();
-  const dispatch = useDispatch();
+}
+const GameWon: React.FC<GameWonProps>= ({gameRestart}) => {
+const router = useRouter();
+const dispatch = useDispatch();
   const username = useAppSelector(
     (state) => state.authentication.value.username
   );
   const gameState = useAppSelector((state) => state.hangmanBackend);
+  const movie = useAppSelector((state) => state.hangmanGame.value.word)
   const gameStored = gameState.stored;
   const [gameFinished, setGameFinished] = useState<boolean>(false);
-
   const quitGame = () => {
     dispatch(resetHangmanGame());
     gameRestart();
@@ -75,18 +75,15 @@ const GameWon: React.FC<GameWonProps> = ({ gameRestart }) => {
       <div className="game-won__container">
         <div>
           <p className="game-won__text">YOU WIN!</p>
+          <p className="game-won__movie">{movie}</p>
         </div>
-
-        <div className="game-won__buttons">
-          <button onClick={gameReset} className="game-won__button-next">
-            PLAY AGAIN
-          </button>
+        
+        <div className='game-won__buttons'>
+          <button onClick={gameReset} className='game-won__button-next'>PLAY AGAIN</button>
           <button onClick={getLeaderboard} className="game-won__button-leaderboard">
             LEADERBOARD
           </button>
-          <button onClick={quitGame} className="game-won__button-quit">
-            QUIT
-          </button>
+          <button onClick={quitGame} className='game-won__button-quit'>QUIT</button>
         </div>
       </div>
     </>
