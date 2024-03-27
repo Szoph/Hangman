@@ -10,6 +10,7 @@ import {
   resetHangmanGame,
 } from "@/redux/game/hangman-backend-slice";
 import GameClient from "@/utils/clients/gameClient";
+import { cachedDataVersionTag } from "v8";
 
 type GameWonProps = {
   gameRestart: () => void;
@@ -38,6 +39,7 @@ const GameWon: React.FC<GameWonProps> = ({ gameRestart }) => {
 
   const uploadData = async () => {
     const gameUploaded = await GameClient.uploadGameData(gameState);
+    const pointsUploaded = await GameClient.uploadPoints(gameState);
 
     dispatch(setGameStored(true));
 
@@ -45,6 +47,7 @@ const GameWon: React.FC<GameWonProps> = ({ gameRestart }) => {
   };
 
   useEffect(() => {
+    console.log()
     if (gameStored) {
       return;
     }
@@ -69,6 +72,9 @@ const GameWon: React.FC<GameWonProps> = ({ gameRestart }) => {
         <div className="game-won__buttons">
           <button onClick={gameReset} className="game-won__button-next">
             PLAY AGAIN
+          </button>
+          <button className="game-won__button-leaderboard">
+            LEADERBOARD
           </button>
           <button onClick={quitGame} className="game-won__button-quit">
             QUIT

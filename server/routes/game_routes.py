@@ -26,6 +26,50 @@ def upload_game():
             'error': upload_state.error
         })
     
+@game_blueprint.route(rule='/check_user_points/<username>', methods=["GET"])
+def check_user_points(username: str):
+    check_state = GameController.check_user_points(username)
+    if check_state.success:
+        return jsonify({
+            'success': check_state.success,
+            'message': check_state.data,
+        })
+    else:
+        return jsonify({
+            'success': check_state.success,
+            'error': check_state.error
+        })
+    
+@game_blueprint.route(rule='/update_points', methods=['PUT'])
+def update_points():
+    points_state = GameController.update_points()
+    if points_state.success:
+        return jsonify({
+            'success': points_state.success,
+            'message': points_state.data,
+        })
+    else:
+        return jsonify({
+            'success': points_state.success,
+            'message': points_state.data,
+            'error': points_state.error
+        })
+    
+@game_blueprint.route(rule='/upload_points', methods=["POST"])
+def upload_points():
+    points_state = GameController.upload_points()
+    if points_state.success:
+        return jsonify({
+            'success': points_state.success,
+            'message': points_state.data,
+        })
+    else:
+        return jsonify({
+            'success': points_state.success,
+            'message': points_state.data,
+            'error': points_state.error
+        })
+ 
 @game_blueprint.route(rule='/world_ranking', methods=['GET'])
 def get_ranking():
     ranking_state = GameController.upload_game()
