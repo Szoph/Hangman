@@ -4,12 +4,11 @@ import styles from "./genrecard.module.scss";
 import Image, {StaticImageData} from 'next/image'
 import {motion} from 'framer-motion';
 import Link from "next/link";
-import {WoodIcon} from '../imports';
+import {WoodIcon} from '../imports'
+import {setGenre} from "@/redux/game/hangman-slice";
+import {useDispatch} from "react-redux";
+import {AppDispatch} from "@/redux/store";
 
-import {setGenre} from '@/redux/game/hangman-slice';
-
-import {useDispatch} from "react-redux"
-import {AppDispatch} from "@/redux/store"
 
 type Props = {
     key?: number;
@@ -19,6 +18,11 @@ type Props = {
 }
 
 const GenreCards = ({genre, image, selectGenre}: Props) => {
+    const dispatch = useDispatch<AppDispatch>();
+
+    const handleGenre = (genre: string) => {
+        dispatch(setGenre(genre))
+    }
 
     const dispatch = useDispatch<AppDispatch>();
 
@@ -28,17 +32,16 @@ const GenreCards = ({genre, image, selectGenre}: Props) => {
 
     return (
         <Link href={`/genremode/${genre}`}
-        onClick={() => handleGenre(genre)}>
-            <motion.div
-            className={styles.genreCards} 
-      >
+        onClick={() => handleGenre(genre)}
+            <motion.div 
+            className={styles.genreCards}
             <WoodIcon
              className={styles.woodIcon}/>
 
             <motion.div
             initial= {{scale: 1}}
             whileHover={{
-                scale: 1.5,
+                scale: 1.2,
                 transition: {
                     yoyo: 10,
                 }

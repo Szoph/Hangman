@@ -14,10 +14,11 @@
     width: 100%;
     @include flexCenter;
     margin: 1rem auto;
+    margin-bottom: 8rem;
 
     h1 {
         color: black;
-        font-size: clamp(1.5rem, 2vw, 1.8rem);
+        font-size: $fontLarge;
     }
 }
 

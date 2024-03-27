@@ -33,17 +33,17 @@ const Header: React.FC = () => {
         toggleMenu();
     }
   return (
-    <nav className="navbar">
-        <div className="navbar-container">
-            <a className="home-link" onClick={() => router.push("/")}><HomeIcon/></a>
-            <a className="user-avatar-menu" onClick={() => setIsMenuOpen((prev) => !prev)}> <UserAvatar/> </a>
-           {isMenuOpen && ( <div className="menu-container">
-                <div className="menu-item-container">
-                    <a className="menu-item" onClick={handleClickNav}>Profile Settings</a>
-                    <span className="line"></span>
-                    <a className="menu-item" onClick={handleClickNav}>Home</a>
-                    <span className="line"></span>
-                    <a className="menu-item" onClick={handleClickNav}>Genre Menu</a>
+    <nav className="navbar-auth">
+        <div className="navbar-auth__container">
+            <a className="navbar-auth__home-link" onClick={() => router.push("/")}><HomeIcon/></a>
+            <a className="navbar-auth__user-avatar-menu" onClick={() => setIsMenuOpen((prev) => !prev)}> <UserAvatar/> </a>
+           {isMenuOpen && ( <div className="navbar-auth__menu-container">
+                <div className="navbar-auth__menu-item-container">
+                    <a className="navbar-auth__menu-item" onClick={handleClickNav}>Profile Settings</a>
+                    <span className="navbar-auth__line"></span>
+                    <a className="navbar-auth__menu-item" onClick={handleClickNav}>Home</a>
+                    <span className="navbar-auth__line"></span>
+                    <a className="navbar-auth__menu-item" onClick={handleClickNav}>Genre Menu</a>
                 </div>
             </div>)}
         </div>

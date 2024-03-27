@@ -44,14 +44,14 @@ const AccountOptions = () => {
   }, [process]);
 
   return (
-    <div className="account-section">
-      {process && <p className="process-text">{processMessage}</p>}
+    <div className="profile-page__account-section">
+      {process && <p className="profile-page__process-text">{processMessage}</p>}
 
-      <div className="account-options">
+      <div className="profile-page__account-options">
         {/* Logout Account */}
         <div
           onClick={handleLogout}
-          className="logout-button flex-center account-buttons"
+          className="profile-page__logout-button flex-center account-buttons"
         >
           <p>Logout</p>
         </div>
@@ -59,7 +59,7 @@ const AccountOptions = () => {
         {/* Delete Account */}
         <div
           onClick={handleDeleteAccount}
-          className="delete-button flex-center account-buttons"
+          className="profile-page__delete-button flex-center account-buttons"
         >
           <p>Delete Account</p>
         </div>

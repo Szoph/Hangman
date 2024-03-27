@@ -1,0 +1,128 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+
+.timer {
+    border: 1px solid white;
+    border-radius: $mediumRounded;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(225, 225, 225, 0.5);
+    font-weight: 500;
+    font-size: $fontMedium;
+    padding: 1rem 2rem;
+    margin-top: 2rem;
+
+    &__seconds {
+        display: inline-block;
+        scale: 1;
+        margin-left: 0.5rem;
+    }
+
+    &__seconds--wrong-1 {
+        animation-name: wrong-guess-1;
+        animation-duration: 800ms;
+    }
+
+    &__seconds--wrong-2 {
+        animation-name: wrong-guess-2;
+        animation-duration: 800ms;
+    }
+
+    &__seconds--right-1 {
+        animation-name: right-guess-1;
+        animation-duration: 800ms;
+    }
+
+    &__seconds--right-2 {
+        animation-name: right-guess-2;
+        animation-duration: 800ms;
+    }
+
+    @keyframes right-guess-1 {
+        0% {
+            color: black;
+            transform: scale(1);
+        }
+
+        35% {
+            color: green;
+            transform: scale(1.5);
+        }
+
+        65% {
+            color: green;
+            transform: scale(1.5);
+        }
+
+        100% {
+            color: black;
+            transform: scale(1);
+        }
+    }
+
+    @keyframes right-guess-2 {
+        0% {
+            color: black;
+            transform: scale(1);
+        }
+
+        35% {
+            color: green;
+            transform: scale(1.5);
+        }
+
+        65% {
+            color: green;
+            transform: scale(1.5);
+        }
+
+        100% {
+            color: black;
+            transform: scale(1);
+        }
+    }
+
+    @keyframes wrong-guess-1 {
+        0% {
+            color: black;
+            transform: scale(1);
+        }
+
+        35% {
+            color: red;
+            transform: scale(1.5);
+        }
+
+        65% {
+            color: red;
+            transform: scale(1.5);
+        }
+
+        100% {
+            color: black;
+            transform: scale(1);
+        }
+    }
+
+    @keyframes wrong-guess-2 {
+        0% {
+            color: black;
+            transform: scale(1);
+        }
+
+        35% {
+            color: red;
+            transform: scale(1.5);
+        }
+
+        65% {
+            color: red;
+            transform: scale(1.5);
+        }
+
+        100% {
+            color: black;
+            transform: scale(1);
+        }
+    }
+}

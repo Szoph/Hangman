@@ -3,16 +3,15 @@
 
 /* Genre Cards */
 .genreCards {
-    border-radius: 0.5rem;
+    border-radius: 2rem;
     position: relative;
-    border: 2px solid $primaryBtn;
+    border: 2px solid rgb(117, 192, 117);
     z-index: 1;
-
+    border-radius: 2rem;
     @include flexCenter;
 
     &:hover {
         cursor: pointer;
-        scale: 105%;
         transition-duration: 300ms;
     }
 
@@ -54,6 +53,7 @@
     width: 100%;
     background-color: rgba(0, 0, 0, 0.3);
     color: white;
+    border-radius: 1rem;
 }
 
 
@@ -62,6 +62,7 @@
     height: 25rem !important;
     margin: 0 auto;
     width: 18rem !important;
+    border-radius: 1rem;
 }
 
 .woodIcon {
