@@ -3,9 +3,9 @@ import {createSlice, PayloadAction} from "@reduxjs/toolkit"
 
 export type Movie = {
     length: any;
-    title: string,
+    title: string | null,
     posterImage: string;
-};
+} | any;
 
 
 

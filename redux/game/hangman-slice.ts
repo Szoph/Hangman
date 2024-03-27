@@ -94,11 +94,6 @@ export const hangman = createSlice({
             state.value.genre = action.payload
         },
 
-
-        setGenre: (state, action: PayloadAction<string>) => {
-            state.value.genre = action.payload
-        },
-
       guessLetter: (state, action: PayloadAction<string>) => {
        state.value.guessedLetters.push(action.payload);
       },
@@ -160,7 +155,8 @@ export const hangman = createSlice({
         const {movies} = action.payload
 
 
-        const movieList: ObjectType<Movie> = movies[1] || [];
+        const movieList: Array<Movie> = movies[1] || [];
+        console.log("Movies in hangman slice", movieList)
 
         // first check if the title has any numbers in it. If so, exclude it from the filtered titles.
         // Ideally, would want to implement some function to convert the numbers to letters and special characters to strings when possible.
@@ -168,14 +164,14 @@ export const hangman = createSlice({
         const filteredMovies = movieList.map(movie => {
 
             if(/\d/.test(movie.title)) {
-                return false
+                return null
             }
             const modifiedTitle = movie.title.replace(/&/g, "and").replace(/[^a-zA-Z\s]/g, " ").trim()           
            
            return {...movie, title: modifiedTitle}
 
-        }).filter(movie =>
-                movie !== false && movie.title.length <= 8
+        }).filter((movie: Movie) =>
+                movie !== null && movie.title.length <= 8
             );
             
         console.log("These are the filteredMovies in easyMode", filteredMovies)
@@ -195,19 +191,19 @@ export const hangman = createSlice({
 
     
 
-        const movieList: ObjectType<Movie> = movies[1] || [];
+        const movieList: Array<Movie> = movies[1] || [];
         console.log(movieList)
         const filteredMovies = movieList.map(movie => {
 
             if(/\d/.test(movie.title)) {
-                return false
+                return null
             }
 
             const modifiedTitle = movie.title.replace(/&/g, "and").replace(/[^a-zA-Z\s]/, " ").trim()
 
             return   { ...movie, title: modifiedTitle}
       }).filter(
-        movie => movie !== false && movie.title.length >= 8 && movie.title.length <= 12 
+        movie => movie !== null && movie.title.length >= 8 && movie.title.length <= 12 
         );
             
         console.log("These are the filteredMovies in mediumMode", filteredMovies)
@@ -225,18 +221,18 @@ export const hangman = createSlice({
 
         console.log(movies)
 
-        const movieList: ObjectType<Movie> = movies[1] || [];
+        const movieList: Array<Movie> = movies[1] || [];
         console.log(movieList)
         const filteredMovies = movieList.map(movie => {
           if(/\d/.test(movie.title)) {
-            return false
+            return null
           }
 
-          const modifiedTitle = movie.title.replace(/&/g, "and").replace(/[^a-zA-Z\s]/).trim()
+          const modifiedTitle = movie.title.replace(/&/g, "and").replace(/[^a-zA-Z\s]/, " ").trim()
 
           return {...movie, title: modifiedTitle}
         
-        }).filter(movie => movie !== false && movie.title.length >= 10 && movie.title.length <= 14);
+        }).filter(movie => movie !== null && movie.title.length >= 10 && movie.title.length <= 14);
             
         console.log("These are the filteredMovies in hardMode", filteredMovies)
         if (filteredMovies.length > 0) {
@@ -246,9 +242,8 @@ export const hangman = createSlice({
             
             state.value.word = randomMovie.title.toUpperCase()
         }
-      }
-
       },
+
       setMode(state, action: PayloadAction<TimerMode>) {
         state.value.mode = action.payload;
         if(state.value.mode === "easy") {
