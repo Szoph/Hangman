@@ -8,7 +8,10 @@ import Adventure from '@/public/images/jumanji-adventure.jpg'
 import Horror from '@/public/images/silenceofthelambs-horror.jpg'
 import Mystery from '@/public/images/gonegirl-mystery.jpg'
 import Comedy from '@/public/images/aceventura-comedy.jpg'
-
+import Fantasy from '@/public/images/eragon-fantasy.jpg'
+import Animation from '@/public/images/mononoke-animation.jpg'
+import Western from '@/public/images/dollars-western.jpg'
+import Sports from '@/public/images/fnl-sports.jpg'
 
 const WoodIcon = (props: React.SVGProps<SVGSVGElement>) => {
     return (
@@ -25,7 +28,7 @@ const WoodIcon = (props: React.SVGProps<SVGSVGElement>) => {
 }
 
 
-export { Action, War, Thriller, SciFi, Adventure, Horror, Mystery, Comedy, WoodIcon }
+export { Action, War, Thriller, SciFi, Adventure, Horror, Mystery, Comedy, Fantasy, Western, Animation, Sports, WoodIcon }
 
 
 {/* <svg

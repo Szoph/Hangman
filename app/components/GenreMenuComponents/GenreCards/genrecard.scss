@@ -1,0 +1,107 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+/* Genre Cards */
+.genre-card {
+
+    &__container {
+        position: relative; 
+        display: inline-block;
+    }
+
+    &__card {
+        border-radius: 0.5rem;
+        position:relative;
+        border: 2px solid $primaryBtn;
+        z-index: 1;
+        margin-top: 30px;
+    
+        @include flexCenter;
+        &:hover {
+            cursor: pointer;
+            // scale: 105%;
+            transition-duration: 300ms;
+        }
+    
+        &::before {
+            content: "";
+            display: block;
+            color: red;
+            position: absolute;
+            top: -10px;
+            // height: 20px;
+            // width:3px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 60px;
+       
+            background-color: black;
+            z-index:-1;
+        }
+    
+        svg {
+            font-size: 50px
+        }
+    }
+
+    &__rope {
+        height: 100px;
+        width: 2px;
+        background-color: black;
+        position:absolute;
+        top: -100px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 0;
+        bottom: 0;
+        border: 1px solid black;
+        mask-image: linear-gradient(to bottom, transparent, black 100%);
+    }
+
+    &__text {
+        position: absolute;
+        font-size: $fontMedium;
+        text-align: center;
+        font-weight: 400;
+        margin: 0 auto;
+        height: 100%;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        width:100%;
+        background-color: rgba(0, 0, 0, 0.3);
+        color: white;
+    }
+
+    &__image-wrapper  {
+
+
+        img {
+            width: 100%;
+            height: 25rem!important;
+            margin: 0 auto;
+            width: 18rem!important;
+        }
+    }
+
+    &__wood-icon {
+        display: block;
+        position: absolute;
+        top: -116px;
+        left: 60%;
+        right: 0;
+        display: flex;
+        transform: translateX(-50%) rotate(-20deg);
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+    
+    
+        &::after {
+            content:"";
+            height: 20px;
+            width: 2px;
+        }
+    }
+
+}
