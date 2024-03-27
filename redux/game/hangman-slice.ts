@@ -2,6 +2,8 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {useState, useEffect} from 'react';
 import { Movie } from "../movies/movies-slice"
 
+export type TimerMode = 'easy' | 'medium' | 'hard';
+
 type InitialState = {
     value: HangmanState;
 }
@@ -9,7 +11,9 @@ type InitialState = {
 type HangmanState = {
     word: string;
     guessedLetters: string[]; 
-    mode:string;
+    mode:TimerMode;
+    timeLeft: number;
+    countDown: number;
     genre:string;
     remainingAttempts: number;
     attemptsUsed: number;
@@ -23,7 +27,9 @@ const initialState = {
     value: {
         word: "", 
         guessedLetters: [],
-        mode:"",
+        mode:"easy",
+        timeLeft: 0,
+        countDown: 4,
         genre: "",
         remainingAttempts: 4,
         attemptsUsed: 0, 
@@ -62,10 +68,22 @@ export const hangman = createSlice({
 
       wrongLetter: (state, action: PayloadAction<string>) => {
         state.value.wrongGuess.push(action.payload);
+        if(state.value.mode === "medium") {
+            state.value.timeLeft -= 5
+        }
+        if(state.value.mode === "hard") {
+            state.value.timeLeft -= 2
+        }
     },
 
         rightLetter: (state, action: PayloadAction<string>) => {
-            state.value.rightGuess.push(action.payload)
+            state.value.rightGuess.push(action.payload);
+            if(state.value.mode === "medium") {
+                state.value.timeLeft += 5
+            }
+            if(state.value.mode === "hard") {
+                state.value.timeLeft += 2
+            }
         },
 
         // gameWon: (state, action: PayloadAction<string>) => {
@@ -80,6 +98,7 @@ export const hangman = createSlice({
       },
 
       resetGame: (state) => {
+        console.log("123")
           state.value = initialState.value;
       },
 
@@ -98,11 +117,35 @@ export const hangman = createSlice({
             console.log("YOU WON")
         }
         
-      }
+      },
+      setMode(state, action: PayloadAction<TimerMode>) {
+        state.value.mode = action.payload;
+        if(state.value.mode === "easy") {
+            state.value.timeLeft = Infinity;
+        }
+        if(state.value.mode === "medium") {
+            state.value.timeLeft = 60;
+        }
+        if(state.value.mode === "hard") {
+            state.value.timeLeft = 45;
+        }
+
+      },
+      setTimeLeft(state, action: PayloadAction<number>) {
+        state.value.timeLeft = action.payload;
+
+        if(state.value.timeLeft === 0) {
+            state.value.remainingAttempts = 0;
+            state.value.attemptsUsed = initialState.value.remainingAttempts;
+        }
+      },
+      setCountDown(state, action: PayloadAction<number>) {
+        state.value.countDown = action.payload;
+      },
 
     }
 }); 
 
+export const { setWord, guessLetter, decrementAttempts, wrongLetter, trackAttempts, resetGame, rightLetter, checkGuessedLetters,setMode, setTimeLeft, setCountDown, setGenre } = hangman.actions
 
-export const { setWord, guessLetter, decrementAttempts, wrongLetter, trackAttempts, resetGame, rightLetter, checkGuessedLetters, setGenre } = hangman.actions
 export default hangman.reducer;
