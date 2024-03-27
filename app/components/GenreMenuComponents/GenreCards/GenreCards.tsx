@@ -33,26 +33,37 @@ const GenreCards = ({genre, image, selectGenre}: Props) => {
 //     }
 
     return (
-        <Link href={`/genremode/${genre}`} onClick={handleReduxGenreName}>
-            <motion.div 
-            className={styles.genreCards}>
-            <WoodIcon
-             className={styles.woodIcon}/>
+      <Link href={`/genremode/${genre}`} onClick={handleReduxGenreName}>
+      <motion.div 
+      className={styles.genreCards}>
+      <WoodIcon
+       className={styles.woodIcon}/>
 
-
-            <Image
-              alt="image"
-              src={image}
-              layout="responsive"
-              height={500}
-              width={undefined}
-              className={styles.cardImage}
-              objectFit="cover"
-            />
-          </div>
-        </motion.div>
+      <motion.div
+      initial= {{scale: 1}}
+      whileHover={{
+          scale: 1.2,
+          transition: {
+              yoyo: 10,
+          }
+      }}
+      className={styles.overLay}>
+          
+      <p className={styles.genreText}>{genre}</p>
+      <div className={styles.imageWrapper}>  
+      <Image
+       alt="image"
+      src={image}
+       layout="responsive"
+       height={500}
+       width={undefined}
+       className={styles.cardImage}
+       objectFit="cover"/>
+      </div>
       </motion.div>
-    </Link>
+  </motion.div>
+
+</Link>
   );
 };
 
