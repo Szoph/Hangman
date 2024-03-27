@@ -1,18 +1,66 @@
-import './gamelost.scss'
-import {useRouter} from "next/navigation"
+import "./gamelost.scss";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { useAppSelector } from "@/redux/store";
+import { useDispatch } from "react-redux";
+import {
+  setUserSuccess,
+  setUsername,
+  setGameStored,
+  resetHangmanGame,
+} from "@/redux/game/hangman-backend-slice";
+import GameClient from "@/utils/clients/gameClient";
 
-const GameLost: React.FC = () => {
+type GameOverProps = {
+  gameRestart: () => void;
+};
+
+const GameLost: React.FC<GameOverProps> = ({ gameRestart }) => {
   const router = useRouter();
+  const dispatch = useDispatch();
+  const username = useAppSelector(
+    (state) => state.authentication.value.username
+  );
+  const gameState = useAppSelector((state) => state.hangmanBackend);
+  const gameStored = gameState.stored;
+  const [gameFinished, setGameFinished] = useState<boolean>(false);
   const word = useAppSelector((state) => state.hangmanGame.value.word)
 
   const quitGame = () => {
+    dispatch(resetHangmanGame());
+    gameRestart();
     router.push("/");
   };
 
-  const gameReset = () => {
+  const gameReset = async () => {
+    dispatch(resetHangmanGame());
+    gameRestart();
     router.push("/genremenu");
   };
+
+
+  const uploadData = async () => {
+    const gameUploaded = await GameClient.uploadGameData(gameState);
+
+    dispatch(setGameStored(true));
+
+    setGameFinished(false);
+  };
+
+  useEffect(() => {
+    if (gameStored) {
+      return;
+    }
+
+    if (gameFinished) {
+      uploadData();
+    } else {
+      dispatch(setUserSuccess(false));
+      dispatch(setUsername(username));
+      
+      setGameFinished(true);
+    }
+  }, [gameFinished]);
 
   return (
     <>

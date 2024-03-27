@@ -106,6 +106,15 @@ class AuthController:
         except Exception as e:
             print("This is the response error: ", e)
             return ApiResponse(success=False, error=(str(e)))
+        
+    @staticmethod
+    def get_user_uuid(username: str):
+        try:
+            db_username, _ = supabase.table('users').select("id").eq("username", username).single().execute()
+
+            return ApiResponse(success=True, data=db_username[1]['id'])
+        except:
+            return ApiResponse(success=False, error="User not found!")
 
     @staticmethod
     def update_username(user: str, new_username: str):

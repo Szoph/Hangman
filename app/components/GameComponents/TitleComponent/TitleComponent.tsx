@@ -11,14 +11,12 @@ const TitleComponent: React.FC = () => {
 
 const word = useAppSelector((state) => state.hangmanGame.value.word); 
 const guessedLetters = useAppSelector((state) => state.hangmanGame.value.guessedLetters); 
-  
 
 
   
 
   return (
     <div className="title">
-
 
      {word.split(' ').map((word: string, index: number) => (
       <span key={index} className="word">

@@ -23,7 +23,6 @@ const audioCorrect = new Audio ("/sounds/Correct.wav");
 
 
 useEffect(() => {
-    console.log(attemptsUsed)
     if (attemptsUsed === 1){
         setGameImage(game2);
         audioCrack.play();

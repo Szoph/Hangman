@@ -16,17 +16,18 @@ import Timer from "./Timer/Timer";
 import CountDown from "./CountDown/CountDown";
 
 const HangmanGame = () => {
-  const remainingAttempts = useAppSelector(
-    (state) => state.hangmanGame.value.remainingAttempts
-  );
-  const won = useAppSelector((state) => state.hangmanGame.value.won);
-  const dispatch = useDispatch<AppDispatch>();
-  const mode = useAppSelector((state) => {
-    return state.hangmanGame.value.mode;
-  });
+    const remainingAttempts = useAppSelector((state) => state.hangmanGame.value.remainingAttempts)
+    const won = useAppSelector((state) => state.hangmanGame.value.won)
+    const mode = useAppSelector((state) => state.hangmanGame.value.mode)
+    const dispatch = useDispatch<AppDispatch>();
+    
 
-  return (
-    <div className="game-area">
+  const gameRestart = () => {
+    dispatch(resetGame());
+  }
+    
+    return (
+      <div className="game-area">
       <CountDown />
       <div className="game-left">
         <Game />
@@ -40,12 +41,12 @@ const HangmanGame = () => {
       </div>
       {won === true ? (
         <div className="game-page__game-won-modal">
-          <GameWon />
+          <GameWon gameRestart={gameRestart} />
         </div>
       ) : null}
       {remainingAttempts === 0 ? (
         <div className="game-page__game-lost-modal">
-          <GameLost />
+          <GameLost gameRestart={gameRestart} />
         </div>
       ) : null}
     </div>
