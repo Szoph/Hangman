@@ -37,7 +37,9 @@ class GameClient {
     };
   }
 
-  worldRanking(): void {}
+  async worldRanking(gameState: any): Promise<void> {
+    
+  }
 }
 
 export default new GameClient();

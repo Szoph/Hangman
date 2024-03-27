@@ -25,3 +25,19 @@ def upload_game():
             'message': upload_state.data,
             'error': upload_state.error
         })
+    
+@game_blueprint.route(rule='/world_ranking', methods=['GET'])
+def get_ranking():
+    ranking_state = GameController.upload_game()
+
+    if ranking_state.success:
+        return jsonify({
+            'success': ranking_state.success,
+            'message': ranking_state.data,
+        })
+    else:
+        return jsonify({
+            'success': ranking_state.success,
+            'message': ranking_state.data,
+            'error': ranking_state.error
+        })

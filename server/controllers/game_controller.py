@@ -47,3 +47,15 @@ class GameController:
             return ApiResponse(success=True, data="Game has been uploaded!")
         except Exception as e:
             return ApiResponse(success=False, data="Failed to upload", error=str(e))
+        
+    @staticmethod
+    def get_ranking():
+        try:
+            game_state = request.json.get('game_state')
+            genre_name = game_state['genre_name']
+            game_mode = game_state['game_mode']
+            
+            game_data, _ = supabase.table('games').select('*').eq('genre_name', genre_name).eq('game_mode', game_mode).execute()
+        except Exception as e:
+            return ApiResponse(success=False, data="Failed to get leaderboard", error=str(e))
+
