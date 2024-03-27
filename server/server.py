@@ -9,7 +9,7 @@ from db_supabase import supabase_connection
 
 app = Flask(__name__)
 # app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
-CORS(app, resources={r"/*": {"origins": ["http://localhost:3000"]}})  # TODO: Add vercel URL here
+CORS(app, resources={r"/*": {"origins": ["http://localhost:3001"]}})  # TODO: Add vercel URL here
 
 
 @app.route(rule="/test_flask", methods=["GET", "OPTIONS"])

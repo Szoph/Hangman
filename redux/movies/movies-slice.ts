@@ -2,9 +2,12 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit"
 
 export type Movie = {
-    title: string,
+    length: any;
+    title: string | null,
     posterImage: string;
-};
+} | any;
+
+
 
   type InitialState = Movie[];
 
