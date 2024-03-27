@@ -11,6 +11,7 @@ import { combineReducers } from "@reduxjs/toolkit";
 const persistConfig = {
   key: "root",
   storage,
+  blacklist: ["genreSlice"]
 };
 
 const rootReducer = combineReducers({
@@ -27,7 +28,9 @@ export const store = configureStore({
   reducer: persistedReducer,
 });
 
-export const persistor = persistStore(store);
+export const persistor = persistStore(store,{
+
+});
 
 // ReturnType is used to infer the state stucture
 export type RootState = ReturnType<typeof store.getState>; // getState gives application access to the state it holds and RootState represents the entire state of the Redux Store

@@ -27,7 +27,8 @@ const handleLetterClick = (letter: string) => {
       dispatch(rightLetter(letter));
       dispatch(checkGuessedLetters());
     } else {
-      handleWrongGuess(letter)
+      dispatch(wrongLetter(letter));
+      handleWrongGuess(letter);
     }
     dispatch(guessLetter(letter));
 
