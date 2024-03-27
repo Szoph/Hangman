@@ -9,47 +9,22 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/redux/store";
 import { useAppSelector } from "@/redux/store";
 import { addMovies } from "@/redux/movies/movies-slice";
-
-type MoviesResponse = {
-  movies: [
-    {
-      title: string;
-      posterImage: string;
-    }
-  ];
-};
-
-const getMovies = async (selectedGenre: string) => {
-  const options = {
-    method: "GET",
-    url: "https://moviesverse1.p.rapidapi.com/get-by-genre",
-    params: { genre: selectedGenre },
-    headers: {
-      "X-RapidAPI-Key": "9d860e7eadmsh3c5c3008957e407p17047fjsn4a306dbb1903",
-      "X-RapidAPI-Host": "moviesverse1.p.rapidapi.com",
-    },
-  };
-  try {
-    const response = await axios.request<MoviesResponse>(options);
-    return response.data;
-  } catch (err) {
-    console.log(err);
-  }
-};
+import GameClient from "@/utils/clients/gameClient";
 
 const GenreMode = ({ genre }: { genre: string }) => {
   const router = useRouter();
-  const genres = useAppSelector((state) => {
-    return state.genreSlice;
-  });
-  const dispatch = useDispatch<AppDispatch>();
-
-  const movies = useAppSelector((state) => state.movieSlice);
-  useEffect(() => {
-    const getData = async () => {
-      const data = await getMovies(genre);
-      if (data?.movies) {
-        dispatch(addMovies(data.movies));
+    const genres = useAppSelector((state) =>  { return state.genreSlice});
+    const dispatch = useDispatch<AppDispatch>();
+  
+    const movies = useAppSelector((state) => state.movieSlice);
+    useEffect(() => {
+      const getData = async() => {
+        const data = await GameClient.getMoviesByGenre(genre);
+        console.log(data)
+        console.log("The should be the data from the backend", data)
+        if(data?.movies) {
+          dispatch(addMovies(data.movies))
+        }
       }
     };
     getData();

@@ -24,3 +24,11 @@ def test_supabase():
         return jsonify({
             'error': str(e)
         })
+
+# @supabase_blueprint.route(rule="/test_movies", methods=["GET"])
+# def test_movies_database():
+#     try:
+#         data, _ = supabase.table('movies').select("*").execute()
+#         return jsonify(data[1])
+#     except Exception as error:
+#         return jsonify({ 'error': str(error)})

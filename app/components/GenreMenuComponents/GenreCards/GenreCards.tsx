@@ -4,10 +4,12 @@ import styles from "./genrecard.module.scss";
 import Image, { StaticImageData } from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { WoodIcon } from "../imports";
-import { setGenre } from "@/redux/game/hangman-slice";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "@/redux/store";
+import {WoodIcon} from '../imports'
+import {setGenre} from "@/redux/game/hangman-slice";
+import {useDispatch} from "react-redux";
+import {AppDispatch} from "@/redux/store";
+
+
 
 type Props = {
   key?: number;
@@ -40,6 +42,7 @@ const GenreCards = ({ genre, image, selectGenre }: Props) => {
         >
           <p className={styles.genreText}>{genre}</p>
           <div className={styles.imageWrapper}>
+
             <Image
               alt="image"
               src={image}
