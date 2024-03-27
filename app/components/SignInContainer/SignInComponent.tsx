@@ -94,7 +94,7 @@ const SignInComponent: React.FC = () => {
 
         <input
         className="sign-in-page__password-input"
-          type="text"
+          type="password"
           placeholder="Password"
           value={userInput?.password}
           name="password"
