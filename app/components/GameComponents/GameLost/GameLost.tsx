@@ -37,7 +37,7 @@ const GameLost: React.FC<GameOverProps> = ({ gameRestart }) => {
     gameRestart();
     router.push("/genremenu");
   };
-  };
+
 
   const uploadData = async () => {
     const gameUploaded = await GameClient.uploadGameData(gameState);
@@ -85,5 +85,3 @@ const GameLost: React.FC<GameOverProps> = ({ gameRestart }) => {
 };
 
 export default GameLost;
-
-export default GameLost
