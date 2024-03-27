@@ -11,6 +11,7 @@ import {
 } from "@/redux/game/hangman-backend-slice";
 import GameClient from "@/utils/clients/gameClient";
 import { cachedDataVersionTag } from "v8";
+import Leaderboard from "../../Leaderboard/Leaderboard";
 
 type GameWonProps = {
   gameRestart: () => void;
@@ -25,6 +26,8 @@ const dispatch = useDispatch();
   const movie = useAppSelector((state) => state.hangmanGame.value.word)
   const gameStored = gameState.stored;
   const [gameFinished, setGameFinished] = useState<boolean>(false);
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [leaderboardData, setLeaderboardData] = useState<any[]>([]);
   const quitGame = () => {
     dispatch(resetHangmanGame());
     gameRestart();
@@ -40,6 +43,12 @@ const dispatch = useDispatch();
   const getLeaderboard = async () => {
     // Returns the user_points database in order
     const worldLeaderboard = await GameClient.worldRanking();
+    console.log("this is the world leaderboard", worldLeaderboard)
+const leaderboardData = worldLeaderboard.data 
+console.log(leaderboardData)
+setLeaderboardData(leaderboardData);
+    setShowModal(true);
+    
 
   }
 
@@ -77,12 +86,24 @@ const dispatch = useDispatch();
           <p className="game-won__text">YOU WIN!</p>
           <p className="game-won__movie">{movie}</p>
         </div>
-        
+
+        {showModal ? (
+          <>
+         <h3>World Leaderboard</h3>
+          {leaderboardData.map((data, index) => (
+            <Leaderboard key={index} showModal={showModal} 
+           username={data.username} points={data.points}
+            />
+          ))}
+          </>
+        ) : null}
+
         <div className='game-won__buttons'>
           <button onClick={gameReset} className='game-won__button-next'>PLAY AGAIN</button>
           <button onClick={getLeaderboard} className="game-won__button-leaderboard">
             LEADERBOARD
           </button>
+
           <button onClick={quitGame} className='game-won__button-quit'>QUIT</button>
         </div>
       </div>

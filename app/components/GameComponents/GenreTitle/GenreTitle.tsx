@@ -4,11 +4,11 @@ import {useAppSelector} from "@/redux/store";
 
 const GenreTitle: React.FC = () => {
  
-  const genre = useAppSelector((state) => state.hangmanGame.value.genre)
+  const genreName = useAppSelector((state) => state.hangmanBackend.genre_name)
 
   return (
     <div className="genre">
-      <span className="genreText">{genre}</span>
+      <span className="genreText">{genreName}</span>
     </div>
   )
 }
