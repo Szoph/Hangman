@@ -23,6 +23,7 @@ const GenreCards = ({genre, image, selectGenre}: Props) => {
 
     const handleReduxGenreName = () => {
         dispatch(setGenreName(genre));
+        dispatch(setGenre(genre));
     }
 
 //   const handleGenre = (genre: string) => {

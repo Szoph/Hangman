@@ -135,7 +135,7 @@ const SignUpComponent: React.FC = () => {
         />
         <input
         className="sign-up-form__input-password"
-          type="text"
+          type="password"
           placeholder="Password"
           name="password"
           value={userInput?.password || ""}
@@ -143,7 +143,7 @@ const SignUpComponent: React.FC = () => {
         />
         <input
         className="sign-up-form__input-password"
-          type="text"
+          type="password"
           placeholder="Re-type Password"
           name="repassword"
           value={userInput?.repassword || ""}

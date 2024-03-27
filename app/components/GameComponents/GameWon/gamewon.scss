@@ -2,6 +2,7 @@
 @import '../../../styles/mixins';
 
 .game-won {
+    position: relative;
     &__container {
         display: flex; 
         flex-direction: column;
