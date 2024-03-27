@@ -121,11 +121,14 @@ class GameController:
     @staticmethod
     def get_ranking():
         try:
-            game_state = request.json.get('game_state')
-            genre_name = game_state['genre_name']
-            game_mode = game_state['game_mode']
+            game_data, _ = supabase.table('user_points').select('*').execute()
+
+            all_users = game_data[1]
+            sorted_users = sorted(all_users, key=lambda x: x['points'], reverse=True)
+
+            ranking = [{'username': entry['username'], 'points': entry['points']} for entry in sorted_users]
             
-            game_data, _ = supabase.table('games').select('*').eq('genre_name', genre_name).eq('game_mode', game_mode).execute()
+            return ApiResponse(success=True, data=ranking)
         except Exception as e:
             return ApiResponse(success=False, data="Failed to get leaderboard", error=str(e))
 

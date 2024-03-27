@@ -38,8 +38,9 @@ const GameWon: React.FC<GameWonProps> = ({ gameRestart }) => {
   };
 
   const uploadData = async () => {
-    const gameUploaded = await GameClient.uploadGameData(gameState);
-    const pointsUploaded = await GameClient.uploadPoints(gameState);
+    // const gameUploaded = await GameClient.uploadGameData(gameState);
+    // const pointsUploaded = await GameClient.uploadPoints(gameState);
+    const test = await GameClient.worldRanking();
 
     dispatch(setGameStored(true));
 

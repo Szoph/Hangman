@@ -38,18 +38,6 @@ class GameClient {
   }
   
   async uploadPoints(gameState: any): Promise<any> {
-    if (typeof window === "undefined") {
-      return;
-    }
-
-    const accessToken: string | null = localStorage.getItem("access_token");
-
-    const config = {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    };
-
     const pointsParams = gameState.username;
     const userHasPoints = await axios.get(`${SERVER_URL}/check_user_points/${pointsParams}`);
 
@@ -57,22 +45,30 @@ class GameClient {
       // Update Points
       const updatePoints = await axios.put(`${SERVER_URL}/update_points`,
         {game_state: gameState},
-        config
       )
-
-      console.log(updatePoints);
     } else {
       // Upload Points
       const uploadPoints = await axios.post(`${SERVER_URL}/upload_points`,
         { game_state: gameState },
-        config
       );
       console.log(uploadPoints);
     }
   }
 
-  async worldRanking(gameState: any): Promise<void> {
-    
+  async worldRanking(): Promise<any> {
+    const rankingResponse = await axios.get(`${SERVER_URL}/world_ranking`);
+
+    if (!rankingResponse.data.success) {
+      return {
+        success: false,
+        error: "Failed to get ranking"
+      }
+    };
+
+    return {
+      success: true,
+      data: rankingResponse.data.message
+    }
   }
 }
 
