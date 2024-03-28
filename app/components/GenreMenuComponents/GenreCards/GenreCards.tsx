@@ -8,6 +8,7 @@ import {WoodIcon} from '../imports'
 import {setGenre} from "@/redux/game/hangman-slice";
 import {useDispatch} from "react-redux";
 import {AppDispatch} from "@/redux/store";
+import CardVariants from '../GenreVariants'
 
 
 

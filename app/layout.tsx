@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Gluten } from "next/font/google";
 import {UserReduxProvider} from "../redux/provider";
-import './globals.scss'
+import './globals.scss';
+
 
 import DynamicNav from "./components/HeaderAndFooterComponents/DynamicNav";
 // import Footer from "./components/HeaderAndFooterComponents/Footer";
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
   description: "A hangman game",
 };
 
-export default function RootLayout({children}: Readonly<{children: React.ReactNode;}>) {
+export default function RootLayout  ({children}: Readonly<{children: React.ReactNode;}>) {
   return (
     <html lang="en">
       <body className={gluten.className}>
