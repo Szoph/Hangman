@@ -27,7 +27,6 @@ const GenreMode = ({ genre }: { genre: string }) => {
       if (data?.movies) {
         dispatch(addMovies(data.movies));
       }
-    };
     getData();
   }, []);
 

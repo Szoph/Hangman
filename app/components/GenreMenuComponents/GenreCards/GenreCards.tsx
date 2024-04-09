@@ -11,6 +11,7 @@ import {AppDispatch} from "@/redux/store";
 
 
 
+
 type Props = {
   key?: number;
   genre: string;
