@@ -26,4 +26,4 @@ app.register_blueprint(user_routes.user_blueprint, url_prefix='/user')  # http:/
 
 
 if __name__ == "__main__":
-    app.run(debug=True)  # Development Mode
+    app.run(debug=False)  # Development Mode
